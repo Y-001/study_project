@@ -1,0 +1,91 @@
+<view class="container">
+    <view style="background-color: {{background[item]}};" class="content" bindtap="openContral">
+        <text user-select="true" style="color: {{item===3 ? '#f6f6f6':'#2c2c2c'}}; font-size: {{fontsize}}; line-height: {{lineheight}};">{{content}}</text>
+    </view>
+    <van-popup show="{{ control }}" position="bottom" custom-style="height: 42%;" bind:close="onClose">
+        <view class="control">
+            <view class="booklet">
+                <view class="b-text">上一章</view>
+                <view class="b-text" bindtap="getBooklet">目录</view>
+                <view class="b-text">下一章</view>
+            </view>
+            <view class="bookletwo">
+                <text class="c-text">背景</text>
+                <view class="booklethree" bindtap="changeColor">
+                    <view class="color" data-item="0" style="background-color: #f6f6f6;"></view>
+                    <view class="color" data-item="1" style="background-color: #c9cfc1;"></view>
+                    <view class="color" data-item="2" style="background-color: #90a07d;"></view>
+                    <view class="color" data-item="3" style="background-color: #141722;">夜间</view>
+                </view>
+            </view>
+            <view class="bookletwo">
+                <text class="c-text">字号</text>
+                <view class="booklethree" bindtap="changeFontSize">
+                    <view class="font-size" data-item="0">A-</view>
+                    <view class="font-size" data-item="1">A+</view>
+                </view>
+            </view>
+            <view class=" bookletwo">
+                <text class="c-text">间距</text>
+                <view class="booklethree" bindtap="changeFontLine">
+                    <view class="font-line" data-item="0">
+                        <image class="icon-line" src="../../images/read-lineheight1.png"></image>
+                    </view>
+                    <view class="font-line" data-item="1">
+                        <image class="icon-line" src="../../images/read-lineheight2.png"></image>
+                    </view>
+                    <view class="font-line" data-item="2">
+                        <image class="icon-line" src="../../images/read-lineheight3.png"></image>
+                    </view>
+                </view>
+            </view>
+            <view class="nav">
+                <view class="nav-item" bindtap="toBookStore">
+                    <image class="icon" src="../../images/read-store.png"></image>
+                    <text class="text">书城</text>
+                </view>
+                <view class="nav-item" bindtap="toDetail">
+                    <image class="icon" src="../../images/read-detail.png"></image>
+                    <text class="text">详情</text>
+                </view>
+                <view class="nav-item" bindtap="addBookshelf">
+                    <image class="icon" src="{{star[0].icon}}"></image>
+                    <text class="text">{{star[0].text}}</text>
+                </view>
+            </view>
+        </view>
+    </van-popup>
+    <van-popup show="{{ show }}" position="left" custom-style="width: 85%;height:100%;" bind:close="onCloseBookshelf">
+        <view class="shelf-body">
+            <view class="shelf-top" bindtap="toDetail">
+                <image class="headimg" src="{{headImg}}"></image>
+                <view class="shelf-detail">
+                    <view class="shelf-title">{{factionName}}</view>
+                    <view class="shelf-author">{{factionAuthor}}</view>
+                </view>
+            </view>
+            <view class="shelf-list">
+                <view class="shelf-item">第一章 重生</view>
+                <view class="shelf-item">第一章 重生</view>
+                <view class="shelf-item">第一章 重生</view>
+                <view class="shelf-item">第一章 重生</view>
+                <view class="shelf-item">第一章 重生</view>
+                <view class="shelf-item">第一章 重生</view>
+                <view class="shelf-item">第一章 重生</view>
+                <view class="shelf-item">第一章 重生</view>
+                <view class="shelf-item">第一章 重生</view>
+                <view class="shelf-item">第一章 重生</view>
+                <view class="shelf-item">第一章 重生</view>
+                <view class="shelf-item">第一章 重生</view>
+                <view class="shelf-item">第一章 重生</view>
+                <view class="shelf-item">第一章 重生</view>
+                <view class="shelf-item">第一章 重生</view>
+                <view class="shelf-item">第一章 重生</view>
+                <view class="shelf-item">第一章 重生</view>
+                <view class="shelf-item">第一章 重生</view>
+                <view class="shelf-item">第一章 重生</view>
+                <view class="shelf-item">第一章 重生</view>
+            </view>
+        </view>
+    </van-popup>
+</view>

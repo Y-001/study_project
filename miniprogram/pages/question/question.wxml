@@ -1,0 +1,83 @@
+<!--pages/question/question.wxml-->
+<view class="container">
+    <!-- 通知栏目 名言警句栏 -->
+    <van-notice-bar color="#667c70" background="#c4d9b0" left-icon="volume-o" text="名言警句： 锲而舍之,朽木不折,锲而不舍,金石可镂。 加油啊！中医人" />
+    <!-- 轮播图 -->
+    <view class="swiper-body">
+        <swiper class="swiper" indicator-dots="{{true}}" autoplay="{{true}}" interval="{{2000}}" duration="{{500}}">
+            <block wx:for="{{background}}" wx:key="*this">
+                <swiper-item>
+                    <!-- <view class="swiper-item {{item}}"></view> -->
+                    <image class="swiper-image" src="{{item}}"></image>
+                </swiper-item>
+            </block>
+        </swiper>
+    </view>
+    <!-- 快捷导航 -->
+    <view class="nav">
+        <van-grid>
+            <van-grid-item text="选择题库" bindtap="toSelectwarehouse">
+                <image class="nav-icon" slot="icon" src="../../images/que-select.png"></image>
+            </van-grid-item>
+            <van-grid-item text="考试记录">
+                <image class="nav-icon" slot="icon" src="../../images/que-edit.png"></image>
+            </van-grid-item>
+            <van-grid-item text="在线签到">
+                <image class="nav-icon" slot="icon" src="../../images/que-qiandao.png"></image>
+            </van-grid-item>
+            <van-grid-item text="排行榜">
+                <image class="nav-icon" slot="icon" src="../../images/que-sort.png"></image>
+            </van-grid-item>
+        </van-grid>
+    </view>
+    <!-- 我的题库 -->
+    <view class="warehouse">
+        <view class="title">我的题库</view>
+        <van-cell-group>
+            <van-cell center is-link>
+                <image class="cell-icon" slot="icon" src="../../images/icon-test.png"></image>
+                <view slot="title">
+                    <view class="van-cell-text">
+                        <view class="cell-body">
+                            <view class="cell-text">本草纲目测试一</view>
+                            <view class="cell-time">2023-01-10</view>
+                        </view>
+                    </view>
+                </view>
+            </van-cell>
+            <van-cell center is-link>
+                <image class="cell-icon" slot="icon" src="../../images/icon-test.png"></image>
+                <view slot="title">
+                    <view class="van-cell-text">
+                        <view class="cell-body">
+                            <view class="cell-text">本草纲目测试一</view>
+                            <view class="cell-time">2023-01-10</view>
+                        </view>
+                    </view>
+                </view>
+            </van-cell>
+            <van-cell center is-link>
+                <image class="cell-icon" slot="icon" src="../../images/icon-test.png"></image>
+                <view slot="title">
+                    <view class="van-cell-text">
+                        <view class="cell-body">
+                            <view class="cell-text">本草纲目测试一</view>
+                            <view class="cell-time">2023-01-10</view>
+                        </view>
+                    </view>
+                </view>
+            </van-cell>
+            <van-cell center is-link>
+                <image class="cell-icon" slot="icon" src="../../images/icon-test.png"></image>
+                <view slot="title">
+                    <view class="van-cell-text">
+                        <view class="cell-body">
+                            <view class="cell-text">本草纲目测试一</view>
+                            <view class="cell-time">2023-01-10</view>
+                        </view>
+                    </view>
+                </view>
+            </van-cell>
+        </van-cell-group>
+    </view>
+</view>

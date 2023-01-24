@@ -1,0 +1,37 @@
+/* pages/testdetail/testdetail.wxss */
+.use-img{
+    width: 50rpx;
+    height: 50rpx;
+}
+.container{
+    background-color: #fff;
+    height: 100vh;
+}
+.title{
+    padding: 40rpx;
+    font-weight: bold;
+}
+.use-list{
+    display: flex;
+    flex-wrap: wrap;
+    padding:0 0rpx 0 30rpx;
+    
+}
+
+.use-item{
+    width: 40%;
+    border-radius: 10rpx;
+    border: 1px solid #667c70;
+    padding: 20rpx;
+    display: flex;
+    align-items: center;
+    margin-right: 30rpx;
+    margin-bottom: 30rpx;
+}
+.use-right{
+    margin-left: 20rpx;
+}
+.use-right .bottom{
+    font-size: 28rpx;
+    color: #ccc;
+}

@@ -1,0 +1,128 @@
+/* pages/store/store.wxss */
+/* 底部空隙 */
+.container{
+    padding-bottom: 100rpx;
+}
+/* 轮播图 */
+.swiper-image{
+    width: 100%;
+}
+.swiper-body{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20rpx 0 0;
+}
+.swiper{
+    width: 100%;
+    height: 300rpx;
+    border-radius: 20rpx;
+    overflow: hidden;
+}
+/* 公共样式 */
+.body{
+    padding: 0 20rpx;
+}
+.recommend{
+    width: 100%;
+    background-color: #fff;
+    border-radius: 20rpx;
+    display: flex;
+    flex-direction: column;
+    margin: 30rpx 0;
+}
+ .rec-title{
+    padding: 10rpx;
+    font-size: 43rpx;
+    font-weight: bold;
+}
+.line{
+    margin-left: 10rpx;
+    margin-bottom: 30rpx;
+    width: 80rpx;
+    height: 0;
+    border: 4rpx solid #667c70;
+}
+/* 热门推荐 */
+.recommend .rec-list{
+    box-sizing: border-box;
+    padding: 0 10rpx;
+    display: flex;
+    flex-wrap: wrap;
+}
+.rec-list .rec-list-item{
+    width: 23%;
+    display: flex;
+    flex-direction: column;
+    padding: 1%;
+}
+.rec-item-img{
+    width: 100%;
+    height: 250rpx;
+    border-radius: 10rpx;
+}
+.rec-item-text{
+    font-size: 30rpx;
+    /* 让文字多的隐藏 */
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+}
+/* 分类 */
+.classify-list{
+    display: flex;
+    margin-top: 20rpx;
+}
+.classify-list .classify-list-item{
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.classify-item-bimg{
+    width: 70rpx;
+    height: 70rpx;
+    border-radius: 50%;
+    background-color: #667c70;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.classify-item-bimg .classify-item-img{
+    width: 50rpx;
+    height: 50rpx;
+}
+.classify-item-text{
+    font-size: 30rpx;
+    margin: 30rpx 0;
+}
+.color1{
+    background-color: #448884;
+}
+.color2{
+    background-color: #cdceaf;
+}
+.color3{
+    background-color: #a3b196;
+}
+.color4{
+    background-color: #b8cfa5;
+} 
+.color5{
+    background-color: #839e6e;
+}
+.color6{
+    background-color: #8bc0a4;
+}
+
+
+
+
+/* 猜你喜欢 */
+/* 封装成组件了 */
+
+
+

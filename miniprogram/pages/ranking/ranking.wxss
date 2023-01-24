@@ -1,0 +1,60 @@
+/* pages/ranking/ranking.wxss */
+.container{
+    min-height: 100vh;
+    background-color: #667c70;
+}
+.ranking-list{
+    padding-top: 20rpx;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.ranking-item{
+    padding: 20rpx;
+    background-color: #fff;
+    width: 90%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 10rpx;
+    margin-bottom: 20rpx;
+}   
+.ranking-item .left{
+    display: flex;
+    align-items: center;
+}
+.left .rank{
+    width: 40rpx;
+    height: 40rpx;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10rpx;
+}
+.ranking-item .avatar{
+    width: 90rpx;
+    height: 90rpx;
+    border-radius: 50%;
+    margin: 0 20rpx;
+}
+.right .color{
+    color: #667c70;
+    margin: 0 5rpx;
+}
+
+.ranking-item:nth-child(1) .left .rank{
+    border-radius: 50%;
+    background-color: #ffcc57;
+}
+
+.ranking-item:nth-child(2) .left .rank{
+    border-radius: 50%;
+    background-color: #c9c9c9;
+}
+
+.ranking-item:nth-child(3) .left .rank{
+    border-radius: 50%;
+    background-color: #fd9122;
+}
+
+

@@ -1,0 +1,28 @@
+<view class="container">
+    <!-- 搜索框 -->
+    <SearchInput bindtap="toSearch"></SearchInput>
+    <!-- 书架 -->
+    <view class="book-shelf">
+        <van-swipe-cell wx:for="{{books}}" wx:key="index" id="swipe-cell" right-width="{{ 65 }}" left-width="{{ 0 }}" bind:click="toRead">
+            <van-cell-group>
+                <!-- <van-cell title="单元格" value="内容" /> -->
+                <view class="book">
+                    <view class="book-left">
+                        <image class="book-img" src="{{item.image}}"></image>
+                    </view>
+                    <view class="book-right">
+                        <view class="title">{{item.name}}</view>
+                        <view class="author">
+                            <view class="star">作者:</view>
+                            <text>{{item.author}}</text>
+                        </view>
+                        <view class="desc">
+                            {{item.desc}}
+                        </view>
+                    </view>
+                </view>
+            </van-cell-group>
+            <view slot="right">移除</view> 
+        </van-swipe-cell>
+    </view>
+</view>

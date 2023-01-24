@@ -1,0 +1,33 @@
+/* pages/quebankclassify/quebankclassify.wxss */
+/* 试卷 */
+.cell-icon{
+    width: 65rpx;
+    height: 65rpx;
+}
+.cell-body{
+    margin-left: 10rpx;
+}
+.cell-time{
+    font-size: 26rpx;
+    color: #666;
+}
+.cell-text{
+    font-size: 36rpx;
+}
+/* 顶部 */
+.top{
+    width: 100%;
+    background-color: #fff;
+    padding: 30rpx;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-bottom: 10rpx;
+}
+
+.line{
+    width: 100rpx;
+    height: 5rpx;
+    background-color: #667c70;
+    margin-top: 20rpx;
+}

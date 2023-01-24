@@ -1,0 +1,82 @@
+.van-swipe-cell__left,
+.van-swipe-cell__right {
+  display: inline-block;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 65px;
+  /* height: 44px; */
+  height: 100%;
+  font-size: 15px;
+  line-height: 44px;
+  color: #fff;
+  /* text-align: center; */
+  background-color: #f44;
+}
+
+.book-shelf{
+    background-color: #fff;
+    margin-top: 30rpx;
+}
+
+.book{
+    display: flex;
+    align-items: center;
+    padding: 20rpx;
+}
+.book-img{
+    width: 200rpx;
+    height: 280rpx;
+    box-shadow: 10rpx 10rpx 20rpx 1px rgb(94, 92, 92);
+    border-radius: 5px;
+}
+.book .book-left{
+    margin-left: 20rpx;
+    margin-right: 40rpx;
+}
+.book .book-right{
+    height: 280rpx;
+    display: flex;
+    flex-direction: column;
+}
+.book-right .title{
+    font-weight: bold;
+    margin-bottom: 20rpx;
+}
+
+.book-right .author{
+    font-size: 35rpx;
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 35rpx;
+}
+
+.book-right .author .star{
+    color: rgb(136, 136, 136);
+    border-bottom: 3px solid #667c70;
+    padding: 0 20rpx 8rpx 0;
+    margin-right: 15rpx;
+}
+
+.book-right .desc{
+    font-size: 35rpx;
+    color: rgb(136, 136, 136);
+    /* 让文字多的隐藏 */
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    line-height: 150%;
+}
+
+.search1{
+    margin-bottom: 20rpx;
+}
+
+
+
+
+.container{
+    padding-bottom: 100rpx;
+}

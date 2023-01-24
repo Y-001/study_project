@@ -1,0 +1,139 @@
+<!--pages/talkdetail/talkdetail.wxml-->
+<view class="container">
+    <!-- 内容 -->
+    <view class="talk-item">
+            <view class="item-top">
+                <view class="item-top-left">
+                    <image class="item-img" src="../../images/test_img1.jpg"></image>
+                    <view class="text">名字</view>
+                </view>
+                <view class="item-top-right">
+                    <image class="item-icon" src="../../images/test/test-beiti.png"></image>
+                </view>
+            </view>
+            <view class="item-content">
+                <view class="item-content-title">
+                    【可爱猫咪求收养】
+                </view>
+                <view class="item-content-body">
+                    可爱的流浪猫求收养，他很乖，不怕人，自己会玩，不知道男女，地点在河南省邓州市赵集镇彭家村小杨寨！
+                </view>
+                <view class="item-content-imglist">
+                    <image class="item-content-img" src="../../images/test_img3.jpg"></image>
+                    <image class="item-content-img" src="../../images/test_img3.jpg"></image>
+                    <image class="item-content-img" src="../../images/test_img3.jpg"></image>
+                    <image class="item-content-img" src="../../images/test_img3.jpg"></image>
+                </view>
+            </view>
+            <view class="item-bottom">
+                <view class="item-bottom-left">
+                    <view class="time-tag">吐槽</view>
+                    <view class="item-time">2023/1/21</view>
+                </view>
+                <view class="item-bottom-iconlist">
+                    <view class="item-bottom-iconitem">
+                        <image src="../../images/test/test-delet.png" class="iconitem-talk"></image>
+                        <text class="iconitem-num">2</text>
+                    </view>
+                    <view class="item-bottom-iconitem">
+                        <image src="../../images/test/test-delet.png" class="iconitem-talk"></image>
+                        <text class="iconitem-num">0</text>
+                    </view>
+                </view>
+            </view>
+        </view>
+    <!-- 评论 -->
+    <view class="talk">
+        <view class="talk-top">
+            <view class="talk-top-left">全部评论</view>
+            <view class="talk-top-right" bindtap="showWrite">写评论</view>
+        </view>
+        <!-- 底部弹出层 -->
+        <van-popup show="{{ write }}" position="bottom" custom-style="height: 10%;" bind:close="onClose" close-on-click-overlay="true">
+            <view class="popup-content">
+                <input value="{{comment}}" bindinput="writeComment" placeholder="发表自己的观点" type="text" class="comment-input {{submit ? 'comment-input-show':''}}"/>
+                <view wx:if="{{submit}}" class="comment-submit" bindtap="submiteComment">发布</view>
+            </view>
+        </van-popup>
+        <view class="talk-content">
+            <view class="talk-content-item">
+                <view class="talk-content-left">
+                    <image class="talk-avatar" src="../../images/test_img1.jpg"></image>
+                </view>
+                <view class="talk-content-right">
+                    <view class="talk-info">
+                        <view class="talk-name">月光倾城</view>
+                        <view class="talk-icon">
+                            <image class="talk-icon-img" src="../../images/talk-icon.png"></image>
+                        </view>
+                    </view>
+                    <view class="talk-time">
+                        2023.1.14 3:42
+                    </view>
+                    <view class="talk-desc">
+                        在破败中崛起，在逆境中永恒
+                    </view>
+                    <view class="talk-comment">
+                        <view class="talk-comment-list">
+                            <view class="talk-comment-item">
+                                <text class="color-name">评论人</text>
+                                回复
+                                <text class="color-name">被评论人</text>：更新太慢了，哎啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊
+                            </view>
+                            <view class="talk-comment-item">
+                                <text class="color-name">评论人</text>
+                                回复
+                                <text class="color-name">被评论人</text>：更新太慢了，哎啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊
+                            </view>
+                        </view>
+                        <view class="talk-look-btn color-name">
+                            共1条回复>
+                        </view>
+                    </view>
+                    <view class="comment-line"></view>
+                </view>
+            </view>
+            <view class="talk-content-item">
+                <view class="talk-content-left">
+                    <image class="talk-avatar" src="../../images/test_img1.jpg"></image>
+                </view>
+                <view class="talk-content-right">
+                    <view class="talk-info">
+                        <view class="talk-name">月光倾城</view>
+                        <view class="talk-icon">
+                            <image class="talk-icon-img" src="../../images/talk-icon.png"></image>
+                        </view>
+                    </view>
+                    <view class="talk-time">
+                        2023.1.14 3:42
+                    </view>
+                    <view class="talk-desc">
+                        在破败中崛起，在逆境中永恒
+                    </view>
+                    <view class="talk-comment">
+                        <view class="talk-comment-list">
+                            <view class="talk-comment-item">
+                                <text class="color-name">评论人</text>
+                                回复
+                                <text class="color-name">被评论人</text>：更新太慢了，哎啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊
+                            </view>
+                            <view class="talk-comment-item">
+                                <text class="color-name">评论人</text>
+                                回复
+                                <text class="color-name">被评论人</text>：更新太慢了，哎啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊
+                            </view>
+                        </view>
+                        <view class="talk-look-btn color-name">
+                            共1条回复>
+                        </view>
+                    </view>
+                    <view class="comment-line"></view>
+                </view>
+            </view>
+        </view>
+    </view>
+</view>
+
+
+
+

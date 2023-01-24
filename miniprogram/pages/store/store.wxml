@@ -1,0 +1,99 @@
+<!--pages/store/store.wxml-->
+<view class="container">
+    <SearchInput bindtap="toSearch"></SearchInput>
+    <view class="body">
+        <!-- 轮播图 -->
+        <view class="swiper-body">
+            <swiper class="swiper" indicator-dots="{{true}}" autoplay="{{true}}" interval="{{2000}}" duration="{{500}}">
+                <block wx:for="{{background}}" wx:key="*this">
+                    <swiper-item>
+                        <!-- <view class="swiper-item {{item}}"></view> -->
+                        <image class="swiper-image" src="{{item}}"></image>
+                    </swiper-item>
+                </block>
+            </swiper>
+        </view>
+        <!-- 热门推荐 -->
+        <view class="recommend">
+            <view class="rec-title">热门推荐</view>
+            <view class="line"></view>
+            <view class="rec-list">
+                <view class="rec-list-item" bindtap="toDetail">
+                    <image src="../../images/test_img1.jpg" class="rec-item-img"></image>
+                    <text class="rec-item-text">本草纲目</text>
+                </view>
+                <view class="rec-list-item">
+                    <image src="../../images/test_img1.jpg" class="rec-item-img"></image>
+                    <text class="rec-item-text">本草纲目</text>
+                </view>
+                <view class="rec-list-item">
+                    <image src="../../images/test_img1.jpg" class="rec-item-img"></image>
+                    <text class="rec-item-text">本草纲目</text>
+                </view>
+                <view class="rec-list-item">
+                    <image src="../../images/test_img1.jpg" class="rec-item-img"></image>
+                    <text class="rec-item-text">本草纲目</text>
+                </view>
+                <view class="rec-list-item">
+                    <image src="../../images/test_img1.jpg" class="rec-item-img"></image>
+                    <text class="rec-item-text">本草纲目</text>
+                </view>
+                <view class="rec-list-item">
+                    <image src="../../images/test_img1.jpg" class="rec-item-img"></image>
+                    <text class="rec-item-text">本草纲目啊啊啊啊啊啊啊啊啊</text>
+                </view>
+            </view>
+        </view>
+        <!-- 分类 -->
+        <view class="classify recommend">
+            <view class="rec-title">分类</view>
+            <view class="line"></view> 
+            <view class="classify-list" bindtap="toClassify">
+                <view class="classify-list-item">
+                    <view class="classify-item-bimg color1">
+                        <image class="classify-item-img" src="../../images/store-all.png"></image>
+                    </view>
+                    <text class="classify-item-text">全部</text>
+                </view>
+                <view class="classify-list-item">
+                    <view class="classify-item-bimg color2">
+                        <image class="classify-item-img" src="../../images/store-bencao.png"></image>
+                    </view>
+                    <text class="classify-item-text">本草</text>
+                </view>
+                <view class="classify-list-item">
+                    <view class="classify-item-bimg color3">
+                        <image class="classify-item-img" src="../../images/store-fangyao.png"></image>
+                    </view>
+                    <text class="classify-item-text">方药</text>
+                </view>
+                <view class="classify-list-item">
+                    <view class="classify-item-bimg color4">
+                        <image class="classify-item-img" src="../../images/store-zhenjiu.png"></image>
+                    </view>
+                    <text class="classify-item-text">针灸</text>
+                </view>
+                <view class="classify-list-item">
+                    <view class="classify-item-bimg color5">
+                        <image class="classify-item-img" src="../../images/store-yijing.png"></image>
+                    </view>
+                    <text class="classify-item-text">医经</text>
+                </view>
+                <view class="classify-list-item">
+                    <view class="classify-item-bimg color6">
+                        <image class="classify-item-img" src="../../images/store-yilun.png"></image>
+                    </view>
+                    <text class="classify-item-text">医论</text>
+                </view>
+            </view>
+        </view>
+        <!-- 猜你喜欢 -->
+        <view class="like recommend">
+            <view class="rec-title">猜你喜欢</view>
+            <view class="line"></view>
+            <view class="like-list" wx:for="{{books}}" wx:key="index">
+                <BookList item="{{item}}" bindtap="toDetail"></BookList>
+            </view>
+        </view>
+    </view>
+</view>

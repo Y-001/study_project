@@ -1,0 +1,49 @@
+<!--pages/search/search.wxml-->
+<view class="container">
+    <view class="search">
+        <van-search 
+        value="{{ search }}" 
+        placeholder="请输入搜索关键词" 
+        shape="round" 
+        background="#667c70" 
+        bind:change="searchChange"
+        bind:search="searchDone"
+        />
+    </view>
+    <view class="empty-search" wx:if="{{!search}}">
+        <view class="search-log">
+            <text>搜索历史</text>
+            <image bindtap="deleteLog" class="delete-icon" src="../../images/search-del.png"></image>
+        </view>
+        <view class="line"></view>
+        <view class="log-list">
+            <view wx:for="{{searchLog}}" wx:key="index" class="log-item">{{item}}</view>
+        </view>
+    </view>
+    <view class="result-search" wx:else>
+        <view class="result-loading" wx:if="{{show}}">
+            <view class="search-item">
+                <image class="res-icon" src="../../images/icon-search.png"></image>
+                <text class="res-text">本草纲目</text>
+            </view>
+        </view>
+        <view class="result-done" wx:else>
+            <van-tabs active="{{ active }}" bind:change="onChange" color="#667c70">
+                <van-tab title="全部"></van-tab>
+                <van-tab title="本草"></van-tab>
+                <van-tab title="方药"></van-tab>
+                <van-tab title="经络"></van-tab>
+                <van-tab title="针灸"></van-tab>
+                <van-tab title="医经"></van-tab>
+                <van-tab title="医论"></van-tab>
+                <van-tab title="医案"></van-tab>
+                <van-tab title="妇幼"></van-tab>
+                <van-tab title="四诊"></van-tab>
+                <van-tab title="伤科"></van-tab>
+            </van-tabs>
+            <view class="show">
+                <BookList wx:for="{{books}}" wx:key="index" item="{{item}}" bindtap="toDetail"></BookList>
+            </view>
+        </view>
+    </view>
+</view>

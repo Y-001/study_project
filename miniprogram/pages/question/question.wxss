@@ -1,0 +1,52 @@
+/* pages/question/question.wxss */
+/* 导航页面 */
+.nav{
+    margin: 20rpx 0;
+}
+.nav-icon{
+    width: 65rpx;
+    height: 65rpx;
+}
+/* 轮播图 */
+.swiper-image{
+    width: 100%;
+}
+.swiper-body{
+    background-color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20rpx ;
+}
+.swiper{
+    width: 100%;
+    height: 300rpx;
+    border-radius: 20rpx;
+    overflow: hidden;
+}
+/* 我的题库 */
+.warehouse{
+    background-color: #fff;
+}
+.warehouse .title{
+    padding: 20rpx;
+}
+.cell-icon{
+    width: 65rpx;
+    height: 65rpx;
+}
+.cell-body{
+    margin-left: 10rpx;
+}
+.cell-time{
+    font-size: 26rpx;
+    color: #666;
+}
+.cell-text{
+    font-size: 36rpx;
+}
+
+
+
+
+

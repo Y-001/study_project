@@ -1,0 +1,7 @@
+{
+    "usingComponents": {
+        "SearchInput":"../../components/SearchInput/SearchInput",
+        "BookList":"../../components/BookList/BookList"
+    },
+    "navigationBarTitleText":"书城"
+}

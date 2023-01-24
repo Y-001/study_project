@@ -1,0 +1,15 @@
+/* pages/selectwarehouse/selectwarehouse.wxss */
+.container{
+    min-height: 100vh;
+}
+ .van-sidebar-item--selected {
+    border-color: var(--sidebar-selected-border-color,#667c70)!important;
+    color: var(--sidebar-selected-text-color,#323233);
+    font-weight: var(--sidebar-selected-font-weight,500);
+}
+ .van-tree-select__item--active {
+    color: var(--tree-select-item-active-color,#667c70)!important;
+}
+
+
+

@@ -1,0 +1,29 @@
+<!--pages/ranking/ranking.wxml-->
+<view class="container">
+    <view class="ranking-list">
+        <view class="ranking-item">
+            <view class="left">
+                <view class="rank">1</view>
+                <image class="avatar" src="../../images/test_img3.jpg"></image>
+                <view class="text">小羊崽</view>
+            </view>
+            <view class="right">获得<text class="color">10</text>分</view>
+        </view>
+        <view class="ranking-item">
+            <view class="left">
+                <view class="rank">2</view>
+                <image class="avatar" src="../../images/test_img3.jpg"></image>
+                <view class="text">小羊崽</view>
+            </view>
+            <view class="right">获得<text class="color">10</text>分</view>
+        </view>
+        <view class="ranking-item">
+            <view class="left">
+                <view class="rank">3</view>
+                <image class="avatar" src="../../images/test_img3.jpg"></image>
+                <view class="text">小羊崽</view>
+            </view>
+            <view class="right">获得<text class="color">10</text>分</view>
+        </view>
+    </view>
+</view>

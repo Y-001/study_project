@@ -1,0 +1,12 @@
+<!--pages/selectwarehouse/selectwarehouse.wxml-->
+<view class="container">
+    <van-tree-select
+  items="{{ items }}"
+  main-active-index="{{ mainActiveIndex }}"
+  active-id="{{ activeId }}"
+  bind:click-nav="onClickNav"
+  bind:click-item="onClickItem"
+  height="100vh"
+/>
+
+</view>

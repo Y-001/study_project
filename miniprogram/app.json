@@ -1,0 +1,63 @@
+{
+  "lazyCodeLoading": "requiredComponents",
+  "pages": [
+    "pages/index/index",
+    "pages/store/store",
+    "pages/talk/talk",
+    "pages/me/me",
+    "pages/question/question",
+    "pages/read/read",
+    "pages/search/search",
+    "pages/detail/detail",
+    "pages/classify/classify",
+    "pages/selectwarehouse/selectwarehouse",
+    "pages/quebankclassify/quebankclassify",
+    "pages/testdetail/testdetail",
+    "pages/ranking/ranking",
+    "pages/problem/problem",
+    "pages/publish/publish",
+    "pages/talkdetail/talkdetail",
+    "pages/talkme/talkme"
+  ],
+  "window": {
+    "backgroundColor": "#F6F6F6",
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#F6F6F6",
+    "navigationBarTitleText": "巧记中医经典",
+    "navigationBarTextStyle": "black"
+  },
+  "sitemapLocation": "sitemap.json",
+  "tabBar": {
+      "custom": true,
+      "backgroundColor": "#667c70",
+      "color": "#fff",
+      "selectedColor": "#fff",
+      "list": [
+          {
+              "pagePath": "pages/index/index",
+              "text": "书架",
+              "iconPath": "images/icon-bookshelf.png",
+              "selectedIconPath": "images/icon-bookshelf1.png"
+          },
+          {
+              "pagePath": "pages/store/store",
+              "text": "书城",
+              "iconPath": "images/icon-store.png",
+              "selectedIconPath": "images/icon-store1.png"
+          },
+          {
+              "pagePath": "pages/talk/talk",
+              "text": "论坛",
+              "iconPath": "images/icon-talk.png",
+              "selectedIconPath": "images/icon-talk1.png"
+          },
+          {
+              "pagePath": "pages/me/me",
+              "text": "我的",
+              "iconPath": "images/icon-me.png",
+              "selectedIconPath": "images/icon-me1.png"
+          }
+      ]
+  },
+  "usingComponents": {}
+}
