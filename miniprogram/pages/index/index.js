@@ -17,6 +17,30 @@ Page({
                 name:'wuyu',
                 author:'nihao',
                 desc:'简介你有啥不啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊'
+            },
+            {
+                image:'../../images/test_img2.jpg',
+                name:'wuyu',
+                author:'nihao',
+                desc:'简介你有啥不啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊'
+            },
+            {
+                image:'../../images/test_img2.jpg',
+                name:'wuyu',
+                author:'nihao',
+                desc:'简介你有啥不啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊'
+            },
+            {
+                image:'../../images/test_img2.jpg',
+                name:'wuyu',
+                author:'nihao',
+                desc:'简介你有啥不啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊'
+            },
+            {
+                image:'../../images/test_img2.jpg',
+                name:'wuyu',
+                author:'nihao',
+                desc:'简介你有啥不啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊'
             }
         ],
     },

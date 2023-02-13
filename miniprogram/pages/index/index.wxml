@@ -26,3 +26,10 @@
         </van-swipe-cell>
     </view>
 </view>
+<!-- <movable-area class="movable-area">
+    <movable-view class="movable-view" direction="all">
+    </movable-view>
+  </movable-area> -->
+<view class="toNotes">
+    <image class="note-icon" src="../../images/icon-questions.png"></image>
+</view>
