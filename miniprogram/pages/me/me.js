@@ -1,11 +1,26 @@
 // pages/me/me.js
+const defaultAvatarUrl = 'https://mmbiz.qpic.cn/mmbiz/icTdbqWNOwNRna42FI242Lcia07jQodd2FJGIYQfG0LAJGFxM4FbnQP6yfMxBgJ0F3YRqJCJ1aPAK2dQagdusBZg/0'
 Page({
 
     /**
      * 页面的初始数据
      */
     data: {
-
+        avatarUrl: defaultAvatarUrl,
+    },
+    onChooseAvatar(e) {
+        const { avatarUrl } = e.detail 
+        this.setData({
+          avatarUrl,
+        })
+      },
+      nicknamereview(e){
+          console.log(e)
+      },
+    toNotes(e){
+        wx.navigateTo({
+          url: '../notes/notes',
+        })
     },
 
     /**
@@ -27,11 +42,11 @@ Page({
      */
     onShow() {
 
-        if(typeof this.getTabBar === 'function' && this.getTabBar()){
-            this.getTabBar().setData({
-                select:4
-            })
-        }
+        // if(typeof this.getTabBar === 'function' && this.getTabBar()){
+        //     this.getTabBar().setData({
+        //         select:4
+        //     })
+        // }
     },
 
     /**

@@ -22,8 +22,8 @@
         <view class="talk-item" bindtap="toTalkdetail">
             <view class="item-top">
                 <view class="item-top-left">
-                    <image class="item-img" src="../../images/test_img1.jpg"></image>
-                    <view class="text">名字</view>
+                    <image class="item-img" src="../../images/test_avater.jpg"></image>
+                    <view class="text">我爱中医</view>
                 </view>
                 <view class="item-top-right">
                     <image class="item-icon" src="../../images/test/test-beiti.png"></image>
@@ -31,10 +31,10 @@
             </view>
             <view class="item-content">
                 <view class="item-content-title">
-                    【可爱猫咪求收养】
+                    【中医学习求教】
                 </view>
                 <view class="item-content-body">
-                    可爱的流浪猫求收养，他很乖，不怕人，自己会玩，不知道男女，地点在河南省邓州市赵集镇彭家村小杨寨！
+                    学了中医这么长时间，感觉还是不入门，求大佬指点学习技巧！！！
                 </view>
                 <view class="item-content-imglist">
                     <image class="item-content-img" src="../../images/test_img3.jpg"></image>
@@ -45,7 +45,7 @@
             </view>
             <view class="item-bottom">
                 <view class="item-bottom-left">
-                    <view class="time-tag">吐槽</view>
+                    <view class="time-tag">求助</view>
                     <view class="item-time">2023/1/21</view>
                 </view>
                 <view class="item-bottom-iconlist">

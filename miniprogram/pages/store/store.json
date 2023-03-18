@@ -1,7 +1,8 @@
 {
     "usingComponents": {
         "SearchInput":"../../components/SearchInput/SearchInput",
-        "BookList":"../../components/BookList/BookList"
+        "BookList":"../../components/BookList/BookList",
+        "van-search": "@vant/weapp/search/index"
     },
     "navigationBarTitleText":"书城"
 }

@@ -1,51 +1,45 @@
 // pages/store/store.js
+import {ajax} from '../../utils/index';
 Page({
 
     /**
      * 页面的初始数据
      */
     data: {
-        background: ['../../images/test_img3.jpg', '../../images/test_img1.jpg', '../../images/test_img2.jpg'],
+        background: ['../../images/book_lb1.jpg', '../../images/book_lb2.jpg', '../../images/book_lb3.jpg'],
         books:[
-            {
-                image:'../../images/test_img3.jpg',
-                name:'本草纲目',
-                author:'李时珍',
-                desc:'简介你有啥不啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊',
-                classify:'伤寒',
-                num:'180万'
-            },
-            {
-                image:'../../images/test_img2.jpg',
-                name:'wuyu',
-                author:'nihao',
-                desc:'简介你有啥不啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊',
-                classify:'伤寒',
-                num:'180万'
-            }
-        ]
+            // {
+            //     image:'../../images/test_img1.jpg',
+            //     name:'本草纲目',
+            //     author:'李时珍',
+            //     desc:'纪称∶望龙光，知古剑；觇宝气，辨明珠。故萍实商羊，非天明莫洞。厥后博物称华，辨字称康，析宝玉称倚顿，亦仅仅晨星耳。楚蕲阳李君东璧，一日过予山园谒予，留饮数有《本草纲目》数十卷。谓予曰∶时珍，荆楚鄙人也。幼多羸疾，质成钝椎；长耽典籍，若啖蔗饴。遂渔猎群书，搜罗百氏。',
+            //     classify:'本草',
+            //     num:'8万'
+            // },
+        ],
+        hotBooksList:[]
     },
     toSearch(){
         wx.navigateTo({
-          url: '../search/search',
+          url: '/pageRead/pages/search/search',
         })
     },
     toDetail(e){
+        let {id}=e.currentTarget.dataset
         wx.navigateTo({
-          url: '../detail/detail',
+          url: `/pageRead/pages/detail/detail?_id=${id}`,
         })
     },
     toClassify(e){
         wx.navigateTo({
-          url: '../classify/classify',
+          url: '/pageRead/pages/classify/classify',
         })
     },
 
     /**
      * 生命周期函数--监听页面加载
      */
-    onLoad(options) {
-
+     onLoad(options) { 
     },
 
     /**
@@ -60,11 +54,11 @@ Page({
      */
     onShow() {
 
-        if (typeof this.getTabBar === 'function' && this.getTabBar()) {
-            this.getTabBar().setData({
-                select: 1
-            })
-        }
+        // if (typeof this.getTabBar === 'function' && this.getTabBar()) {
+        //     this.getTabBar().setData({
+        //         select: 1
+        //     })
+        // }
     },
 
     /**

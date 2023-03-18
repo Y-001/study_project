@@ -1,0 +1,5 @@
+{
+    "usingComponents": {
+        "ProblemItem":"../../../components/ProblemItem/ProblemItem"
+    }
+}

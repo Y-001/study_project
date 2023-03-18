@@ -1,35 +1,93 @@
 <view class="container">
-    <!-- 搜索框 -->
-    <SearchInput bindtap="toSearch"></SearchInput>
-    <!-- 书架 -->
-    <view class="book-shelf">
-        <van-swipe-cell wx:for="{{books}}" wx:key="index" id="swipe-cell" right-width="{{ 65 }}" left-width="{{ 0 }}" bind:click="toRead">
-            <van-cell-group>
-                <!-- <van-cell title="单元格" value="内容" /> -->
-                <view class="book">
-                    <view class="book-left">
-                        <image class="book-img" src="{{item.image}}"></image>
-                    </view>
-                    <view class="book-right">
-                        <view class="title">{{item.name}}</view>
-                        <view class="author">
-                            <view class="star">作者:</view>
-                            <text>{{item.author}}</text>
-                        </view>
-                        <view class="desc">
-                            {{item.desc}}
-                        </view>
-                    </view>
+    <view class="top"></view>
+    <view class="body">
+        <view class="t-content">
+            <view class="t-title">背经典</view>
+        </view>
+        <view class="card">
+            <view class="card-top">
+                <view class="c-title">本草纲目</view>
+                <view class="c-right"bindtap="toXcjh">
+                    <image class="c-icon" src="../../images/study/jihua.png"></image>
+                    <text class="c-text">调整计划</text>
                 </view>
-            </van-cell-group>
-            <view slot="right">移除</view> 
-        </van-swipe-cell>
+            </view>
+            <view class="card-list">
+                <view class="card-item">
+                    <text class="text-num">50</text>
+                    <text class="text-title">学习时长</text>
+                </view>
+                <view class="card-item">
+                    <text class="text-num">50</text>
+                    <text class="text-title">计划时长</text>
+                </view>
+                <view class="card-item">
+                    <text class="text-num">50</text>
+                    <text class="text-title">剩余天数</text>
+                </view>
+            </view>
+            <view class="card-btny">
+                <view class="card-btn">开始学习</view>
+            </view>
+        </view>
+        <view class="daohang">
+            <view class="dh-item" bindtap="toXcsj">
+                <image class="dh-icon" src="../../images/study/data.png"></image>
+                <text class="dh-text">学习数据</text>
+            </view>
+            <view class="dh-item" bindtap="toXcqd">
+                <image class="dh-icon" src="../../images/study/qiandao.png"></image>
+                <text class="dh-text">学习签到</text>
+            </view>
+            <view class="dh-item" bindtap="toNote">
+                <image class="dh-icon" src="../../images/study/note.png"></image>
+                <text class="dh-text">学习笔记</text>
+            </view>
+            <view class="dh-item" bindtap="toTest">
+                <image class="dh-icon" src="../../images/study/test.png"></image>
+                <text class="dh-text">挑战答题</text>
+            </view>
+        </view>
+        <!-- 轮播图 -->
+        <swiper class="swiper" indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
+            <block wx:for="{{background}}" wx:key="*this">
+                <swiper-item>
+                    <!-- <view class="swiper-item {{item}}"></view> -->
+                    <image class="swiper-img" src="{{item}}"></image>
+                </swiper-item>
+            </block>
+        </swiper>
+        <!-- 经典收藏 -->
+        <view class="jdstar">
+            <view class="jdstar-top">
+                <view class="jd-top-title">经典收藏</view>
+                <image bindtap="toStore" class="jd-top-icon" src="../../images/study/add.png"></image>
+            </view>
+            <view class="jd-list">
+                <view class="jd-item" bindtap="toDetail">
+                    <view class="jd-item-con">
+                        <view class="jd-item-title">本草纲目</view>
+                        <view class="jd-item-autho">李时珍</view>
+                    </view>
+                    <view class="jb-item-bottom">20min</view>
+                </view>
+            </view>
+        </view>
+        <!-- 最近看过 -->
+        <view class="lastsee">
+            <view class="lastsee-title">
+                最近看过
+            </view>
+            <view class="lastsee-card">
+                <view class="last-card-con">
+                    <view class="last-con-item">本草纲目</view>
+                    <view class="last-con-item">本草纲目</view>
+                </view>
+                <view class="last-card-db">
+                    <view class="last-db-text">近期读过<text class="blod">2</text>本经典</view>
+                    <view class="last-db-btn">去读更多</view>
+                </view>
+            </view>
+        </view>
     </view>
-</view>
-<!-- <movable-area class="movable-area">
-    <movable-view class="movable-view" direction="all">
-    </movable-view>
-  </movable-area> -->
-<view class="toNotes">
-    <image class="note-icon" src="../../images/icon-questions.png"></image>
 </view>

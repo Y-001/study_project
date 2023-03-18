@@ -5,39 +5,7 @@ Page({
      * 页面的初始数据
      */
     data: {
-         /* 是否展示底部弹出层 */
-         write: false,
-         submit:false,
-         comment:"",
-    },
-    /* 发布评论按钮 */
-    submiteComment(e){
-        this.onClose()
-    },
-    /* input写评论 */
-    writeComment(e){
-        //console.log(e.detail.value)
-        if(timer) clearTimeout(timer);
-        timer=setTimeout(()=>{
-            this.setData({
-                submit:true,
-                comment:e.detail.value
-            })
-        },1000)
-    },
-    /* 展示弹出层 */
-    showWrite(e){
-        this.setData({
-            write:true
-        })
-    },
-    /* 关闭弹出层 */
-    onClose() {
-        this.setData({ 
-            write: false,
-            submit:false,
-            comment:''
-        });
+
     },
 
     /**

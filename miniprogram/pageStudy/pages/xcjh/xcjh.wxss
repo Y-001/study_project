@@ -1,0 +1,139 @@
+/* pages/xcjh/xcjh.wxss */
+.container{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.top{
+    width: 95%;
+    font-size: 32rpx;
+}
+.book-list{
+    width: 95%;
+    display: flex;
+    margin: 20rpx 0 32rpx;
+}
+.card{
+    position: relative;
+    margin-right: 20rpx;
+}
+.active{
+    padding: 5rpx;
+    border:2rpx solid #667c70;
+    border-radius: 20rpx;
+}
+.active::after{
+    content: '';
+    position: absolute;
+    border: 10rpx solid transparent;
+    border-top: 10rpx solid #667c70;
+    bottom: -30rpx;
+    left: 50%;
+    transform: translateY(-50%);
+}
+
+.card-item{
+    color: #fff;
+    position: relative;
+    width: 200rpx;
+    height: 250rpx;
+    /* background-color: #667c70; */
+    background:repeating-linear-gradient(to top,#a3b196,#667c70);
+    border-radius: 20rpx;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+.item-top{
+    position: absolute;
+    top: 0;
+    right: 0;
+    font-size: 26rpx;
+    background-color: #ccc;
+    padding: 5rpx;
+    border-radius:0 0 0 20rpx;
+}
+/* 自定义学习时长 */
+.body{
+    box-shadow: 2rpx 5rpx 15rpx #ccc;
+    width: 95%;
+    background-color: #fff;
+    border-radius: 20rpx;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.body-top{
+    width: 95%;
+    /* background-color: #667c70; */
+    background:repeating-linear-gradient(to left,#a3b196,#667c70);
+    padding: 20rpx;
+    padding-left: 20rpx;
+    color: #fff;
+}
+.body-xz{
+    width: 95%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 20rpx;
+    margin-bottom: 20rpx;
+}
+.xz{
+    font-size: 28rpx;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.xz-int{
+    margin-top: 50rpx;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.xz-int-sr{
+    /* box-sizing: border-box; */
+    width: 100rpx;
+    padding: 10rpx;
+    border-bottom: 4px solid #667c70;
+}
+.input{
+    border-radius: 10rpx;
+    box-shadow:2rpx 2rpx 2px #667c70;
+    text-align: center;
+    font-size: 40rpx;
+}
+.xz-int-text{
+    font-size: 28rpx;
+}
+.body-zs{
+    margin: 0 0 50rpx;
+    width: 95%;
+    display: flex;
+    justify-content: center;
+}
+.zs-item{
+    border-bottom: 1px solid #ccc;
+    padding: 20rpx;
+    width: 95%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.btn{
+    margin-top: 50rpx;
+    width: 400rpx;
+    /* background-color: #667c70; */
+    background:repeating-linear-gradient(to right,#a3b196,#667c70);
+    padding: 20rpx;
+    text-align: center;
+    color: #fff;
+    border-radius: 30rpx;
+    box-shadow: 2rpx 2rpx 2rpx #667c70;
+}
+

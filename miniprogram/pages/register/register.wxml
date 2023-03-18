@@ -1,0 +1,11 @@
+<!--pages/register/register.wxml-->
+<view class="body">
+    <image class="logo" src="../../images/test_avater.jpg"></image>
+    <view class="container">
+        <input class="input" type="text" placeholder="请输入账号"/>
+        <input class="input" type="text" placeholder="请输入密码"/>
+        <input class="input" type="text" placeholder="请确认密码"/>
+        <text class="to-register" bindtap="toLogin">去登录</text>
+        <button class="login-btn" type="primary">注册</button>
+    </view>
+</view>

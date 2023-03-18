@@ -5,12 +5,12 @@ Page({
      * 页面的初始数据
      */
     data: {
-        background: ['../../images/test_img3.jpg', '../../images/test_img1.jpg', '../../images/test_img2.jpg'],
+        background: ['../../images/book_lb1.jpg', '../../images/book_lb2.jpg', '../../images/book_lb3.jpg'],
 
     },
     toSelectwarehouse(e){
         wx.navigateTo({
-          url: '../selectwarehouse/selectwarehouse',
+          url: '/pageTest/pages/selectwarehouse/selectwarehouse',
         })
     },
 

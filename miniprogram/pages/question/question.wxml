@@ -45,39 +45,6 @@
                     </view>
                 </view>
             </van-cell>
-            <van-cell center is-link>
-                <image class="cell-icon" slot="icon" src="../../images/icon-test.png"></image>
-                <view slot="title">
-                    <view class="van-cell-text">
-                        <view class="cell-body">
-                            <view class="cell-text">本草纲目测试一</view>
-                            <view class="cell-time">2023-01-10</view>
-                        </view>
-                    </view>
-                </view>
-            </van-cell>
-            <van-cell center is-link>
-                <image class="cell-icon" slot="icon" src="../../images/icon-test.png"></image>
-                <view slot="title">
-                    <view class="van-cell-text">
-                        <view class="cell-body">
-                            <view class="cell-text">本草纲目测试一</view>
-                            <view class="cell-time">2023-01-10</view>
-                        </view>
-                    </view>
-                </view>
-            </van-cell>
-            <van-cell center is-link>
-                <image class="cell-icon" slot="icon" src="../../images/icon-test.png"></image>
-                <view slot="title">
-                    <view class="van-cell-text">
-                        <view class="cell-body">
-                            <view class="cell-text">本草纲目测试一</view>
-                            <view class="cell-time">2023-01-10</view>
-                        </view>
-                    </view>
-                </view>
-            </van-cell>
         </van-cell-group>
     </view>
 </view>

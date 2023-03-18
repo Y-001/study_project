@@ -1,0 +1,42 @@
+/* pages/publish/publish.wxss */
+.container{
+    background-color: #fff;
+    height: 100vh;
+}
+/* 顶部 */
+.top{
+    display: flex;
+    justify-content: flex-end;
+    padding-top: 20rpx;
+}
+.top-item{
+    width: 50rpx;
+    height: 50rpx;
+    margin: 0 40rpx;
+}
+
+/* 发布内容 */
+.content{
+    /* background-color: #fff; */
+    padding: 20rpx;
+}
+.title{
+    font-size: 45rpx;
+    color: #666;
+}
+.body{
+    /* margin: 20rpx 0; */
+    color: #ccc;
+    font-size: 32rpx;
+}
+.date{
+    display: flex;
+    align-items: center;
+    font-size: 26rpx;
+    color: #000;
+    margin: 30rpx 0 40rpx;
+}
+.data-time{
+    margin: 0 15rpx;
+}
+

@@ -1,128 +1,213 @@
-.van-swipe-cell__left,
-.van-swipe-cell__right {
-    display: inline-block;
+.container{
+    width: 100%;
+    position: relative;
+}
+.top{
+    background-color: #d9ebc6;
+    height: 350rpx;
+}
+.body{
+    width: 90%;
+    position: absolute;
+    top: 10rpx;
+    left: 50%;
+    transform: translateX(-50%);
+    /* padding: 10rpx 20rpx; */
+    padding-bottom: 120rpx;
+}
+/* 头部 */
+.t-content{
+    /* width: 90%; */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.t-title{
+    font-size: 46rpx;
+    color: #000;
+}
+.t-right{
     display: flex;
     align-items: center;
-    justify-content: center;
-    width: 65px;
-    /* height: 44px; */
-    height: 100%;
-    font-size: 15px;
-    line-height: 44px;
+    font-size: 30rpx;
     color: #fff;
-    /* text-align: center; */
-    background-color: #f44;
 }
-
-.book-shelf {
-    background-color: #fff;
-    margin-top: 30rpx;
+.t-icon{
+    width: 50rpx;
+    height: 50rpx;
+    margin-left: 10rpx;
 }
-
-.book {
+/* 卡片 */
+.card{
+    /* background-color: #667c70; */
+    background:repeating-linear-gradient(to top,#667c70,#a3b196);
+    padding: 10rpx;
+    border-radius: 20rpx;
+    margin: 20rpx 0;
+}
+.card-top{
+    margin-top: 15rpx;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.c-title{
+    font-size: 36rpx;
+    color: #fff;
+}
+.c-right{
     display: flex;
     align-items: center;
-    padding: 20rpx;
+    font-size: 28rpx;
+    color: #fff;
 }
-
-.book-img {
-    width: 200rpx;
-    height: 280rpx;
-    box-shadow: 10rpx 10rpx 20rpx 1px rgb(94, 92, 92);
-    border-radius: 5px;
+.c-icon{
+    width: 50rpx;
+    height: 50rpx;
+    margin-left: 10rpx;
 }
-
-.book .book-left {
-    margin-left: 20rpx;
-    margin-right: 40rpx;
+.card-list{
+    margin: 30rpx 0 40rpx;
+    display: flex;
+    justify-content: space-around;
 }
-
-.book .book-right {
-    height: 280rpx;
+.card-item{
     display: flex;
     flex-direction: column;
+    align-items: center;
+    font-size: 28rpx;
+    color: #fff;
 }
-
-.book-right .title {
-    font-weight: bold;
-    margin-bottom: 20rpx;
+.text-num{
+    margin-bottom: 10rpx;
+    font-size: 40rpx;
 }
-
-.book-right .author {
-    font-size: 35rpx;
+.card-btny{
+    width: 100%;
     display: flex;
-    align-items: flex-start;
-    margin-bottom: 35rpx;
+    justify-content: flex-end;
 }
-
-.book-right .author .star {
-    color: rgb(136, 136, 136);
-    border-bottom: 3px solid #667c70;
-    padding: 0 20rpx 8rpx 0;
-    margin-right: 15rpx;
+.card-btn{
+    background-color: #fff;
+    width: 300rpx;
+    padding: 10rpx;
+    text-align: center;
+    border-radius: 30rpx;
+    margin: 20rpx;
 }
-
-.book-right .desc {
-    font-size: 35rpx;
-    color: rgb(136, 136, 136);
-    /* 让文字多的隐藏 */
+/* 四个导航 */
+.daohang{
+    margin: 30rpx 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+}
+.dh-item{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.dh-icon{
+    width: 60rpx;
+    height: 60rpx;
+    background-color: #667c70;
+    border-radius: 50%;
+    padding: 10rpx;
+}
+.dh-text{
+    font-size: 28rpx;
+}
+/* 轮播图 */
+.swiper{
+    height: 130rpx;
+    border-radius: 20rpx;
     overflow: hidden;
-    text-overflow: ellipsis;
-    display: -webkit-box;
-    -webkit-line-clamp: 2;
-    -webkit-box-orient: vertical;
-    line-height: 150%;
 }
-
-.search1 {
-    margin-bottom: 20rpx;
-}
-
-
-
-
-.container {
-    padding-bottom: 100rpx;
-}
-
- /* 悬浮框 */
-/* .movable-area {
-    pointer-events: none;
-    这个属性设置为none,让所有事件穿透过去
-    z-index: 100;
+.swiper-img{
     width: 100%;
     height: 100%;
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
 }
-
-.movable-view {
-    pointer-events: auto;
-    重设为auto,覆盖父属性设置
-    height: 50px;
-    width: 50px;
-    background: red;
-    left: 80%;
-    top: 80%;
-}  */
-
-.toNotes {
-    width: 100rpx;
-    height: 100rpx;
-    border-radius: 50%;
-    position: fixed;
-    z-index: 100;
-    top: 80%;
-    left: 80%;
+/* 经典收藏 */
+.jdstar{
+    margin: 30rpx 0;
+}
+.jdstar-top{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 10rpx;
+}
+.jd-top-icon{
+    width: 30rpx;
+    height: 30rpx;
+}
+.jd-top-title{
+    font-size: 30rpx;
+}
+.jd-item{
+    width: 160rpx;
+    height: 220rpx;
+    /* background-color: #667c70; */
+    background:repeating-linear-gradient(to top,#a3b196,#667c70);
+    border-radius: 20rpx;
+    display: flex;
+    flex-direction: column;
+    
+    justify-content: flex-end;
+    color: #fff;
+    overflow: hidden;
+}
+.jd-item-con{
+    margin: 10rpx;
+    font-size: 34rpx;
+}
+.jd-item-autho{
+    font-size: 28rpx;
+}
+.jb-item-bottom{
+    font-size: 26rpx;
+    padding: 5rpx 10rpx;
     background-color: #ccc;
+}
+/* 最近看过 */
+.lastsee-title{
+    font-size: 30rpx;
+    margin: 20rpx 0;
+}
+.lastsee-card{
+    background-color: #e7ece1;
+    border-radius: 20rpx;
+    overflow: hidden;
+}
+.last-card-con{
+    display: flex;
+    padding: 20rpx;
+}
+.last-con-item{
+    font-size: 28rpx;
+    padding: 10rpx;
+}
+.last-card-db{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20rpx;
+    background-color: #bfcfac;
+    font-size: 28rpx;
+    color: #93a19a;
+}
+.last-db-btn{
+    width: 180rpx;
+    background-color: #667c70;
+    border-radius: 30rpx;
+    padding: 10rpx 20rpx;
+    color: #fff;
     text-align: center;
-    line-height: 100rpx;
+}
+.blod{
+    padding: 0 8rpx;
+    color: #667c70;
 }
 
-.note-icon {
-    width: 80rpx;
-    height: 80rpx;
-}
+

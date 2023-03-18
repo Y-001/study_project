@@ -1,0 +1,30 @@
+<view class="container">
+    <view class="bc"></view>
+    <view class="top">
+        <view class="info">
+            <image class="avater" src="../../images/test_avater.jpg"></image>
+            <view class="info-right">
+                <view class="title">Hi,。。。</view>
+                <view class="mingyan">总有人会看到你的光芒!</view>
+                <view class="tishi">你已经超越过99%学习者</view>
+            </view>
+        </view>
+        <view class="card">
+            <view class="card-item">
+                <view class="big">20</view>
+                <view class="small">累计读经典</view>
+            </view>
+            <view class="card-item">
+                <view class="big">1366</view>
+                <view class="small">累计学习分钟</view>
+            </view>
+            <view class="card-item">
+                <view class="big">10</view>
+                <view class="small">累计完成经典</view>
+            </view>
+        </view>
+    </view>
+    <view class="ec-container">
+        <ec-canvas canvas-id="echart-pie" ec="{{ec}}"></ec-canvas>
+    </view>
+</view>

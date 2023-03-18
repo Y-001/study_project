@@ -1,0 +1,19 @@
+<!--pages/publish/publish.wxml-->
+<view class="container">
+    <view class="top">
+        <image class="top-item" src="../../images/icon_nd_yf.png"></image>
+        <image class="top-item" src="../../images/icon_nd_dh.png"></image>
+    </view>
+    <view class="content">
+        <view class="title">
+            <input type="text" placeholder="标题"/>
+        </view>
+        <view class="date">
+            <text class="date-month">2月28日</text>
+            <text class="data-time">10:40</text>
+        </view>
+        <view class="body">
+            <textarea value="{{desc}}" bindinput="getDesc"  placeholder="开始书写"  id="" cols="25" rows="10"></textarea>
+        </view>
+    </view>
+</view>

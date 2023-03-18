@@ -1,8 +1,0 @@
-{
-    "usingComponents": {
-        "van-tab": "@vant/weapp/tab/index",
-        "van-tabs": "@vant/weapp/tabs/index",
-        "BookList":"../../components/BookList/BookList"
-    },
-    "navigationBarTitleText":"分类"
-}

@@ -1,0 +1,50 @@
+<!--pages/xcjh/xcjh.wxml-->
+<view class="container">
+    <view class="top">选择目标经典</view>
+    <view class="book-list">
+        <view class="card active">
+            <view class="card-item">
+                <view class="item-top">推荐</view>
+                <view class="item-title">本草纲目</view>
+            </view>
+        </view>
+        <view class="card">
+            <view class="card-item">
+                <view class="item-top">推荐</view>
+                <view class="item-title">本草纲目</view>
+            </view>
+        </view>
+
+    </view>
+    <!-- 自定义学习时长 -->
+    <view class="body">
+        <view class="body-top">自定义学习时长</view>
+        <view class="body-xz">
+            <view class="xz">
+                <view class="xz-name">每日学习时长</view>
+                <view class="xz-int">
+                    <view class="xz-int-sr">
+                        <input type="text" class="input" />
+                    </view>
+                    <text class="xz-int-text">分钟</text>
+                </view>
+            </view>
+            <view class="xz">
+                <view class="xz-name">完成天数</view>
+                <view class="xz-int">
+                    <view class="xz-int-sr">
+                        <input type="text" class="input" />
+                    </view>
+                    <text class="xz-int-text">天数</text>
+                </view>
+            </view>
+        </view>
+        <view class="body-zs">
+            <view class="zs-item">
+                <view class="zs-left">完成日期</view>
+                <view class="zs-right">2023/03/28</view>
+            </view>
+        </view>
+    </view>
+    <view class="btn">确认学习计划</view>
+</view>

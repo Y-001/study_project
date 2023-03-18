@@ -4,14 +4,14 @@ Component({
         list:[
             {
                 pagePath: "/pages/index/index",
-                text: "书架",
+                text: "学经典",
                 iconPath: "../images/icon-bookshelf.png",
                 selectedIconPath: "../images/icon-bookshelf1.png",
                 type:0,
             },
             {
                 pagePath: "/pages/store/store",
-                text: "书城",
+                text: "看经典",
                 iconPath: "../images/icon-store.png",
                 selectedIconPath: "../images/icon-store1.png",
                 type:0,
@@ -22,7 +22,7 @@ Component({
             },
             {
                 pagePath: "/pages/talk/talk",
-                text: "论坛",
+                text: "论经典",
                 iconPath: "../images/icon-talk.png",
                 selectedIconPath: "../images/icon-talk1.png",
                 type:0,

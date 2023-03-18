@@ -1,66 +1,57 @@
+import {ajax} from '../../utils/index';
+
 Page({
 
     /**
      * 页面的初始数据
      */
     data: {
-        value:'',
-        books:[
-            {
-                image:'../../images/test_img3.jpg',
-                name:'本草纲目',
-                author:'李时珍',
-                desc:'简介你有啥不啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊'
-            },
-            {
-                image:'../../images/test_img2.jpg',
-                name:'wuyu',
-                author:'nihao',
-                desc:'简介你有啥不啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊'
-            },
-            {
-                image:'../../images/test_img2.jpg',
-                name:'wuyu',
-                author:'nihao',
-                desc:'简介你有啥不啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊'
-            },
-            {
-                image:'../../images/test_img2.jpg',
-                name:'wuyu',
-                author:'nihao',
-                desc:'简介你有啥不啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊'
-            },
-            {
-                image:'../../images/test_img2.jpg',
-                name:'wuyu',
-                author:'nihao',
-                desc:'简介你有啥不啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊'
-            },
-            {
-                image:'../../images/test_img2.jpg',
-                name:'wuyu',
-                author:'nihao',
-                desc:'简介你有啥不啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊'
-            }
-        ],
+        background: ['../../images/book_lb1.jpg', '../../images/book_lb2.jpg', '../../images/book_lb3.jpg'],
+        indicatorDots: true,
+        vertical: false,
+        autoplay: false,
+        interval: 2000,
+        duration: 500
     },
-    toSearch(){
+    toXcjh() {//计划
         wx.navigateTo({
-          url: '../search/search',
+            url: '/pageStudy/pages/xcjh/xcjh',
         })
     },
-    toRead(e){
+    toXcqd() {//签到
         wx.navigateTo({
-          url: '../read/read',
+            url: '/pageStudy/pages/xcqd/xcqd',
         })
     },
-   
-
+    toXcsj() {//数据
+        wx.navigateTo({
+            url: '/pageStudy/pages/xcsj/xcsj',
+        })
+    },
+    toNote() {
+        wx.navigateTo({
+            url: '/pageNote/pages/notes/notes',
+        })
+    },
+    toTest() {
+        wx.switchTab({
+            url: '/pages/question/question',
+        })
+    },
+    toDetail() {
+        wx.navigateTo({
+            url: '/pageRead/pages/detail/detail',
+        })
+    },
+    toStore() {
+        wx.switchTab({
+            url: '/pages/store/store',
+        })
+    },
     /**
      * 生命周期函数--监听页面加载
      */
-    onLoad: function (options) {
-
+    onLoad: async function (options) {
     },
 
     /**
@@ -74,11 +65,7 @@ Page({
      * 生命周期函数--监听页面显示
      */
     onShow: function () {
-        if (typeof this.getTabBar === 'function' && this.getTabBar()) {
-            this.getTabBar().setData({
-                select: 0
-            })
-        }
+
     },
 
     /**

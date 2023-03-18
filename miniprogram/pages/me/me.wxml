@@ -1,33 +1,40 @@
 <!--pages/me/me.wxml-->
 <view class="container">
-    <view class="download">
-        <image class="avatar" src="../../images/test_img1.jpg"></image>
+    <!-- <view class="download">
+        <image class="avatar" src="../../images/test_avater.jpg"></image>
         <view class="name">。。。</view>
+    </view> -->
+    <view class="download">
+        <button class="avatar-wrapper" open-type="chooseAvatar" bind:chooseavatar="onChooseAvatar">
+            <image class="avatar" src="{{avatarUrl}}"></image>
+        </button>
+        <input bind:bindnicknamereview="nicknamereview" type="nickname" class="nickname" placeholder="请输入昵称" />
     </view>
+
     <view class="cell">
 
-        <view class="shortcut">
-            <view class="shortcut-item">
+        <!-- <view class="shortcut">
+            <view class="shortcut-item" bindtap="toNotes">
                 <image class="shortcut-icon" src="../../images/test/test-beiti.png"></image>
-                <text class="shortcut-text">随手记</text>
+                <text class="shortcut-text">我的帖子</text>
             </view>
             <view class="shortcut-item">
                 <image class="shortcut-icon" src="../../images/test/test-beiti.png"></image>
-                <text class="shortcut-text">我的答题</text>
+                <text class="shortcut-text">我的回复</text>
             </view>
             <view class="shortcut-item">
                 <image class="shortcut-icon" src="../../images/test/test-beiti.png"></image>
-                <text class="shortcut-text">我的论坛</text>
+                <text class="shortcut-text">我的投诉</text>
             </view>
             <view class="shortcut-item">
                 <image class="shortcut-icon" src="../../images/test/test-beiti.png"></image>
-                <text class="shortcut-text">数据监测</text>
+                <text class="shortcut-text">我的信息</text>
             </view>
-        </view>
-        <van-cell-group>
+        </view> -->
+        <van-cell-group inset>
             <van-cell is-link title="分享好友" link-type="navigateTo" url="/pages/dashboard/index" />
             <van-cell is-link title="关于我们" link-type="navigateTo" url="/pages/dashboard/index" />
-            <van-cell is-link title="我的信息" link-type="navigateTo" url="/pages/dashboard/index" />
+            <van-cell is-link title="意见反馈" link-type="navigateTo" url="/pages/dashboard/index" />
             <van-cell is-link title="退出登录" link-type="navigateTo" url="/pages/dashboard/index" />
         </van-cell-group>
     </view>

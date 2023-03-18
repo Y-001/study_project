@@ -1,0 +1,128 @@
+.van-swipe-cell__left,
+.van-swipe-cell__right {
+    display: inline-block;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 65px;
+    /* height: 44px; */
+    height: 100%;
+    font-size: 15px;
+    line-height: 44px;
+    color: #fff;
+    /* text-align: center; */
+    background-color: #f44;
+}
+
+.book-shelf {
+    background-color: #fff;
+    margin-top: 30rpx;
+}
+
+.book {
+    display: flex;
+    align-items: center;
+    padding: 20rpx;
+}
+
+.book-img {
+    width: 200rpx;
+    height: 270rpx;
+    box-shadow: 10rpx 10rpx 10rpx 1px rgb(94, 92, 92);
+    border-radius: 5px;
+}
+
+.book .book-left {
+    margin-left: 20rpx;
+    margin-right: 40rpx;
+}
+
+.book .book-right {
+    height: 280rpx;
+    display: flex;
+    flex-direction: column;
+}
+
+.book-right .title {
+    font-weight: bold;
+    margin-bottom: 20rpx;
+}
+
+.book-right .author {
+    font-size: 35rpx;
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 35rpx;
+}
+
+.book-right .author .star {
+    color: rgb(136, 136, 136);
+    border-bottom: 3px solid #667c70;
+    padding: 0 20rpx 8rpx 0;
+    margin-right: 15rpx;
+}
+
+.book-right .desc {
+    font-size: 35rpx;
+    color: rgb(136, 136, 136);
+    /* 让文字多的隐藏 */
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    line-height: 150%;
+}
+
+.search1 {
+    margin-bottom: 20rpx;
+}
+
+
+
+
+.container {
+    padding-bottom: 100rpx;
+}
+
+ /* 悬浮框 */
+/* .movable-area {
+    pointer-events: none;
+    这个属性设置为none,让所有事件穿透过去
+    z-index: 100;
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+
+.movable-view {
+    pointer-events: auto;
+    重设为auto,覆盖父属性设置
+    height: 50px;
+    width: 50px;
+    background: red;
+    left: 80%;
+    top: 80%;
+}  */
+
+.toNotes {
+    width: 100rpx;
+    height: 100rpx;
+    border-radius: 50%;
+    position: fixed;
+    z-index: 100;
+    top: 80%;
+    left: 80%;
+    background-color: #ccc;
+    text-align: center;
+    line-height: 100rpx;
+}
+
+.note-icon {
+    width: 80rpx;
+    height: 80rpx;
+}

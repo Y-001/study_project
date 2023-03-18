@@ -1,0 +1,104 @@
+/* pages/notes/notes.wxss */
+.container{
+    width: 100vw;
+    height: 100vh;
+    background-color: #bfd1b1;
+    padding-top: 20rpx;
+}
+/* 头部导航 */
+.top{
+    width: 90%;
+    margin: 30rpx;
+}
+.notelx-list{
+    width: 100%;
+    display: flex;
+    overflow-x: scroll;
+    overflow-y: hidden;
+}
+.notelx-list::-webkit-scrollbar{
+    display: none;
+}
+.notelx-item{
+    text-align: center;
+    min-width: 100rpx;
+    background-color: #fff;
+    margin-right: 20rpx;
+    padding: 15rpx;
+    border-radius: 20rpx;
+    font-size: 30rpx;
+    color: #666;
+}
+.lx-active{
+    background-color: #ccc;
+    color: #000;
+}
+/* 笔记部分 */
+.content{
+    box-sizing: border-box;
+    width: 95%;
+    margin: 20rpx;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    border-radius: 20rpx;
+}
+.note-item{
+    box-sizing: border-box;
+    width: 49%;
+    margin-bottom: 20rpx;
+    background-color: #fff;
+    border-radius: 20rpx;
+    padding: 15rpx;
+    max-height: 300rpx;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    box-shadow:0 0 10rpx #667c70;
+}
+.note-item:nth-child(odd){
+    margin-right: 2%;
+}
+.note-title{
+    margin-bottom: 20rpx;
+    font-size: 34rpx;
+}
+.note-content{
+    color: #666;
+    margin-bottom: 20rpx;
+    font-size: 30rpx;
+    /* 文字几行显示 */
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+}
+.note-time{
+    color: #ccc;
+    font-size: 28rpx;
+}
+/* 悬浮 */
+.toNotes {
+    width: 100rpx;
+    height: 100rpx;
+    border-radius: 50%;
+    position: fixed;
+    z-index: 100;
+    top: 80%;
+    left: 80%;
+    background-color: #667c70;
+    text-align: center;
+    line-height: 100rpx;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.note-icon {
+    width: 80rpx;
+    height: 80rpx;
+}
+
+
+

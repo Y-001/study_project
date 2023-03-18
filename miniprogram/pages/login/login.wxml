@@ -1,0 +1,10 @@
+<!--pages/login/login.wxml-->
+<view class="body">
+    <image class="logo" src="../../images/test_avater.jpg"></image>
+    <view class="container">
+        <input class="input" type="text" placeholder="请输入账号"/>
+        <input class="input" type="text" placeholder="请输入密码"/>
+        <text class="to-register" bindtap="toRegister">去注册</text>
+        <button class="login-btn" type="primary">登录</button>
+    </view>
+</view>

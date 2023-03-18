@@ -1,0 +1,142 @@
+<!--pages/problem/problem.wxml-->
+<view class="container">
+    <!-- 题目卡片 -->
+    <view class="testblock">
+        <view class="top">
+            <view class="classify">单选题</view>
+            <view class="num"><text class="num-color">1</text>/738</view>
+        </view>
+        <view class="line"></view>
+        <view class="problem">
+            <view class="title">请问你是
+                啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊
+                啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊
+                傻子吗？</view>
+            <view class="answer-list" bindtap="getAnswer">
+                <view class="answer-item select-right">
+                    A 10s
+                </view>
+                <view class="answer-item select-error">
+                    B 10s
+                </view>
+                <view class="answer-item select-selected">
+                    C 10s
+                </view>
+                <view class="answer-item">
+                    D 10s
+                </view>
+            </view>
+        </view>
+    </view>
+    <!-- 答案卡片 -->
+    <view class="key" wx:if="{{showAnswer}}">
+        <view class="{{resultIcon ? 'key-type-right' : 'key-type-error'}}">
+            {{resultIcon ? '回答正确': '回答错误'}}
+        </view>
+        <view class="key-body">
+            <view class="key-top">
+                <view class="key-key">
+                    <view class="gray-text">正确答案:</view>
+                    <view class="color-text">D</view>
+                </view>
+                <view class="key-key">
+                    <view class="gray-text">您选择的答案:</view>
+                    <view class="color-text">A</view>
+                </view>
+            </view>
+            <view class="key-desc">
+                <view class="desc-top">
+                    参考解析：
+                </view>
+                <view class="desc-body">
+                    啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊
+                    啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊
+                    啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊
+                </view>
+            </view>
+        </view>
+    </view>
+</view>
+<!-- 底部导航 -->
+<view wx:if="{{!showNum}}" class="bar">
+    <view class="bar-left" bindtap="openNum">
+        <view class="item">
+            <image class="item-icon" src="../../images/problem/pro-dui.png"></image>
+            <text class="item-text">0</text>
+        </view>
+        <view class="item">
+            <image class="item-icon" src="../../images/problem/pro-error.png"></image>
+            <text class="item-text">0</text>
+        </view>
+        <view class="item">
+            <image class="item-icon" src="../../images/problem/pro-all.png"></image>
+            <text class="item-text">1/738</text>
+        </view>
+    </view>
+
+    <view wx:if="{{!isCuoti}}" class="bar-right" bindtap="getStar">
+        <image class="item-icon" src="{{star[0].icon}}"></image>
+        <text class="item-text">{{star[0].text}}</text>
+    </view>
+    <view wx:else class="bar-right">
+        <image class="item-icon" src="../../images/delete.png"></image>
+        <text class="item-text">移除</text>
+    </view>
+</view>
+<!-- 答题卡弹窗 -->
+<van-popup show="{{ showNum }}" position="bottom" custom-style="height: 50%;" bind:close="onCloseNum">
+    <view class="num-body">
+        <view class="bar-new">
+            <view class="bar-left" bindtap="openNum">
+                <view class="item">
+                    <image class="item-icon" src="../../images/problem/pro-dui.png"></image>
+                    <text class="item-text" style="color: #45a126;">0</text>
+                </view>
+                <view class="item">
+                    <image class="item-icon" src="../../images/problem/pro-error.png"></image>
+                    <text class="item-text" style="color: #c3413c;">0</text>
+                </view>
+                <view class="item">
+                    <image class="item-icon" src="../../images/problem/pro-all.png"></image>
+                    <text class="item-text">1/738</text>
+                </view>
+            </view>
+            <view wx:if="{{judgePage}}" class="bar-right" style="color: #b7b7b7;">
+                清空记录
+            </view>
+            <view wx:if="{{isCuotiji}}" class="bar-right" style="color: #b7b7b7;">
+                清空错题
+            </view>
+            <view wx:if="{{isStar}}" class="bar-right" bindtap="getStar">
+                <image class="item-icon" src="{{star[0].icon}}"></image>
+                <text class="item-text">{{star[0].text}}</text>
+            </view>
+            <view wx:else class="bar-right" style="color: #36c3a1;">
+                交卷
+            </view>
+
+        </view>
+        <view class="num-list">
+            <view class="num-item">1</view>
+            <view class="num-item">1</view>
+            <view class="num-item">1</view>
+            <view class="num-item">1</view>
+            <view class="num-item">1</view>
+            <view class="num-item">1</view>
+            <view class="num-item">1</view>
+            <view class="num-item">1</view>
+            <view class="num-item">1</view>
+            <view class="num-item">1</view>
+            <view class="num-item">1</view>
+            <view class="num-item">1</view>
+            <view class="num-item">1</view>
+            <view class="num-item">1</view>
+            <view class="num-item">1</view>
+            <view class="num-item">1</view>
+            <view class="num-item">1</view>
+            <view class="num-item">1</view>
+            <view class="num-item">1</view>
+            <view class="num-item">1</view>
+        </view>
+    </view>
+</van-popup>

@@ -1,6 +1,13 @@
 <!--pages/store/store.wxml-->
 <view class="container">
-    <SearchInput bindtap="toSearch"></SearchInput>
+    <van-search
+  shape="round"
+  background="#667c70"
+  placeholder="搜索"
+  disabled
+  bindtap="toSearch"
+/>
+
     <view class="body">
         <!-- 轮播图 -->
         <view class="swiper-body">
@@ -18,29 +25,9 @@
             <view class="rec-title">热门推荐</view>
             <view class="line"></view>
             <view class="rec-list">
-                <view class="rec-list-item" bindtap="toDetail">
+                <view wx:for="{{hotBooksList}}" wx:key="index" data-id="{{item._id}}" class="rec-list-item" bindtap="toDetail">
                     <image src="../../images/test_img1.jpg" class="rec-item-img"></image>
-                    <text class="rec-item-text">本草纲目</text>
-                </view>
-                <view class="rec-list-item">
-                    <image src="../../images/test_img1.jpg" class="rec-item-img"></image>
-                    <text class="rec-item-text">本草纲目</text>
-                </view>
-                <view class="rec-list-item">
-                    <image src="../../images/test_img1.jpg" class="rec-item-img"></image>
-                    <text class="rec-item-text">本草纲目</text>
-                </view>
-                <view class="rec-list-item">
-                    <image src="../../images/test_img1.jpg" class="rec-item-img"></image>
-                    <text class="rec-item-text">本草纲目</text>
-                </view>
-                <view class="rec-list-item">
-                    <image src="../../images/test_img1.jpg" class="rec-item-img"></image>
-                    <text class="rec-item-text">本草纲目</text>
-                </view>
-                <view class="rec-list-item">
-                    <image src="../../images/test_img1.jpg" class="rec-item-img"></image>
-                    <text class="rec-item-text">本草纲目啊啊啊啊啊啊啊啊啊</text>
+                    <text class="rec-item-text">{{item.name}}</text>
                 </view>
             </view>
         </view>
@@ -51,37 +38,37 @@
             <view class="classify-list" bindtap="toClassify">
                 <view class="classify-list-item">
                     <view class="classify-item-bimg color1">
-                        <image class="classify-item-img" src="../../images/store-all.png"></image>
+                        <image class="classify-item-img" src="../../images/store/store-all.png"></image>
                     </view>
                     <text class="classify-item-text">全部</text>
                 </view>
                 <view class="classify-list-item">
                     <view class="classify-item-bimg color2">
-                        <image class="classify-item-img" src="../../images/store-bencao.png"></image>
+                        <image class="classify-item-img" src="../../images/store/store-bencao.png"></image>
                     </view>
                     <text class="classify-item-text">本草</text>
                 </view>
                 <view class="classify-list-item">
                     <view class="classify-item-bimg color3">
-                        <image class="classify-item-img" src="../../images/store-fangyao.png"></image>
+                        <image class="classify-item-img" src="../../images/store/store-fangyao.png"></image>
                     </view>
                     <text class="classify-item-text">方药</text>
                 </view>
                 <view class="classify-list-item">
                     <view class="classify-item-bimg color4">
-                        <image class="classify-item-img" src="../../images/store-zhenjiu.png"></image>
+                        <image class="classify-item-img" src="../../images/store/store-zhenjiu.png"></image>
                     </view>
                     <text class="classify-item-text">针灸</text>
                 </view>
                 <view class="classify-list-item">
                     <view class="classify-item-bimg color5">
-                        <image class="classify-item-img" src="../../images/store-yijing.png"></image>
+                        <image class="classify-item-img" src="../../images/store/store-yijing.png"></image>
                     </view>
                     <text class="classify-item-text">医经</text>
                 </view>
                 <view class="classify-list-item">
                     <view class="classify-item-bimg color6">
-                        <image class="classify-item-img" src="../../images/store-yilun.png"></image>
+                        <image class="classify-item-img" src="../../images/store/store-yilun.png"></image>
                     </view>
                     <text class="classify-item-text">医论</text>
                 </view>

@@ -1,9 +1,5 @@
 {
   "usingComponents": {
-    "van-swipe-cell": "@vant/weapp/swipe-cell/index",
-    "van-cell": "@vant/weapp/cell/index",
-    "van-cell-group": "@vant/weapp/cell-group/index",
-    "SearchInput":"../../components/SearchInput/SearchInput"
-  },
-  "navigationBarTitleText":"书架"
+    
+  }
 }

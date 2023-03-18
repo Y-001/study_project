@@ -6,6 +6,7 @@
 /* 轮播图 */
 .swiper-image{
     width: 100%;
+    height: 100%;
 }
 .swiper-body{
     display: flex;
@@ -54,6 +55,7 @@
     width: 23%;
     display: flex;
     flex-direction: column;
+    align-items: center;
     padding: 1%;
 }
 .rec-item-img{
@@ -123,6 +125,8 @@
 
 /* 猜你喜欢 */
 /* 封装成组件了 */
-
+.like-list{
+    padding: 10rpx;
+}
 
 

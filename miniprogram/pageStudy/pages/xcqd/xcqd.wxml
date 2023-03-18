@@ -1,0 +1,23 @@
+<view class="context">
+    <view class="qd">
+        <view class="btn">
+            <view class="btn-top">签到</view>
+            <view class="btn-center"></view>
+            <view class="btn-bottom">已签0天</view>
+        </view>
+    </view>
+    <view class="top">
+        <!--   <image src="../../img/left.png" bindtap="bindPreMonth"></image> -->
+          <view>{{year}}年{{month}}月</view>
+        <!--   <image src="../../img/right.png" bindtap="bindNextMonth"></image> -->
+    </view>
+
+    <view class="middle">
+        <view class="middle_num" wx:for="{{data_arr}}">{{item}}</view>
+    </view>
+    <view class="calen">
+        <view class="calen_blank" wx:for="{{startWeek}}"></view>
+        <view class='{{index+1 == today ? "active": "calen_num"}}' wx:for="{{currentMonthDays}}">{{index+1}}</view>
+    </view>
+
+</view>

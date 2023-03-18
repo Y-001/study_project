@@ -1,0 +1,8 @@
+<!--pages/txlx/txlx.wxml-->
+<van-cell-group>
+  <van-cell title="单选题" is-link label="共282题" link-type="navigateTo"
+  url="/pageTest/pages/problem/problem" />
+  <van-cell title="多选题" is-link label="共282题" />
+  <van-cell title="判断题" is-link label="共282题" />
+  <van-cell title="简单题" is-link label="共282题" />
+</van-cell-group>
