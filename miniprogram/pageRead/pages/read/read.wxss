@@ -2,6 +2,10 @@
 .content{
     padding: 0 20rpx 20rpx;
 }
+.active{
+    background-color: #667c70;
+    color: #fff;
+}
 
 /* 控制组件 */
 .control{
@@ -102,7 +106,28 @@
     display: flex;
     align-items: center;
 }
-.shelf-top .headimg{
+.book-img{
+    /* width: 100%; */
+    position: relative;
+}
+.book-img-text{
+    font-size: 30rpx;
+    text-align: center;
+    /* box-sizing: border-box; */
+    background-color: #fff;
+    padding: 5rpx;
+    position: absolute;
+    color: #000;
+    z-index: 99;
+    writing-mode: vertical-lr;
+    width: 30%;
+    height: 60%;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%);
+    transform: translateY(-50%);
+}
+ .headimg{
     width: 150rpx;
     height: 200rpx;
     border-radius: 20rpx;

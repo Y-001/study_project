@@ -1,6 +1,8 @@
 <!--pages/register/register.wxml-->
-<view class="body">
-    <image class="logo" src="../../images/test_avater.jpg"></image>
+<view class="body"> 
+    <button class="avatar-wrapper" open-type="chooseAvatar" bind:chooseavatar="onChooseAvatar">
+            <image class="logo" src="{{avatarUrl}}"></image>
+    </button>
     <view class="container">
         <input class="input" type="text" placeholder="请输入账号"/>
         <input class="input" type="text" placeholder="请输入密码"/>

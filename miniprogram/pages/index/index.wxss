@@ -145,8 +145,17 @@
 .jd-top-title{
     font-size: 30rpx;
 }
+.jd-list{
+    /* overflow-x: scroll; */
+    display: flex;
+    flex-wrap: wrap;
+}
 .jd-item{
-    width: 160rpx;
+    /* float: left; */
+    margin-right: 2%;
+    margin-top: 15rpx;
+    /* width: 160rpx; */
+    width: 23%;
     height: 220rpx;
     /* background-color: #667c70; */
     background:repeating-linear-gradient(to top,#a3b196,#667c70);

@@ -6,6 +6,9 @@
     padding-top: 100rpx;
 
 }
+.avatar-wrapper{
+    
+}
 .logo{
     width: 150rpx;
     height: 150rpx;

@@ -2,18 +2,12 @@
 <view class="container">
     <view class="top">选择目标经典</view>
     <view class="book-list">
-        <view class="card active">
+        <view class="card {{item._id==select_id?'active':''}}" data-id="{{item._id}}" wx:for="{{starList}}" wx:key="index" bindtap="selectBook">
             <view class="card-item">
                 <view class="item-top">推荐</view>
-                <view class="item-title">本草纲目</view>
+                <view class="item-title">{{item.bookname}}</view>
             </view>
-        </view>
-        <view class="card">
-            <view class="card-item">
-                <view class="item-top">推荐</view>
-                <view class="item-title">本草纲目</view>
-            </view>
-        </view>
+        </view> 
 
     </view>
     <!-- 自定义学习时长 -->
@@ -24,7 +18,7 @@
                 <view class="xz-name">每日学习时长</view>
                 <view class="xz-int">
                     <view class="xz-int-sr">
-                        <input type="text" class="input" />
+                        <input bindinput="changeStudytime" value="{{studytime}}" type="text" class="input" />
                     </view>
                     <text class="xz-int-text">分钟</text>
                 </view>
@@ -33,7 +27,7 @@
                 <view class="xz-name">完成天数</view>
                 <view class="xz-int">
                     <view class="xz-int-sr">
-                        <input type="text" class="input" />
+                        <input bindinput="changeStudyday" value="{{studyday}}" type="text" class="input" />
                     </view>
                     <text class="xz-int-text">天数</text>
                 </view>
@@ -42,9 +36,9 @@
         <view class="body-zs">
             <view class="zs-item">
                 <view class="zs-left">完成日期</view>
-                <view class="zs-right">2023/03/28</view>
+                <view class="zs-right">{{donetime}}</view>
             </view>
         </view>
     </view>
-    <view class="btn">确认学习计划</view>
+    <view class="btn" bindtap="getPlan">确认学习计划</view>
 </view>

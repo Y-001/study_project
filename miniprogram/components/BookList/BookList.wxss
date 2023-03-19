@@ -6,6 +6,21 @@
 .like-item-left{
     flex: 2;
     margin-right: 20rpx;
+    position: relative;
+}
+.img-text{
+    background-color: #fff;
+    padding: 5rpx;
+    position: absolute;
+    color: #000;
+    z-index: 99;
+    writing-mode: vertical-lr;
+    width: 30%;
+    height: 60%;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%);
+    transform: translateY(-50%);
 }
 .like-item-img{
     width: 100%;

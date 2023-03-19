@@ -255,6 +255,118 @@
                     "query": "",
                     "launchMode": "default",
                     "scene": null
+                },
+                {
+                    "name": "",
+                    "pathName": "pages/store/store",
+                    "query": "",
+                    "launchMode": "default",
+                    "scene": null
+                },
+                {
+                    "name": "",
+                    "pathName": "pageRead/pages/detail/detail",
+                    "query": "id=0882251a6415c54900bd949a76a82f13",
+                    "launchMode": "default",
+                    "scene": null
+                },
+                {
+                    "name": "",
+                    "pathName": "pages/store/store",
+                    "query": "",
+                    "launchMode": "default",
+                    "scene": null
+                },
+                {
+                    "name": "",
+                    "pathName": "pageRead/pages/classify/classify",
+                    "query": "classify=%E7%BB%8F%E8%AE%BA",
+                    "launchMode": "default",
+                    "scene": null
+                },
+                {
+                    "name": "",
+                    "pathName": "pageRead/pages/search/search",
+                    "query": "",
+                    "launchMode": "default",
+                    "scene": null
+                },
+                {
+                    "name": "",
+                    "pathName": "pageRead/pages/detail/detail",
+                    "query": "id=0882251a6415c54900bd949a76a82f13",
+                    "launchMode": "default",
+                    "scene": null
+                },
+                {
+                    "name": "",
+                    "pathName": "pageRead/pages/detail/detail",
+                    "query": "id=0882251a6415c54900bd949a76a82f13",
+                    "launchMode": "default",
+                    "scene": null
+                },
+                {
+                    "name": "",
+                    "pathName": "pageRead/pages/read/read",
+                    "query": "name=%25E5%2586%2585%25E7%25BB%258F%25E5%258D%259A%25E8%25AE%25AE",
+                    "launchMode": "default",
+                    "scene": null
+                },
+                {
+                    "name": "",
+                    "pathName": "pageRead/pages/read/read",
+                    "query": "name=%25E5%2586%2585%25E7%25BB%258F%25E5%258D%259A%25E8%25AE%25AE",
+                    "launchMode": "default",
+                    "scene": null
+                },
+                {
+                    "name": "",
+                    "pathName": "pageRead/pages/read/read",
+                    "query": "id=0882251a6415c54900bd949a76a82f13",
+                    "launchMode": "default",
+                    "scene": null
+                },
+                {
+                    "name": "",
+                    "pathName": "pageRead/pages/detail/detail",
+                    "query": "id=0882251a6415c54900bd949a76a82f13",
+                    "launchMode": "default",
+                    "scene": null
+                },
+                {
+                    "name": "",
+                    "pathName": "pages/register/register",
+                    "query": "",
+                    "launchMode": "default",
+                    "scene": null
+                },
+                {
+                    "name": "",
+                    "pathName": "pages/me/me",
+                    "query": "",
+                    "launchMode": "default",
+                    "scene": null
+                },
+                {
+                    "name": "",
+                    "pathName": "pageRead/pages/read/read",
+                    "query": "id=0882251a6415c54900bd949a76a82f13",
+                    "launchMode": "default",
+                    "scene": null
+                },
+                {
+                    "name": "",
+                    "pathName": "pageRead/pages/detail/detail",
+                    "query": "id=0882251a6415c54900bd949a76a82f13",
+                    "launchMode": "default",
+                    "scene": null
+                },
+                {
+                    "name": "",
+                    "pathName": "pageStudy/pages/xcjh/xcjh",
+                    "query": "",
+                    "launchMode": "default",
+                    "scene": null
                 }
             ]
         }

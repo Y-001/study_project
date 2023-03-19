@@ -9,7 +9,7 @@
         bind:change="searchChange"
         bind:search="searchDone"
         />
-    </view>
+    </view> 
     <view class="empty-search" wx:if="{{!search}}">
         <view class="search-log">
             <text>搜索历史</text>
@@ -17,18 +17,18 @@
         </view>
         <view class="line"></view>
         <view class="log-list">
-            <view wx:for="{{searchLog}}" wx:key="index" class="log-item">{{item}}</view>
+            <view bindtap="getLog" data-item="{{item}}" wx:for="{{searchLog}}" wx:key="index" class="log-item">{{item}}</view>
         </view>
     </view>
     <view class="result-search" wx:else>
         <view class="result-loading" wx:if="{{show}}">
-            <view class="search-item">
+            <view data-id="{{item._id}}" bindtap="toDetail" class="search-item" wx:for="{{bookTemp}}" wx:key="index">
                 <image class="res-icon" src="../../images/icon-search.png"></image>
-                <text class="res-text">本草纲目</text>
+                <text class="res-text">{{item.name}}</text>
             </view>
         </view>
         <view class="result-done" wx:else>
-            <van-tabs active="{{ active }}" bind:change="onChange" color="#667c70">
+            <!-- <van-tabs active="{{ active }}" bind:change="onChange" color="#667c70">
                 <van-tab title="全部"></van-tab>
                 <van-tab title="本草"></van-tab>
                 <van-tab title="方药"></van-tab>
@@ -40,9 +40,9 @@
                 <van-tab title="妇幼"></van-tab>
                 <van-tab title="四诊"></van-tab>
                 <van-tab title="伤科"></van-tab>
-            </van-tabs>
+            </van-tabs> -->
             <view class="show">
-                <BookList wx:for="{{books}}" wx:key="index" item="{{item}}" bindtap="toDetail"></BookList>
+                <BookList data-id="{{item._id}}" wx:for="{{bookRes}}" wx:key="index" item="{{item}}" bindtap="toDetail"></BookList>
             </view>
         </view>
     </view>

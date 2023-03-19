@@ -4,12 +4,14 @@
         <view class="book-manage">
             <view class="book-manage-top">
                 <view class="manage-top-left">
-                    <image class="manage-img" src="../../images/test_img1.jpg"></image>
+                    <image class="manage-img" src="../../images/bookmoban.jpg"></image>
+                    <text class="img-text">{{book.name}}</text>
                 </view>
                 <view class="manage-top-right">
                     <view class="manage-title">{{book.name}}</view>
                     <view class="manage-author">作者：{{book.author}}</view>
-                    <view class="manage-num">字数：180万</view>
+                    <view class="manage-num">朝代：{{book.dynasty}}</view>
+                    <view class="manage-num">年份：{{book.year}}</view>
                     <view class="manage-star">收藏：{{book.like}}</view>
                 </view>
             </view>
@@ -18,7 +20,7 @@
                     <image class="manage-btn-icon" src="{{addBookshelfIcon[0].icon}}"></image>
                     <text class="manage-btn-text">{{addBookshelfIcon[0].text}}</text>
                 </view>
-                <view class="manage-btn" bindtap="toRead">
+                <view class="manage-btn" bindtap="toRead" data-id="{{book._id}}">
                     <image class="manage-btn-icon" src="../../images/detail-read.png"></image>
                     <text class="manage-btn-text">立即阅读</text>
                 </view>
@@ -33,11 +35,86 @@
             <view class="talk-top-left">精彩评论</view>
             <view class="talk-top-right" bindtap="showWrite">写评论</view>
         </view>
-        <!-- 底部弹出层 -->
-        <van-popup show="{{ write }}" position="bottom" custom-style="height: 10%;" bind:close="onClose" close-on-click-overlay="true">
-            <view class="popup-content">
-                <input value="{{comment}}" bindinput="writeComment" placeholder="发表自己的观点" type="text" class="comment-input {{submit ? 'comment-input-show':''}}"/>
+        <!-- 写评论 底部弹出层 -->
+        <van-popup show="{{ write }}" position="bottom" custom-style="height: 10%;" bind:close="onCloseWrite" close-on-click-overlay="true">
+            <view class="popup-content popup-write">
+                <input value="{{comment}}" bindinput="writeComment" placeholder="发表自己的观点" type="text" class="comment-input {{submit ? 'comment-input-show':''}}" />
                 <view wx:if="{{submit}}" class="comment-submit" bindtap="submiteComment">发布</view>
+            </view>
+        </van-popup>
+        <!-- 回复或者投诉 底部弹出层 -->
+        <van-popup round custom-style="height: 40%;" show="{{ applyShow }}" position="bottom" bind:close="onCloseApply" close-on-click-overlay="true">
+            <view class="popup-content">
+                <view class="apply-comment">月光倾城：在破败中崛起，在逆境中永恒</view>
+                <van-divider />
+                <view class="apply-text">回复</view>
+                <van-divider />
+                <view class="apply-text">投诉</view>
+                <van-divider />
+                <view class="apply-btn">取消</view>
+            </view>
+        </van-popup>
+        <!-- 查看全部评论 底部弹出层 -->
+        <van-popup closeable round custom-style="height: 90%;" show="{{ commentShow }}" position="bottom" bind:close="onCloseComment" close-on-click-overlay="true">
+            <view class="popup-content popup-comment">
+                <view style="text-align: center;">35条回复</view>
+                <van-divider />
+                <view class="talk-content-item">
+                    <view class="talk-content-left">
+                        <image class="talk-avatar" src="../../images/test_img1.jpg"></image>
+                    </view>
+                    <view class="talk-content-right">
+                        <view class="talk-info">
+                            <view class="talk-name">月光倾城</view>
+                            <view class="talk-icon">
+                                <image class="talk-icon-img" src="{{dianzanIcon[0].icon}}"></image>
+                            </view>
+                        </view>
+                        <view class="talk-time">
+                            2023.1.14 3:42
+                        </view>
+                        <view class="talk-desc">
+                            在破败中崛起，在逆境中永恒
+                        </view>
+                    </view>
+                </view>
+                <van-divider />
+                <view class="content-child">
+                    <view class="talk-content-item">
+                        <view class="talk-content-left">
+                            <image class="talk-avatar" src="../../images/test_img1.jpg"></image>
+                        </view>
+                        <view class="talk-content-right">
+                            <view class="talk-info" bindtap="openApply">
+                                <view class="talk-name">月光倾城</view>
+                                <view class="talk-icon">
+                                    <image class="talk-icon-img" src="{{dianzanIcon[0].icon}}"></image>
+                                </view>
+                            </view>
+                            <view class="talk-time">
+                                2023.1.14 3:42
+                            </view>
+                            <view class="talk-desc">
+                                在破败中崛起，在逆境中永恒
+                            </view>
+                            <view class="talk-comment" bindtap="openComment">
+                                <view class="talk-comment-list">
+                                    <view class="talk-comment-item">
+                                        <text class="color-name">评论人</text>
+                                        ：更新太慢了，哎啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊
+                                    </view>
+                                    <view class="talk-comment-item">
+                                        <text class="color-name">评论人</text>
+                                        ：更新太慢了，哎啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊
+                                    </view>
+                                </view>
+                            </view>
+                            <van-divider />
+                        </view>
+                    </view>
+                </view>
+                
+
             </view>
         </van-popup>
         <view class="talk-content">
@@ -46,10 +123,10 @@
                     <image class="talk-avatar" src="../../images/test_img1.jpg"></image>
                 </view>
                 <view class="talk-content-right">
-                    <view class="talk-info">
+                    <view class="talk-info" bindtap="openApply">
                         <view class="talk-name">月光倾城</view>
                         <view class="talk-icon">
-                            <image class="talk-icon-img" src="../../images/talk-icon.png"></image>
+                            <image class="talk-icon-img" src="{{dianzanIcon[0].icon}}"></image>
                         </view>
                     </view>
                     <view class="talk-time">
@@ -58,44 +135,7 @@
                     <view class="talk-desc">
                         在破败中崛起，在逆境中永恒
                     </view>
-                    <view class="talk-comment">
-                        <view class="talk-comment-list">
-                            <view class="talk-comment-item">
-                                <text class="color-name">评论人</text>
-                                回复
-                                <text class="color-name">被评论人</text>：更新太慢了，哎啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊
-                            </view>
-                            <view class="talk-comment-item">
-                                <text class="color-name">评论人</text>
-                                回复
-                                <text class="color-name">被评论人</text>：更新太慢了，哎啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊
-                            </view>
-                        </view>
-                        <view class="talk-look-btn color-name">
-                            共1条回复>
-                        </view>
-                    </view>
-                    <view class="comment-line"></view>
-                </view>
-            </view>
-            <view class="talk-content-item">
-                <view class="talk-content-left">
-                    <image class="talk-avatar" src="../../images/test_img3.jpg"></image>
-                </view>
-                <view class="talk-content-right">
-                    <view class="talk-info">
-                        <view class="talk-name">无语子</view>
-                        <view class="talk-icon">
-                            <image class="talk-icon-img" src="../../images/talk-icon.png"></image>
-                        </view>
-                    </view>
-                    <view class="talk-time">
-                        2023.1.14 3:42
-                    </view>
-                    <view class="talk-desc">
-                        在破败中崛起，在逆境中永恒
-                    </view>
-                    <view class="talk-comment">
+                    <view class="talk-comment" bindtap="openComment">
                         <view class="talk-comment-list">
                             <view class="talk-comment-item">
                                 <text class="color-name">评论人</text>

@@ -1,36 +1,58 @@
 // pages/classify/classify.js
+const db=wx.cloud.database()
+const _ =db.command
 let timer=null
 Page({
 
     /**
-     * 页面的初始数据
+     * 页面的初始数据 
      */
     data: {
         /* 搜索框的输入 */
         search:'',
+        //临时展示
+        bookTemp:[],
         /* 展示loading还是done */
         show:true,
         /* 搜索历史 */
         searchLog:[],
         active: 0,
-        books:[
-            {
-                image:'../../images/test_img3.jpg',
-                name:'本草纲目',
-                author:'李时珍',
-                desc:'简介你有啥不啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊',
-                classify:'伤寒',
-                num:'180万'
-            },
-            {
-                image:'../../images/test_img2.jpg',
-                name:'wuyu',
-                author:'nihao',
-                desc:'简介你有啥不啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊',
-                classify:'伤寒',
-                num:'180万'
+        //结果
+        bookRes:[]
+        
+    },
+    //点击历史记录
+    getLog(e){
+        let {item} = e.currentTarget.dataset
+        this.setData({
+            search:item
+        })
+    },
+    //搜索书籍内容
+    getBookList(name){
+        return new Promise((resolve)=>{
+            db.collection('booklists').where({
+                name: {
+                  $regex: '.*' + name,
+                  $options: 'i'
+                }
+              }).get().then(res=>{
+                  let books=res.data
+                  resolve(books)
+              })
+        })
+    },
+    //去详情页
+    toDetail(e){
+        let {id}=e.currentTarget.dataset
+        db.collection("booklists").doc(id).update({
+            data:{
+                hot:_.inc(1)
             }
-        ],
+        })
+        wx.navigateTo({
+          url: `/pageRead/pages/detail/detail?id=${id}`,
+        })
     },
     /* 清空搜索历史 */
     deleteLog(e){
@@ -60,13 +82,29 @@ Page({
                 this.setData({
                     searchLog
                 })
+                this.getBookList(search).then(res=>{
+                    this.setData({
+                        bookTemp:res
+                    })
+                })
             }
         },1000)
     },
     /* 按下搜索按钮 */
     searchDone(e){
+        let search=e.detail
+        // console.log(search)
         this.setData({
             show:false
+        })
+        this.getBookList(search).then(res=>{
+            res.forEach(item=>{
+                let name=item.name.match(/《(.*?)》/g)[0].replace("《",'').replace("》",'')
+               item.name=name
+            })
+            this.setData({
+                bookRes:res
+            })
         })
     },
     /* 切换标签 */
@@ -76,12 +114,6 @@ Page({
           icon: 'none',
         });
       },
-      /* 去详情页 */
-    toDetail(e){
-        wx.navigateTo({
-          url: '/pageRead/pages/detail/detail',
-        })
-    },
 
     /**
      * 生命周期函数--监听页面加载

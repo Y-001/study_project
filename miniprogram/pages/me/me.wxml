@@ -1,41 +1,27 @@
-<!--pages/me/me.wxml-->
-<view class="container">
-    <!-- <view class="download">
-        <image class="avatar" src="../../images/test_avater.jpg"></image>
-        <view class="name">。。。</view>
-    </view> -->
-    <view class="download">
-        <button class="avatar-wrapper" open-type="chooseAvatar" bind:chooseavatar="onChooseAvatar">
-            <image class="avatar" src="{{avatarUrl}}"></image>
-        </button>
-        <input bind:bindnicknamereview="nicknamereview" type="nickname" class="nickname" placeholder="请输入昵称" />
-    </view>
-
-    <view class="cell">
-
-        <!-- <view class="shortcut">
-            <view class="shortcut-item" bindtap="toNotes">
-                <image class="shortcut-icon" src="../../images/test/test-beiti.png"></image>
-                <text class="shortcut-text">我的帖子</text>
-            </view>
-            <view class="shortcut-item">
-                <image class="shortcut-icon" src="../../images/test/test-beiti.png"></image>
-                <text class="shortcut-text">我的回复</text>
-            </view>
-            <view class="shortcut-item">
-                <image class="shortcut-icon" src="../../images/test/test-beiti.png"></image>
-                <text class="shortcut-text">我的投诉</text>
-            </view>
-            <view class="shortcut-item">
-                <image class="shortcut-icon" src="../../images/test/test-beiti.png"></image>
-                <text class="shortcut-text">我的信息</text>
-            </view>
-        </view> -->
-        <van-cell-group inset>
-            <van-cell is-link title="分享好友" link-type="navigateTo" url="/pages/dashboard/index" />
-            <van-cell is-link title="关于我们" link-type="navigateTo" url="/pages/dashboard/index" />
-            <van-cell is-link title="意见反馈" link-type="navigateTo" url="/pages/dashboard/index" />
-            <van-cell is-link title="退出登录" link-type="navigateTo" url="/pages/dashboard/index" />
-        </van-cell-group>
+<view class="UCenter-bg">
+    <view class="circular"></view>
+    <view style="display: flex;flex-direction: column;align-items: center;" bindtap="getMyUserInfo">
+        <view class="avatar">
+            <image width="10rem" height="10rem" src="{{avatar}}" />
+        </view>
+        <view class="margin-top-sm">
+            <text>{{nickName}}</text>
+        </view>
     </view>
 </view>
+<van-cell bindtap="logout" title="退出登录" is-link />
+
+<!-- 信息框 -->
+<van-dialog use-slot title="用于完善您的信息" show="{{ show }}" show-cancel-button confirm-button-open-type="getUserInfo" bind:close="onClose" bind:getuserinfo="getUserInfo">
+    <view class="flexCenter">
+        <view class="head">
+            头像：<button class="avatar-wrapper" open-type="chooseAvatar" bind:chooseavatar="onChooseAvatar" hover-class="none">
+                <image class="avatar" src="{{avatar}}" style="margin-left: 90rpx;"></image>
+            </button>
+        </view>
+        <view class="head">
+            <view class="info_text">昵称:</view>
+            <input type="nickname" value="{{nickname}}" class="weui-input" bindinput="userNameInput" placeholder="请输入昵称" />
+        </view>
+    </view>
+</van-dialog>

@@ -1,5 +1,6 @@
 // pages/store/store.js
-import {ajax} from '../../utils/index';
+const db = wx.cloud.database()
+const _ =db.command
 Page({
 
     /**
@@ -7,17 +8,8 @@ Page({
      */
     data: {
         background: ['../../images/book_lb1.jpg', '../../images/book_lb2.jpg', '../../images/book_lb3.jpg'],
-        books:[
-            // {
-            //     image:'../../images/test_img1.jpg',
-            //     name:'本草纲目',
-            //     author:'李时珍',
-            //     desc:'纪称∶望龙光，知古剑；觇宝气，辨明珠。故萍实商羊，非天明莫洞。厥后博物称华，辨字称康，析宝玉称倚顿，亦仅仅晨星耳。楚蕲阳李君东璧，一日过予山园谒予，留饮数有《本草纲目》数十卷。谓予曰∶时珍，荆楚鄙人也。幼多羸疾，质成钝椎；长耽典籍，若啖蔗饴。遂渔猎群书，搜罗百氏。',
-            //     classify:'本草',
-            //     num:'8万'
-            // },
-        ],
-        hotBooksList:[]
+        hotBooksList:[],
+        likeBooksList:[]
     },
     toSearch(){
         wx.navigateTo({
@@ -26,20 +18,48 @@ Page({
     },
     toDetail(e){
         let {id}=e.currentTarget.dataset
+        // console.log(id)
+        db.collection("booklists").doc(id).update({
+            data:{
+                hot:_.inc(1)
+            }
+        })
         wx.navigateTo({
-          url: `/pageRead/pages/detail/detail?_id=${id}`,
+          url: `/pageRead/pages/detail/detail?id=${id}`,
         })
     },
     toClassify(e){
+        let {classify}=e.target.dataset
+        // console.log(e.target.dataset)
         wx.navigateTo({
-          url: '/pageRead/pages/classify/classify',
+          url: `/pageRead/pages/classify/classify?classify=${encodeURIComponent(classify)}`,
         })
     },
 
     /**
      * 生命周期函数--监听页面加载
      */
-     onLoad(options) { 
+     onLoad(options) {
+         //获取热门推荐的书籍
+         db.collection('booklists').orderBy('hot','desc').limit(4).get().then(res=>{
+             res.data.forEach(item=>{
+                 let name=item.name.match(/《(.*?)》/g)[0].replace("《",'').replace("》",'')
+                item.name=name
+             })
+             this.setData({
+                hotBooksList:res.data
+             })
+         })
+         //获取猜你喜欢书籍
+         db.collection('booklists').orderBy('like','desc').limit(6).get().then(res=>{
+            res.data.forEach(item=>{
+                let name=item.name.match(/《(.*?)》/g)[0].replace("《",'').replace("》",'')
+               item.name=name
+            })
+            this.setData({
+               likeBooksList:res.data
+            })
+        })
     },
 
     /**
@@ -53,12 +73,6 @@ Page({
      * 生命周期函数--监听页面显示
      */
     onShow() {
-
-        // if (typeof this.getTabBar === 'function' && this.getTabBar()) {
-        //     this.getTabBar().setData({
-        //         select: 1
-        //     })
-        // }
     },
 
     /**

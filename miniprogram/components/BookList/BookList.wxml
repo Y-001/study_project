@@ -1,7 +1,8 @@
 <!--components/BookList/BookList.wxml--> 
 <view class="like-list-item">
     <view class="like-item-left">
-        <image class="like-item-img" src="{{item.image}}"></image>
+        <image class="like-item-img" src="../../images/bookmoban.jpg"></image>
+        <text class="img-text">{{item.name}}</text>
     </view>
     <view class="like-item-right">
         <view class="like-right-title">{{item.name}}</view>
@@ -11,7 +12,7 @@
             <view class="like-info-left">
                 <view class="info-author">{{item.author}}</view>
                 <view class="circle"></view>
-                <view class="info-num">{{item.num+'字'}}</view>
+                <view class="info-num">{{item.dynasty ? item.dynasty:''}}</view>
             </view>
             <view class="like-info-right">
                 <view class="info-classify">{{item.classify}}</view>

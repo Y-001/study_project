@@ -26,7 +26,10 @@
             <view class="line"></view>
             <view class="rec-list">
                 <view wx:for="{{hotBooksList}}" wx:key="index" data-id="{{item._id}}" class="rec-list-item" bindtap="toDetail">
-                    <image src="../../images/test_img1.jpg" class="rec-item-img"></image>
+                    <view class="book-img">
+                        <image src="../../images/bookmoban.jpg" class="rec-item-img"></image>
+                        <text class="book-img-text">{{item.name}}</text>
+                    </view>
                     <text class="rec-item-text">{{item.name}}</text>
                 </view>
             </view>
@@ -35,40 +38,40 @@
         <view class="classify recommend">
             <view class="rec-title">分类</view>
             <view class="line"></view> 
-            <view class="classify-list" bindtap="toClassify">
+            <view class="classify-list" capture-bind:tap="toClassify">
                 <view class="classify-list-item">
                     <view class="classify-item-bimg color1">
-                        <image class="classify-item-img" src="../../images/store/store-all.png"></image>
+                        <image data-classify="经论"  class="classify-item-img" src="../../images/store/store-all.png"></image>
                     </view>
                     <text class="classify-item-text">全部</text>
                 </view>
                 <view class="classify-list-item">
+                    <view class="classify-item-bimg color5">
+                        <image data-classify="经论"  class="classify-item-img" src="../../images/store/store-yijing.png"></image>
+                    </view>
+                    <text class="classify-item-text">经论</text>
+                </view>
+                <view class="classify-list-item" data-classify="本草">
                     <view class="classify-item-bimg color2">
-                        <image class="classify-item-img" src="../../images/store/store-bencao.png"></image>
+                        <image data-classify="本草" class="classify-item-img" src="../../images/store/store-bencao.png"></image>
                     </view>
                     <text class="classify-item-text">本草</text>
                 </view>
-                <view class="classify-list-item">
+                <view class="classify-list-item" data-classify="方药">
                     <view class="classify-item-bimg color3">
-                        <image class="classify-item-img" src="../../images/store/store-fangyao.png"></image>
+                        <image data-classify="方药" class="classify-item-img" src="../../images/store/store-fangyao.png"></image>
                     </view>
                     <text class="classify-item-text">方药</text>
                 </view>
                 <view class="classify-list-item">
                     <view class="classify-item-bimg color4">
-                        <image class="classify-item-img" src="../../images/store/store-zhenjiu.png"></image>
+                        <image data-classify="针灸" class="classify-item-img" src="../../images/store/store-zhenjiu.png"></image>
                     </view>
                     <text class="classify-item-text">针灸</text>
                 </view>
-                <view class="classify-list-item">
-                    <view class="classify-item-bimg color5">
-                        <image class="classify-item-img" src="../../images/store/store-yijing.png"></image>
-                    </view>
-                    <text class="classify-item-text">医经</text>
-                </view>
-                <view class="classify-list-item">
+                <view class="classify-list-item" data-classify="医论">
                     <view class="classify-item-bimg color6">
-                        <image class="classify-item-img" src="../../images/store/store-yilun.png"></image>
+                        <image data-classify="医论" class="classify-item-img" src="../../images/store/store-yilun.png"></image>
                     </view>
                     <text class="classify-item-text">医论</text>
                 </view>
@@ -78,8 +81,8 @@
         <view class="like recommend">
             <view class="rec-title">猜你喜欢</view>
             <view class="line"></view>
-            <view class="like-list" wx:for="{{books}}" wx:key="index">
-                <BookList item="{{item}}" bindtap="toDetail"></BookList>
+            <view class="like-list" wx:for="{{hotBooksList}}" wx:key="index">
+                <BookList data-id="{{item._id}}" item="{{item}}" bindtap="toDetail"></BookList>
             </view>
         </view>
     </view>
