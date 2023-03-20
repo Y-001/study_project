@@ -18,6 +18,16 @@ Page({
         starList: [],
         //学习计划
         studyplan:{},
+        //今日学习时长
+        todyTime:'',
+        //是否完成今日学习
+        doneTody:false
+    },
+    //开始学习
+    toReadDetail(){
+        wx.navigateTo({
+            url: `/pageRead/pages/read/read?way=3&id=${this.data.studyplan.bookid}`,
+        })
     },
     toXcjh() {//计划
         wx.navigateTo({
@@ -89,6 +99,17 @@ Page({
             _this.setData({
                 studyplan:res.data[0].studyplan
             })
+            let day=dateFormat(+new Date())
+            if(Reflect.has(res.data[0].studyplan,"calendar")){
+                res.data[0].studyplan.calendar.forEach(item=>{
+                    if(item.day==day){
+                        _this.setData({
+                            todyTime:item.stayTime,
+                            doneTody:item.progress
+                        })
+                    }
+                })
+            }
         })
     },
 
@@ -103,7 +124,7 @@ Page({
      * 生命周期函数--监听页面显示
      */
     onShow: function () {
-
+        this.onLoad()
     },
 
     /**

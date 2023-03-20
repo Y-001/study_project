@@ -2,7 +2,7 @@
 <view class="container">
     <view class="top">选择目标经典</view>
     <view class="book-list">
-        <view class="card {{item._id==select_id?'active':''}}" data-id="{{item._id}}" wx:for="{{starList}}" wx:key="index" bindtap="selectBook">
+        <view class="card {{item._id==select_id?'active':''}}" data-bookid="{{item.bookid}}" data-bookname="{{item.bookname}}" data-id="{{item._id}}" wx:for="{{starList}}" wx:key="index" bindtap="selectBook">
             <view class="card-item">
                 <view class="item-top">推荐</view>
                 <view class="item-title">{{item.bookname}}</view>

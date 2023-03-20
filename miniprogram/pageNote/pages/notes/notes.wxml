@@ -2,33 +2,17 @@
 <view class="container">
     <van-sticky> 
         <view class="top">
-            <view class="notelx-list" bindtap="changeClassify">
-                <view class="notelx-item {{active== '全部' ? 'lx-active' : ''}}" data-name="全部">全部</view>
-                <view class="notelx-item {{active== '分类1' ? 'lx-active' : ''}}" data-name="分类1">分类1</view>
-                <view class="notelx-item">分类2</view>
-                <view class="notelx-item">分类3</view>
-                <view class="notelx-item">分类4</view>
-                <view class="notelx-item">分类5</view>
-                <view class="notelx-item">分类6</view>
-                <view class="notelx-item">分类7</view>
+            <view class="notelx-list">
+                <view bindtap="changeClassify" class="notelx-item {{active== '全部' ? 'lx-active' : ''}}" data-name="全部">全部</view>
+                <view bindtap="changeClassify" wx:for="{{classifyList}}" wx:key="index" class="notelx-item {{active== item ? 'lx-active' : ''}}" data-name="{{item}}">{{item}}</view>
             </view>
         </view>
     </van-sticky>
     <view class="content">
-        <view class="note-item">
-            <view class="note-title">笔记题目</view>
-            <view class="note-content">我看见天空</view>
-            <view class="note-time">2023年9月15日</view>
-        </view>
-        <view class="note-item">
-            <view class="note-title">笔记题目</view>
-            <view class="note-content">我看见天空很蓝就像你在我身边</view>
-            <view class="note-time">2023年9月15日</view>
-        </view>
-        <view class="note-item">
-            <view class="note-title">笔记题目</view>
-            <view class="note-content">我看见天空很蓝就像你在我身边的温暖生命有太多遗憾人越成长越觉得孤单</view>
-            <view class="note-time">2023年9月15日</view>
+        <view class="note-item" wx:for="{{noteList}}" wx:key="index">
+            <view class="note-title">{{item.title}}</view>
+            <view class="note-content">{{item.content}}</view>
+            <view class="note-time">{{item.createtime}}</view>
         </view>
     </view>
 </view>

@@ -367,6 +367,20 @@
                     "query": "",
                     "launchMode": "default",
                     "scene": null
+                },
+                {
+                    "name": "",
+                    "pathName": "pageNote/pages/notedetail/notedetail",
+                    "query": "",
+                    "launchMode": "default",
+                    "scene": null
+                },
+                {
+                    "name": "",
+                    "pathName": "pageNote/pages/notes/notes",
+                    "query": "",
+                    "launchMode": "default",
+                    "scene": null
                 }
             ]
         }

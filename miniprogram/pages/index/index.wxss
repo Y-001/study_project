@@ -146,15 +146,15 @@
     font-size: 30rpx;
 }
 .jd-list{
-    /* overflow-x: scroll; */
+    overflow-x: scroll;
     display: flex;
-    flex-wrap: wrap;
+    /* flex-wrap: wrap; */
 }
 .jd-item{
     /* float: left; */
     margin-right: 2%;
     margin-top: 15rpx;
-    /* width: 160rpx; */
+    min-width: 160rpx;
     width: 23%;
     height: 220rpx;
     /* background-color: #667c70; */
@@ -162,7 +162,6 @@
     border-radius: 20rpx;
     display: flex;
     flex-direction: column;
-    
     justify-content: flex-end;
     color: #fff;
     overflow: hidden;
@@ -170,9 +169,11 @@
 .jd-item-con{
     margin: 10rpx;
     font-size: 34rpx;
+    /* font-weight: bold; */
 }
 .jd-item-autho{
-    font-size: 28rpx;
+    font-size: 22rpx;
+    /* font-weight: normal; */
 }
 .jb-item-bottom{
     font-size: 26rpx;

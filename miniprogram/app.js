@@ -15,8 +15,27 @@ App({
       });
     }
 
-    this.globalData = {};
+    this.globalData = {
+        firstIn:1,
+        onShow: 0, 
+        onHide: 0
+
+    };
   },
+
+  onShow(){ 
+    if(this.globalData.firstIn){
+        this.globalData.firstIn = 0; 
+    } else{ 
+        this.globalData.onShow = 1; 
+    } 
+}, 
+onHide(){ 
+    this.globalData.onHide = 1; 
+},
+
+
+
 
  onLoad(options) {
   var t = this

@@ -2,18 +2,41 @@
 <view class="container">
     <view class="top">
         <image class="top-item" src="../../images/icon_nd_yf.png"></image>
-        <image class="top-item" src="../../images/icon_nd_dh.png"></image>
+        <image bindtap="publish" class="top-item" src="../../images/icon_nd_dh.png"></image>
     </view>
     <view class="content">
         <view class="title">
-            <input type="text" placeholder="标题"/>
+            <input bindinput="changeTitle" value="{{title}}" type="text" placeholder="标题"/>
         </view>
         <view class="date">
-            <text class="date-month">2月28日</text>
-            <text class="data-time">10:40</text>
+            <text class="date-month">{{time.day}}</text>
+            <text class="data-time">{{time.min}}</text>
         </view>
-        <view class="body">
-            <textarea value="{{desc}}" bindinput="getDesc"  placeholder="开始书写"  id="" cols="25" rows="10"></textarea>
+        <view class="body"> 
+            <textarea value="{{content}}" bindinput="changeContent"  placeholder="开始书写"  id="" cols="25" rows="10"></textarea>
+        </view>
+        <!-- 上传图片 -->
+        <view class="upload">
+            <view class="upload-top">
+                <text>最多选择3张图片</text>
+                <text>{{imgList.length}}/3</text>
+            </view>
+            <view class="upload-list">
+                <view class="img-list" wx:for="{{imgList}}" wx:key="index">
+                    <image class="common" src="{{item}}"></image>
+                    <image data-index="{{index}}" bindtap="deleteImg" class="delete" src="../../images/delete.png"></image>
+                </view>
+                <image wx:if="{{imgList.length<3}}" bindtap="uploadImg" class="default" src="../../images/upload.png"></image>
+            </view>
+        </view>
+        <!-- 选择分类 -->
+        <view class="select">
+            <view class="text">请选择文章类别</view>
+            <view class="select-list">
+                <view wx:key="index" bindtap="changeClassify" data-name="{{item}}" wx:for="{{classifyList}}" class="select-item {{item==classify?'selected':''}}">{{item}}</view>
+                <input value="{{classifyA}}" bindinput="changeClassifyA" wx:if="{{inputShow}}" class="classify-input" type="text" placeholder="请输入你的分类"/>
+                <view class="select-item selected" bindtap="addClassify">{{inputShow ? '-':'+'}}</view>
+            </view>
         </view>
     </view>
 </view>

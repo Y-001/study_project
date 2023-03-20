@@ -15,12 +15,16 @@ Page({
         donetime:'',
         //已选择的收藏id
         select_id:'',
+        bookname:"",
+        bookid:'',
     },
     //选择计划书
     selectBook(e){
-        let {id}=e.currentTarget.dataset
+        let {id,bookname,bookid}=e.currentTarget.dataset
         this.setData({
-            select_id:id
+            select_id:id,
+            bookname,
+            bookid
         })
     },
     //两个input事件
@@ -53,13 +57,13 @@ Page({
     },
     //确认学习计划
     getPlan(){
-        let {select_id,studyday,studytime,donetime}=this.data
+        let {select_id,studyday,studytime,donetime,bookname,bookid}=this.data
         db.collection('users').where({
             _openid:wx.getStorageSync('openid')
         }).update({
             data:{
                 studyplan:{
-                    select_id,studyday,studytime,donetime,
+                    select_id,studyday,studytime,donetime,bookname,bookid,
                     createtime:new Date().getTime()
                 }
             }
