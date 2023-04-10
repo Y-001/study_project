@@ -18,6 +18,12 @@ Page({
         bookname:"",
         bookid:'',
     },
+    // 没有收藏经典的情况
+    toStore(){
+        wx.switchTab({
+          url: '/pages/store/store',
+        })
+    },
     //选择计划书
     selectBook(e){
         let {id,bookname,bookid}=e.currentTarget.dataset
@@ -57,7 +63,21 @@ Page({
     },
     //确认学习计划
     getPlan(){
+        if(this.data.starList.length==0){
+            wx.showToast({
+              title: '请先去收藏经典',
+              icon:'none'
+            })
+            return
+        }
         let {select_id,studyday,studytime,donetime,bookname,bookid}=this.data
+        if(!bookid){
+            wx.showToast({
+              title: '请选择经典',
+              icon:'none'
+            })
+            return
+        }
         db.collection('users').where({
             _openid:wx.getStorageSync('openid')
         }).update({
@@ -68,7 +88,7 @@ Page({
                 }
             }
         }).then(res=>{
-            console.log(res)
+            // console.log(res)
             wx.showToast({
               title: '添加成功',
               icon:'none'
@@ -90,6 +110,17 @@ Page({
             })
             this.setData({
                 starList:res.data
+            })
+            //获取学习计划列表
+            db.collection('users').where({
+                _openid:wx.getStorageSync('openid')
+            }).get().then(res=>{
+                if('studyplan' in res.data[0]){
+                    let {select_id,studyday,studytime,bookname,bookid} =res.data[0].studyplan
+                    this.setData({
+                        select_id,studyday,studytime,bookname,bookid,
+                    })
+                }
             })
         })
     },

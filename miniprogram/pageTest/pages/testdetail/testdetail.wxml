@@ -1,54 +1,61 @@
 <!--pages/testdetail/testdetail.wxml-->
 <view class="container">
-    <view class="title">本草纲目</view>
+    <view class="title">{{classify}}</view>
     <view class="use-list">
-        <view class="use-item" bindtap="toTxlx">
+        <view class="use-item" bindtap="toShunxu">
             <image class="use-img" src="../../images/test/test-shunxu.png"></image>
             <view class="use-right">
                 <view class="top">顺序练习</view>
                 <view class="bottom">试题顺序练习</view>
             </view>
         </view>
-        <view class="use-item">
+        <view class="use-item" bindtap="toExamBegin">
             <image class="use-img" src="../../images/test/test-test.png"></image>
             <view class="use-right">
                 <view class="top">模拟考试</view>
                 <view class="bottom">随机抽题仿真模拟</view>
             </view>
         </view>
-        <view class="use-item">
+        <view class="use-item" bindtap="toTxlx">
             <image class="use-img" src="../../images/test/test-tixing.png"></image>
             <view class="use-right">
                 <view class="top">题型练习</view>
                 <view class="bottom">按题型分类练习</view>
             </view>
         </view>
-        <view class="use-item">
+        <view class="use-item" bindtap="toErrorlist">
             <image class="use-img" src="../../images/test/test-error.png"></image>
             <view class="use-right">
                 <view class="top">错题集</view>
                 <view class="bottom">作答错误的题目</view>
             </view>
         </view>
-        <view class="use-item">
+        <view data-type="1" class="use-item" bindtap="toBeitu">
             <image class="use-img" src="../../images/test//test-shoucang.png"></image>
             <view class="use-right">
                 <view class="top">收藏夹</view>
                 <view class="bottom">收藏的题目</view>
             </view>
         </view>
-        <view class="use-item">
+        <view data-type="0" class="use-item" bindtap="toBeitu">
             <image class="use-img" src="../../images/test/test-beiti.png"></image>
             <view class="use-right">
                 <view class="top">背题模式</view>
                 <view class="bottom">题目顺序显示答案</view>
             </view>
         </view>
-        <view class="use-item" bindtap="toRanking">
+        <!-- <view class="use-item" bindtap="toRanking">
             <image class="use-img" src="../../images/test/test-sort.png"></image>
             <view class="use-right">
                 <view class="top">排行榜</view>
                 <view class="bottom">题目分类排行榜</view>
+            </view>
+        </view> -->
+        <view class="use-item" bindtap="starClassify">
+            <image class="use-img" src="../../images/test//test-shoucang.png"></image>
+            <view class="use-right">
+                <view class="top">{{isStarClassify?'已收藏':'收藏'}} </view>
+                <view class="bottom">收藏此题库</view>
             </view>
         </view>
     </view>

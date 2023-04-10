@@ -1,0 +1,24 @@
+/* pageHoutai/pages/daoh/daoh.wxss */
+.container{
+    box-sizing: border-box;
+    width: 100vw;
+    height: 100wh;
+    display: flex;
+    flex-direction: column;
+    /* justify-content: center; */
+    align-items: center;
+    padding-top: 300rpx;
+}
+.item{
+    width: 80%;
+    height: 50rpx;
+    background-color: #667c70;
+    color: #fff;
+    text-align: center;
+    margin-bottom: 50rpx;
+    padding: 20rpx;
+}
+
+
+
+

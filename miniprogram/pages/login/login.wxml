@@ -1,10 +1,22 @@
 <!--pages/login/login.wxml-->
-<view class="body">
-    <image class="logo" src="../../images/test_avater.jpg"></image>
-    <view class="container">
-        <input class="input" type="text" placeholder="请输入账号"/>
-        <input class="input" type="text" placeholder="请输入密码"/>
-        <text class="to-register" bindtap="toRegister">去注册</text>
-        <button class="login-btn" type="primary">登录</button>
+<view class="UCenter-bg">
+    <view class="body" bindtap="getMyUserInfo">
+        <image class="avatar img"  src="{{avatar}}" />
+        <text class="nickName">点击头像一键登录</text>
     </view>
 </view>
+<!-- 信息框 -->
+<van-dialog use-slot title="用于完善您的信息" show="{{ show }}" show-cancel-button  bind:close="onClose" bind:confirm="getUserInfo">
+    <view class="flexCenter">
+        <view class="head">
+            <text class="text">头像：</text>
+            <button class="avatar-wrapper right" open-type="chooseAvatar" bind:chooseavatar="onChooseAvatar" hover-class="none">
+                <image class="avatar" src="{{avatar}}"></image>
+            </button>
+        </view>
+        <view class="head">
+            <text class="text">昵称：</text>
+            <input class="right"  value="{{nickname}}" bindinput="userNameInput" placeholder="请输入昵称" />
+        </view>
+    </view>
+</van-dialog>

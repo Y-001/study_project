@@ -19,7 +19,7 @@
 }
 
 .use-item{
-    width: 40%;
+    width: 39%;
     border-radius: 10rpx;
     border: 1px solid #667c70;
     padding: 20rpx;

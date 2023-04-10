@@ -1,0 +1,51 @@
+/* pageNote/pages/daiban/daiban.wxss */
+/* pages/aaaa/aaaa.wxss */
+.todoPage{
+    width: 100%;
+    box-sizing: border-box;
+    padding: 0 20rpx;
+}
+.inputBox{
+    margin: 20rpx 0;
+    display: flex;
+    align-items: center;
+    border: 1rpx solid #ccc;
+    border-radius: 10rpx;
+    height: 90rpx;
+    box-sizing: border-box;
+    padding: 0 20rpx;
+}
+.inputBox>.iconBox{
+    font-size: 60rpx;
+    color: #ccc;
+    margin-right: 20rpx;
+}
+.contentBox{
+    border: 1rpx solid #ccc;
+    overflow: hidden;
+    border-radius: 10rpx;
+}
+.singleBox{
+    display: flex;
+    box-sizing: border-box;
+    height: 90rpx;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 20rpx;
+    
+    border-bottom: 1rpx solid #ccc;
+}
+.nameBox{
+    display: flex;
+}
+.footerBox{
+    display: flex;
+    margin-top: 30rpx;
+    justify-content: space-between;
+    align-items: center;
+    height: 100rpx;
+}
+.s{
+    text-decoration: line-through;
+}
+

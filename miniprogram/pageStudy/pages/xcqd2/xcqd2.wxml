@@ -1,0 +1,14 @@
+<!--pageStudy/pages/xcqd2/xcqd2.wxml-->
+<view class="context">
+    <view class="qd">
+        <view class="btn {{active?'active':''}}" bindtap="signup">
+            <view class="btn-top">{{active?'已签到':'签到'}}</view>
+            <view class="btn-center"></view>
+            <view class="btn-bottom">已签{{num}}天</view>
+        </view>
+    </view>
+    <!-- //list:['2023-3-1','2023-3-3'] //已签的日期 -->
+    <view class="calendar">
+        <calendar lists="{{list}}"></calendar>
+    </view>
+</view>

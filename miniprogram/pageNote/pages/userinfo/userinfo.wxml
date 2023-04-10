@@ -1,0 +1,67 @@
+<!--pageNote/pages/userinfo/userinfo.wxml-->
+<view class="container">
+    <view class="top">
+        <image class="avatar" src="{{userInfo.avatar}}"></image>
+    </view>
+    <view class="card">
+        <view class="title">基本信息</view>
+        <view class="info">
+            <view class="left">昵称</view>
+            <view class="right">{{userInfo.nickName}}</view>
+        </view>
+    </view>
+    <view class="card">
+        <view class="title">可选信息</view>
+        <view class="info">
+            <view class="left">生日</view>
+            <view class="right">{{birthday}}</view>
+        </view>
+        <view class="info">
+            <view class="left">个性签名</view>
+            <view class="right">{{geqian}}</view>
+        </view>
+        <view class="info">
+            <view class="left">学习决心</view>
+            <view class="right">{{juexin}}</view>
+        </view>
+    </view>
+    <view class="btn" bindtap="toEdit">修改</view>
+</view>
+<van-dialog
+  use-slot
+  title="修改信息"
+  show="{{ show }}"
+  show-cancel-button
+  bind:close="onClose"
+  bind:confirm="getUserInfo"
+>
+<van-cell-group>
+  <!-- <van-field
+  model:value="{{ nickName }}"
+    required
+    clearable
+    label="昵称"
+    placeholder="请输入昵称"
+  /> -->
+
+  <van-field
+  model:value="{{ birthday }}"
+    center
+    clearable
+    label="生日"
+    placeholder="2019/3/24"
+    border="{{ false }}"
+  >
+  </van-field>
+  <van-field
+  model:value="{{ geqian }}"
+    label="个性签名"
+    placeholder="请输入您的个性签名"
+  />
+  <van-field
+  model:value="{{ juexin }}"
+    label="学习决心"
+    placeholder="请输入您的学习决心"
+  />
+</van-cell-group>
+</van-dialog>

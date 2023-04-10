@@ -1,0 +1,25 @@
+/* pageHoutai/pages/editbank/editbank.wxss */
+.container{
+    width: 100vw;
+    box-sizing: border-box;
+    padding: 20rpx;
+}
+.claaify{
+    margin: 20rpx 0;
+}
+.type{
+    margin: 30rpx 0;
+}
+.kongxie{
+    font-size: 34rpx;
+    color: #667c70;
+    margin: 20rpx 0;
+}
+.btn{
+    width: 80%;
+    margin: 30rpx auto;
+    background-color: #667c70;
+    text-align: center;
+    color: #fff;
+    padding: 15rpx;
+}

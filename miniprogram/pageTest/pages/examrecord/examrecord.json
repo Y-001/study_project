@@ -1,0 +1,6 @@
+{
+    "usingComponents": {
+        "ProblemItemRecord":"../../../components/ProblemItemRecord/ProblemItemRecord",
+        "van-popup": "@vant/weapp/popup/index"
+    }
+}

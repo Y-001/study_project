@@ -1,0 +1,37 @@
+/* pageTest/pages/exambegin/exambegin.wxss */
+.container{
+    box-sizing: border-box;
+    width: 100vw;
+    height: 100vh;
+    padding: 30rpx;
+}
+.card{
+    box-sizing: border-box;
+background-color: #fff;
+padding: 35rpx;
+border-radius: 20rpx;
+}
+.rule{
+    display: flex;
+    margin: 30rpx 0;
+}
+.left{
+    flex:1;
+    text-align: center;
+    color: rgb(155, 155, 155);
+}
+.right{
+    flex: 2;
+}
+.btn{
+    margin: 30rpx auto;
+    background-color: #667c70;
+    color: #fff;
+    width: 80%;
+    text-align: center;
+    padding: 15rpx;
+    border-radius: 30rpx;
+}
+
+
+

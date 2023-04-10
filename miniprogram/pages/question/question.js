@@ -1,24 +1,54 @@
 // pages/question/question.js
+const db=wx.cloud.database()
+const _=db.command
 Page({
 
     /**
      * 页面的初始数据
      */
     data: {
-        background: ['../../images/book_lb1.jpg', '../../images/book_lb2.jpg', '../../images/book_lb3.jpg'],
-
+        background: ['cloud://project-4gak2jnr9bdf0df2.7072-project-4gak2jnr9bdf0df2-1307359075/swiper/book_lb1.jpg', 'cloud://project-4gak2jnr9bdf0df2.7072-project-4gak2jnr9bdf0df2-1307359075/swiper/book_lb2.jpg', 'cloud://project-4gak2jnr9bdf0df2.7072-project-4gak2jnr9bdf0df2-1307359075/swiper/book_lb3.jpg'],
+        // 我的题库
+        classifyList:[],
+        mingyan:'名言警句： 锲而舍之,朽木不折,锲而不舍,金石可镂。 加油啊！中医人'
     },
     toSelectwarehouse(e){
         wx.navigateTo({
           url: '/pageTest/pages/selectwarehouse/selectwarehouse',
         })
     },
+    // 去题库详情
+    toTestdetail(e){
+        let {item} = e.currentTarget.dataset;
+        wx.navigateTo({
+            url: '/pageTest/pages/testdetail/testdetail?classify='+encodeURIComponent(item.classify),
+          })
+    },
+    // 去排行榜
+    toRanking(){
+        wx.navigateTo({
+          url: '/pageTest/pages/ranking/ranking',
+        })
+    },
+    // 去考试记录
+    toRecordList(){
+        wx.navigateTo({
+          url: '/pageTest/pages/recordlist/recordlist',
+        })
+    },
+    // 去答题数据
+    toAnswerData(){
+        wx.navigateTo({
+            url: '/pageTest/pages/answerdata/answerdata',
+          })
+    },
+    // 刷新页面数据
 
     /**
      * 生命周期函数--监听页面加载
      */
     onLoad(options) {
-
+        
     },
 
     /**
@@ -32,7 +62,20 @@ Page({
      * 生命周期函数--监听页面显示
      */
     onShow() {
-
+        db.collection('users').where({
+            _openid:wx.getStorageSync('openid')
+        }).get().then(res=>{
+            if(res.data[0].question){
+                this.setData({
+                    classifyList:res.data[0].question.starClassify
+                })
+            }
+            if(res.data[0].geqian){
+                this.setData({
+                    mingyan:res.data[0].geqian
+                })
+            }
+        })
     },
 
     /**

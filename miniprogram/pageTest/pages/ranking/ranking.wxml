@@ -1,29 +1,14 @@
 <!--pages/ranking/ranking.wxml-->
 <view class="container">
-    <view class="ranking-list">
-        <view class="ranking-item">
+    <view wx:if="{{userSorce.length==0}}">暂时没有排名......</view>
+    <view wx:else class="ranking-list">
+        <view class="ranking-item" wx:for="{{userSorce}}" wx:key="index">
             <view class="left">
-                <view class="rank">1</view>
-                <image class="avatar" src="../../images/test_img3.jpg"></image>
-                <view class="text">小羊崽</view>
+                <view class="rank">{{index+1}}</view>
+                <image class="avatar" src="{{item.userInfo.avatar}}"></image>
+                <view class="text">{{item.userInfo.nickName}}</view>
             </view>
-            <view class="right">获得<text class="color">10</text>分</view>
-        </view>
-        <view class="ranking-item">
-            <view class="left">
-                <view class="rank">2</view>
-                <image class="avatar" src="../../images/test_img3.jpg"></image>
-                <view class="text">小羊崽</view>
-            </view>
-            <view class="right">获得<text class="color">10</text>分</view>
-        </view>
-        <view class="ranking-item">
-            <view class="left">
-                <view class="rank">3</view>
-                <image class="avatar" src="../../images/test_img3.jpg"></image>
-                <view class="text">小羊崽</view>
-            </view>
-            <view class="right">获得<text class="color">10</text>分</view>
+            <view class="right">获得<text class="color">{{item.score}}</text>分</view>
         </view>
     </view>
 </view>

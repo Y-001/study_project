@@ -17,8 +17,14 @@ Page({
         this.setData({
             active
         })
+        wx.showLoading({
+          title: '加载中',
+        })
         if(active=='全部'){
             this.onLoad()
+            wx.hideLoading({
+              success: (res) => {},
+            })
         }else{
             db.collection('notes').where({
                 _openid:wx.getStorageSync('openid'),
@@ -30,13 +36,17 @@ Page({
                 this.setData({
                     noteList:res.data
                 })
+                wx.hideLoading({
+                    success: (res) => {},
+                  })
             })
         }
         
     },
     toNotedetail(e){
+        let {id}=e.currentTarget.dataset
         wx.navigateTo({
-          url: '/pageNote/pages/notedetail/notedetail',
+          url: '/pageNote/pages/notedetail/notedetail?id='+id,
         })
     },
 
@@ -74,7 +84,7 @@ Page({
      * 生命周期函数--监听页面显示
      */
     onShow() {
-
+        this.onLoad()
     },
 
     /**

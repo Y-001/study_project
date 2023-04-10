@@ -1,0 +1,16 @@
+<!--pageHoutai/pages/tbank/tbank.wxml-->
+<view class="container">
+    <van-cell title="{{item.title}}" label="{{item.classify}}" wx:for="{{testList}}" wx:key="index">
+        <van-icon data-id="{{item._id}}" bindtap="editTest" slot="right-icon" name="edit" class="custom-icon" />
+    </van-cell>
+</view>
+<!-- 加号 -->
+<view data-id="0" class="toNotes" bindtap="editTest">
+    <image class="note-icon" src="../../images/note_add.png"></image>
+</view>
+
+
+
+
+
+

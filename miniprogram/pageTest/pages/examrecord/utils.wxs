@@ -1,0 +1,64 @@
+// 需要注意:
+// 1.不支持let，const
+// 2.不支持箭头函数
+var filter = {
+    answerStatus: function (answerArr,index) {
+        var res=2
+        answerArr.forEach(function(item){
+            if(item.index==index){
+                res=Number(item.value)
+            }
+        })
+        return res
+    },
+    typeName:function(type){
+        var str=''
+        if(type==0){
+            str='单选题'
+        }
+        if(type==1){
+            str='多选题'
+        }
+        if(type==2){
+            str='判断题'
+        }
+        if(type==3){
+            str='填空题'
+        }
+        return str
+    },
+    daanNum:function(answerArr,index){
+        var num=0
+        if(index==1){
+            answerArr.forEach(function(item){
+                if(item.value==true){
+                    num++
+                }
+            })
+        }
+        if(index==0){
+            answerArr.forEach(function(item){
+                if(item.value==false){
+                    num++
+                }
+            })
+        }
+        return num
+    },
+    jisuanIndex:function(answerArr,curIndex){
+        var num=-1
+        for(var i=0;i<answerArr.length;i++){
+            if(answerArr[i].index==curIndex){
+                num=i
+            }
+        }
+        return num
+    },
+}
+// 导出方法
+module.exports = {
+    answerStatus: filter.answerStatus,
+    typeName:filter.typeName,
+    daanNum:filter.daanNum,
+    jisuanIndex:filter.jisuanIndex
+}

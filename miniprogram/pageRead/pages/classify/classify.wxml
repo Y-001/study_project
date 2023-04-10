@@ -3,14 +3,9 @@
     <van-tabs active="{{ active }}" bind:change="onChange" color="#667c70">
         <van-tab title="经论" name="经论"></van-tab>
         <van-tab title="本草" name="本草"></van-tab>
-        <van-tab title="方药"></van-tab>
-        <van-tab title="经络"></van-tab>
-        <van-tab title="针灸"></van-tab>
-        <van-tab title="医论"></van-tab>
-        <van-tab title="医案"></van-tab>
-        <van-tab title="妇幼"></van-tab>
-        <van-tab title="四诊"></van-tab>
-        <van-tab title="伤科"></van-tab>
+        <van-tab title="方言" name="方言"></van-tab>
+        <van-tab title="针灸" name="针灸"></van-tab>
+        <van-tab title="医论" name="医论"></van-tab>
     </van-tabs>
     <view class="show">
         <BookList data-id="{{item._id}}" wx:for="{{books}}" wx:key="index" item="{{item}}" bindtap="toDetail"></BookList>

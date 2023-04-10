@@ -63,15 +63,18 @@
     position: relative;
 }
 .book-img-text{
-    /* box-sizing: border-box; */
+    box-sizing: border-box;
     background-color: #fff;
     padding: 5rpx;
     position: absolute;
     color: #000;
     z-index: 99;
-    writing-mode: vertical-lr;
-    width: 30%;
-    height: 60%;
+    /* writing-mode: vertical-lr; */
+    font-size: 40rpx;
+    line-height: 40rpx;
+    width: 45rpx;
+    height: 160rpx;
+    overflow: hidden;
     top: 50%;
     left: 50%;
     transform: translateX(-50%);

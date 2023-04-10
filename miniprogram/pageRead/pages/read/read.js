@@ -1,7 +1,9 @@
-import { dateFormat } from '../../../utils/index'
-const db = wx.cloud.database()
-const _ = db.command
-let way=''
+import { dateFormat } from '../../../utils/index';
+const db = wx.cloud.database();
+const _ = db.command;
+var way='';
+var newBookId='';
+var isStar=false;
 
 var startTime,
     endTime,
@@ -35,12 +37,12 @@ Page({
         /* 加入书架 */
         star: [
             {
-                icon: '../../images/read-dui.png',
-                text: '已收藏'
-            },
-            {
                 icon: '../../images/read-add.png',
                 text: '加入收藏'
+            },
+            {
+                icon: '../../images/read-dui.png',
+                text: '已收藏'
             }
         ],
         /* 打开目录 */
@@ -248,13 +250,17 @@ Page({
      * 生命周期函数--监听页面加载
      */
     onLoad: function (options) {
-        console.log(options)
+        // console.log(options)
         let id = options.id
+         newBookId=id
          way = options.way
         //获取书籍详情
         db.collection('booklists').doc(id).get().then(res => {
             let name = res.data.name
             res.data.name = name.match(/《(.*?)》/g)[0].replace("《", '').replace("》", '')
+            let lastname=res.data.name
+            let desc=res.data.desc
+            res.data.desc=desc.replace(/。/g,'。\n&nbsp;&nbsp;').replace(/<*strong>/g,'')
             this.setData({
                 book: res.data,
                 content: res.data.desc
@@ -266,6 +272,26 @@ Page({
                     //todo 显示错误页面
                 }
             });
+            //添加最近阅读
+            db.collection('users').where({
+                _openid:wx.getStorageSync('openid')
+            }).get().then(res=>{
+                if('lastRead' in res.data[0]){
+                    if(res.data[0].lastRead.indexOf(lastname)>=0) return
+                    res.data[0].lastRead.push(lastname)
+                }else{
+                    res.data[0].lastRead=[lastname]
+                }
+                db.collection('users').where({
+                    _openid:wx.getStorageSync('openid')
+                }).update({
+                    data:{
+                        lastRead:res.data[0].lastRead
+                    }
+                }).then(res=>{
+                    console.log('添加最近阅读成功')
+                })
+            })
             //获取书籍目录
             if (this.data.bookchapter.length <= 0) {
                 db.collection('bookchapters').orderBy('no', 'asc').where({
@@ -278,6 +304,10 @@ Page({
                         //大小写不区分
                     })
                 }).get().then(res => {
+                    res.data.forEach(item=>{
+                        let content=item.content
+                        item.content=content.replace(/。/g,'。\n&nbsp;&nbsp;').replace(/<*strong>/g,'')
+                    })
                     // console.log(res)
                     this.setData({
                         bookchapter: res.data,
@@ -293,6 +323,7 @@ Page({
                 .then(res => {
                     // console.log(res)
                     if (res.data.length > 0) {
+                        isStar=true
                         const star = this.data.star;
                         let last = star.pop()
                         star.unshift(last)
@@ -357,9 +388,23 @@ Page({
                 day,
                 progress:false
             }
+            console.log(stayTime)
             // console.log(calendar)
             //这里获取到页面停留时间stayTime，然后了可以上报了
-            if(stayTime>5){
+            if(stayTime>2){
+                //把停留时间放在收藏中
+            if(isStar){
+                db.collection('bookstars').where({
+                    bookid:newBookId
+                }).update({
+                    data:{
+                        studytime:_.inc(stayTime)
+                    }
+                }).then(res=>{
+                    console.log('更新收藏图书的停留时间'+stayTime)
+                })
+            }
+            //把停留时间放在学习计划中
                 if (way == '3') {
                     let isSomeDay=-1
                     db.collection('users').where({
@@ -415,9 +460,9 @@ Page({
     /**
      * 生命周期函数--监听页面卸载
      */
-    onUnload: function () {
+    onUnload:  async function () {
         console.log('read页面卸载')
-        setTimeout(function () {
+         setTimeout( function () {
             endTime = +new Date();
             console.log("demo页面停留时间：" + (endTime - startTime))
             // var stayTime = endTime - startTime;
@@ -428,9 +473,22 @@ Page({
                 day,
                 progress:false
             }
-            // console.log(calendar)
+            console.log(stayTime)
             //这里获取到页面停留时间stayTime，然后了可以上报了
-            if(stayTime>5){
+            if(stayTime>2){
+                //把停留时间放在收藏中
+            if(isStar){
+                db.collection('bookstars').where({
+                    bookid:newBookId
+                }).update({
+                    data:{
+                        studytime:_.inc(stayTime)
+                    }
+                }).then(res=>{
+                    console.log('更新收藏图书的停留时间'+stayTime)
+                })
+            }
+            //把停留时间放在学习计划中
                 if (way == '3') {
                     let isSomeDay=-1
                     db.collection('users').where({
@@ -480,6 +538,16 @@ Page({
                 }
             }
         }, 100)
+        
+        // 获取当前页面
+        // const pages = getCurrentPages();
+        // // 获取上一级页面
+        // const beforePage = pages[pages.length - 2];
+        
+        // beforePage.setData({ //直接修改上个页面的数据（可通过这种方式直接传递参数）
+        //     backRefresh: true  //函数封装，传值为true时调接口刷新页面
+        // })
+
     },
 
     /**

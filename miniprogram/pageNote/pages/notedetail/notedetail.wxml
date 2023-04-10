@@ -1,7 +1,8 @@
 <!--pages/publish/publish.wxml-->
-<view class="container">
+<view class="container" style="background-color: {{getColor}};">
     <view class="top">
-        <image class="top-item" src="../../images/icon_nd_yf.png"></image>
+        <image class="top-item" src="../../images/icon_nd_yf.png" bindtap="onOpenYiFu"></image>
+        <image wx:if="{{id!=0}}" class="top-item" src="../../images/delete.png" bindtap="toDelete"></image>
         <image bindtap="publish" class="top-item" src="../../images/icon_nd_dh.png"></image>
     </view>
     <view class="content">
@@ -23,10 +24,10 @@
             </view>
             <view class="upload-list">
                 <view class="img-list" wx:for="{{imgList}}" wx:key="index">
-                    <image class="common" src="{{item}}"></image>
-                    <image data-index="{{index}}" bindtap="deleteImg" class="delete" src="../../images/delete.png"></image>
-                </view>
-                <image wx:if="{{imgList.length<3}}" bindtap="uploadImg" class="default" src="../../images/upload.png"></image>
+                    <image bindtap="changePreview" data-src="{{item}}" class="common" src="{{item}}"></image>
+                    <image wx:if="{{!id}}" data-index="{{index}}" bindtap="deleteImg" class="delete" src="../../images/delete.png"></image>
+                </view> 
+                <image wx:if="{{imgList.length<3 && id==0}}" bindtap="uploadImg" class="default" src="../../images/upload.png"></image>
             </view>
         </view>
         <!-- 选择分类 -->
@@ -39,4 +40,10 @@
             </view>
         </view>
     </view>
+    <!-- 换皮肤 -->
+    <van-popup show="{{ showYiFu }}" bind:close="onCloseYiFu" position="bottom"custom-style="height: 30%;">
+        <view class="popup-content">
+            <view bindtap="chooseBg" data-color="{{item}}" class="popup-item {{item==getColor?'yifu-active':''}}" style="background-color: {{item}};" wx:for="{{bglist}}" wx:key="index"></view>
+        </view>
+    </van-popup>
 </view>

@@ -1,0 +1,23 @@
+<!--pageTest/pages/examresult/examresult.wxml-->
+<view class="container">
+    <view class="topbg"></view>
+    <view class="body">
+        <view class="title">初级技能</view>
+        <view class="head">
+            <view class="name">
+                <image class="name-img" src="{{userInfo.avatar}}" alt="" />
+                <text>{{userInfo.nickName}}</text>
+            </view>
+            <view class="sroce"><text class="bigf">{{score}}</text>分</view>
+        </view>
+        <view class="table">
+            <view class="item">用时</view>
+            <view class="item">正确数</view>
+            <view class="item">正确率</view>
+            <view class="item">{{usetime}}</view>
+            <view class="item">{{rightnum}}</view>
+            <view class="item">{{rightrate}}%</view>
+        </view>
+    </view>
+    <view class="btn" bindtap="toExamRecord">查看答案解析</view>
+</view>

@@ -1,38 +1,60 @@
-/* pages/login/login.wxss */
-.body{
+.UCenter-bg {
+    box-sizing: border-box;
+    width: 100%;
+    padding-top: 80rpx;
+}
+
+.body {
+    margin: 0 auto;
+    height: 500rpx;
+    width: 90%;
+    border-radius: 20rpx;
+    background-color: #667c70;
+    display: flex;
+    flex-direction: column;
+    /* justify-content: center; */
+    align-items: center;
+}
+.img{
+    margin-top: 100rpx;
+}
+.nickName{
+    margin-top: 20rpx;
+    color: #fff;
+}
+
+/* 模态框 */
+
+.flexCenter {
+    padding: 20rpx;
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding-top: 100rpx;
-
 }
-.logo{
+
+.head {
+    width: 90%;
+    box-sizing: border-box;
+    padding: 20rpx;
+    display: flex;
+    align-items: center;
+    /* justify-content: center; */
+}
+.text{
+    flex: 1;
+}
+.right{
+    flex: 2;
+}
+
+.avatar-wrapper {
+    margin: 0;
+    background-color: transparent;
+    padding: 0;
+}
+
+.avatar {
     width: 150rpx;
     height: 150rpx;
     border-radius: 50%;
 }
-
-.container{
-    width: 75%;
-    margin-top: 50rpx;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-.input{
-    width: 100%;
-    border-bottom: 2rpx solid #aaa;
-    margin-top: 60rpx;
-}
-.to-register{
-    margin-right: auto;
-    color: red;
-    margin-top: 30rpx;
-}
-.login-btn{
-    width: 90% !important;
-    margin-top: 80rpx;
-    border-radius: 40rpx;
-}
-
-

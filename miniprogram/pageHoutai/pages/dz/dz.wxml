@@ -1,0 +1,4 @@
+<!--pageHoutai/pages/dz/dz.wxml-->
+<view class="container">
+    <view wx:if="{{showBtns}}" bindtap="toDati">开始对战</view>
+</view>

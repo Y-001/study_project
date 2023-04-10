@@ -57,11 +57,11 @@
                     </view>
                     <text class="classify-item-text">本草</text>
                 </view>
-                <view class="classify-list-item" data-classify="方药">
+                <view class="classify-list-item" data-classify="方言">
                     <view class="classify-item-bimg color3">
-                        <image data-classify="方药" class="classify-item-img" src="../../images/store/store-fangyao.png"></image>
+                        <image data-classify="方言" class="classify-item-img" src="../../images/store/store-fangyao.png"></image>
                     </view>
-                    <text class="classify-item-text">方药</text>
+                    <text class="classify-item-text">方言</text>
                 </view>
                 <view class="classify-list-item">
                     <view class="classify-item-bimg color4">
@@ -81,7 +81,7 @@
         <view class="like recommend">
             <view class="rec-title">猜你喜欢</view>
             <view class="line"></view>
-            <view class="like-list" wx:for="{{hotBooksList}}" wx:key="index">
+            <view class="like-list" wx:for="{{likeBooksList}}" wx:key="index">
                 <BookList data-id="{{item._id}}" item="{{item}}" bindtap="toDetail"></BookList>
             </view>
         </view>

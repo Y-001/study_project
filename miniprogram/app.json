@@ -5,19 +5,25 @@
         "pages/store/store",
         "pages/question/question",
         "pages/me/me",
-        "pages/talk/talk",
-        "pages/talkdetail/talkdetail",
-        "pages/talkme/talkme",
-        "pages/login/login",
-        "pages/register/register"
+        "pages/login/login"
     ],
     "subPackages": [
+        {
+            "root": "pageHoutai",
+            "pages": [
+                "pages/dz/dz",
+                "pages/tbank/tbank",
+                "pages/daoh/daoh",
+                "pages/tclassify/tclassify",
+                "pages/editbank/editbank"
+            ]
+        },
         {
             "root": "pageStudy",
             "pages": [
                 "pages/xcsj/xcsj",
-                "pages/xcqd/xcqd",
-                "pages/xcjh/xcjh"
+                "pages/xcjh/xcjh",
+                "pages/xcqd2/xcqd2"
             ]
         },
         {
@@ -39,22 +45,25 @@
                 "pages/ranking/ranking",
                 "pages/problem/problem",
                 "pages/txlx/txlx",
-                "pages/beiti/beiti"
+                "pages/beiti/beiti",
+                "pages/shunxu/shunxu",
+                "pages/errorlist/errorlist",
+                "pages/exam/exam",
+                "pages/examresult/examresult",
+                "pages/exambegin/exambegin",
+                "pages/examrecord/examrecord",
+                "pages/recordlist/recordlist",
+                "pages/answerdata/answerdata"
             ]
         },
-        {
-            "root": "pageTalk",
-            "pages": [
-                "pages/talkdetail/talkdetail",
-                "pages/talkme/talkme",
-                "pages/publish/publish"
-            ]
-        },
+        
         {
             "root": "pageNote",
             "pages": [
                 "pages/notes/notes",
-                "pages/notedetail/notedetail"
+                "pages/notedetail/notedetail",
+                "pages/userinfo/userinfo",
+                "pages/daiban/daiban"
             ]
         }
     ],

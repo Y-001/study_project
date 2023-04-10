@@ -1,4 +1,5 @@
 // pages/detail/detail.js
+import { dealComment, generateUuid,dateFormat } from '../../../utils/index'
 const db = wx.cloud.database()
 const _ = db.command
 let timer = null;
@@ -8,17 +9,20 @@ Page({
      * 页面的初始数据
      */
     data: {
-        status: {
-            /* 是否展示底部弹出层 */
-            write: false,
-            //发布按钮是否出现
-            submit: false,
-            // 回复或者投诉
-            applyShow: false,
-            //查看全部评论
-            commentShow: false
-        },
-        dianzanIcon:[
+        //父评论
+        fatherRoot: 'root',
+        //各个状态值
+
+        /* 是否展示底部弹出层 */
+        write: false,
+        //发布按钮是否出现
+        submit: false,
+        // 回复或者投诉
+        applyShow: false,
+        //查看全部评论
+        commentShow: false,
+
+        dianzanIcon: [
             {
                 icon: '../../images/dianzan.png',
                 text: '点赞'
@@ -29,6 +33,7 @@ Page({
             }
         ],
         openid: '',
+        //评论的内容
         comment: "",
         addBookshelfIcon: [
             {
@@ -40,7 +45,35 @@ Page({
                 text: '从收藏移除'
             }
         ],
-        book: {}
+        book: {},
+        //评论列表
+        commentList: [],
+        //当前点击的评论 需要回复的
+        newComment: {},
+        //当前点击查看的评论
+        lookComment: {}
+
+    },
+    // 点赞操作
+    dianzan(e){
+        let {commentid}=e.currentTarget.dataset;
+        console.log(commentid)
+        db.collection('booklists').where({
+            comments:{
+                commentid:commentid
+            }
+        }).update({
+            data:{
+                'comments.$.likenum': _.inc(1),
+                'comments.$.likeuserlist': _.push(wx.getStorageSync('openid'))
+            }
+        }).then(res=>{
+            wx.showToast({
+              title: '点赞成功',
+              icon:'none'
+            })
+            this.getBookInfo()
+        })
     },
     /* 加入书架操作 */
     addBookshelf(e) {
@@ -106,33 +139,107 @@ Page({
     },
     /* 发布评论按钮 */
     submiteComment(e) {
-        this.onClose()
+        let { fatherRoot, comment, book } = this.data;
+        if (this.data.newComment['commentid']) {
+            fatherRoot = this.data.newComment.commentid
+        }
+        let commentid = generateUuid()
+        this.onCloseWrite();
+        if (!comment) {
+            wx.showToast({
+                title: '请填写评论内容',
+                icon: 'none'
+            })
+            return
+        }
+        let userInfo = JSON.parse(wx.getStorageSync('userInfo'))
+        let openid = wx.getStorageSync('openid')
+        let time = new Date().getTime()
+        let likenum = 0
+        let likeuserlist=[]
+        let bookid = book._id
+        let params = {
+            fatherRoot,
+            openid,
+            time,
+            likenum,
+            comment,
+            nickname: userInfo.nickName,
+            avatar: userInfo.avatar,
+            commentid,
+            likeuserlist
+        }
+        let param = []
+        db.collection('booklists').doc(bookid).get().then(res => {
+            if (!res.data['comments']) {
+                param.push(params)
+            } else {
+                res.data.comments.push(params)
+                param = res.data.comments
+            }
+            db.collection('booklists').doc(bookid).update({
+                data: {
+                    comments: param
+                }
+            }).then(res => {
+                wx.showToast({
+                    title: '评论成功',
+                    icon: 'none'
+                })
+                this.getBookInfo()
+            })
+        })
+    },
+    // 获取书籍信息
+    getBookInfo(){
+        //获取书籍详细信息
+        db.collection('booklists').doc(this.data.book._id).get().then(res => {
+            let list = dealComment(res.data.comments)
+            console.log(list)
+            this.setData({
+                commentList: list
+            })
+        })
     },
     /* input写评论 */
     writeComment(e) {
-        //console.log(e.detail.value)
+        // console.log(e.detail.value)
+        let comment = e.detail.value
         if (timer) clearTimeout(timer);
         timer = setTimeout(() => {
             this.setData({
                 submit: true,
-                comment: e.detail.value
+                comment
             })
-        }, 1000)
+        }, 300)
     },
     /* 展示弹出层 */
     showWrite(e) {
         this.setData({
-            write: true
+            write: true,
+            applyShow: false,
+            commentShow: false
         })
     },
-    openApply(){
+    // 回复
+    openApply(e) {
+        let { root } = e.currentTarget.dataset
         this.setData({
-            applyShow:true
+            applyShow: true,
+            write: false,
+            commentShow: false,
+            newComment: root
         })
     },
-    openComment(){
+    // 查看
+    openComment(e) {
+        let { comment } = e.currentTarget.dataset
+        // console.log(comment)
         this.setData({
-            commentShow:true
+            commentShow: true,
+            write: false,
+            applyShow: false,
+            lookComment: comment
         })
     },
     /* 关闭弹出层 */
@@ -143,14 +250,14 @@ Page({
             comment: ''
         });
     },
-    onCloseApply(){
+    onCloseApply() {
         this.setData({
-            applyShow:false
+            applyShow: false
         })
     },
-    onCloseComment(){
+    onCloseComment() {
         this.setData({
-            commentShow:false
+            commentShow: false
         })
     },
 
@@ -187,7 +294,16 @@ Page({
                         })
                     }
                 })
+            //输出评论格式化后的
+            console.log('评论啊')
+            // console.log(res.data.comments)
+            let list = dealComment(res.data.comments)
+            console.log(list)
+            this.setData({
+                commentList: list
+            })
         })
+
 
     },
 

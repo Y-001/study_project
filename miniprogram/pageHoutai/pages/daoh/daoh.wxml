@@ -1,0 +1,5 @@
+<!--pageHoutai/pages/daoh/daoh.wxml-->
+<view class="container">
+    <view class="item" bindtap="toTclassify">题库分类管理</view>
+    <view class="item" bindtap="toTbank">题库管理</view>
+</view>

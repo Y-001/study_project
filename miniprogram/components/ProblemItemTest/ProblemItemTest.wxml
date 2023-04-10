@@ -1,0 +1,59 @@
+<!--pages/problem/problem.wxml-->
+<wxs module='filter' src='./utils.wxs'></wxs>
+<view class="container">
+    <!-- 题目卡片 -->
+    <view class="testblock">
+        <view class="top">
+            <view class="classify">{{filter.typeName(testlist[currentIndex].type)}}</view>
+            <view class="num"><text class="num-color">{{currentIndex+1}}</text>/{{testlist.length}}</view>
+        </view>
+        <view class="line"></view>
+        <view class="problem">
+            <view class="title">{{testlist[currentIndex].title}}</view>
+            <view wx:if="{{testlist[currentIndex].type!=3}}" class="answer-list">
+                <!-- <view class="answer-item select-right">
+                    A 10s
+                </view>
+                <view class="answer-item select-error">
+                    B 10s
+                </view>
+                <view class="answer-item select-selected">
+                    C 10s {{item==nowOption ? resultIcon?'select-right':'select-error' :''}}
+                </view> -->
+                <view class="answer-item {{nowOption.code==item.code ? resultIcon?'select-right':'select-error' :''}}" data-option="{{item}}" bindtap="getAnswer"  wx:for="{{testlist[currentIndex].options}}" wx:key="index">
+                    {{item.code}} {{item.content}}
+                </view>
+            </view>
+            <view wx:else class="answer-kong">
+                <textarea class="kong" bindinput="getKongVal" maxlength='50' value="{{kongVal}}" class="kong" type="text" placeholder="请输入您的答案"></textarea>
+                <view class="kong-btn" bindtap="getKongAnswer">提交</view>
+            </view>
+        </view>
+    </view>
+    <!-- 答案卡片 -->
+    <view class="key" wx:if="{{showAnswer}}">
+        <view class="{{resultIcon ? 'key-type-right' : 'key-type-error'}}">
+            {{resultIcon ? '回答正确': '回答错误'}}
+        </view>
+        <view class="key-body">
+            <view class="key-top">
+                <view class="key-key">
+                    <view class="gray-text">正确答案:</view>
+                    <view class="color-text">{{testlist[currentIndex].answer}}</view>
+                </view>
+                <view class="key-key">
+                    <view class="gray-text">您的答案:</view>
+                    <view class="color-text">{{nowOption.code || kongVal}}</view>
+                </view>
+            </view>
+            <view class="key-desc">
+                <view class="desc-top">
+                    参考解析：
+                </view>
+                <view class="desc-body">
+                    {{testlist[currentIndex].analysis}}
+                </view>
+            </view>
+        </view>
+    </view>
+</view>

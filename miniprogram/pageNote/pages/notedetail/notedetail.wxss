@@ -2,6 +2,25 @@
 .container{
     background-color: #fff;
     height: 100vh;
+    /* height: 100%; */
+    padding-bottom: 20rpx;
+}
+/* 弹窗 */
+.popup-content{
+    height: 100%;
+    box-sizing: border-box;
+    padding: 20rpx;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+.popup-item{
+    width: 15%;
+    height: 80%;
+    box-shadow: 0 0 5rpx #ccc;
+}
+.yifu-active{
+    border: 1rpx solid #667c70;
 }
 /* 顶部 */
 .top{
@@ -21,8 +40,12 @@
     padding: 20rpx;
 }
 .title{
+    /* box-sizing: border-box; */
+    padding: 10rpx;
     font-size: 45rpx;
     color: #000;
+    padding-bottom: 20rpx;
+    margin-bottom: 20rpx;
 }
 .body{
     /* margin: 20rpx 0; */

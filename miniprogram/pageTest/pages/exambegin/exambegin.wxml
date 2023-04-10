@@ -1,0 +1,30 @@
+<!--pageTest/pages/exambegin/exambegin.wxml-->
+<view class="container">
+    <view class="card">
+        <view class="rule">
+        <view class="left">考试题目</view>
+        <view class="right">内经知要</view>
+    </view>
+    <view class="rule">
+        <view class="left">考试数量</view>
+        <view class="right">共5题目</view>
+    </view>
+    <view class="rule">
+        <view class="left">考试时间</view>
+        <view class="right">限时1分钟</view>
+    </view>
+    <view class="rule">
+        <view class="left">合格标准</view>
+        <view class="right">满分25 合格15</view>
+    </view>
+    <view class="rule">
+        <view class="left">组题规则</view>
+        <view class="right">题库随机5题</view>
+    </view>
+    <view class="rule">
+        <view class="left">考试说明</view>
+        <view class="right">在规定时间内完成答题，可提前提交试卷，超过时限后，系统将会强制收卷</view>
+    </view>
+    </view>
+    <view class="btn" bindtap="toExam">开始答题</view>
+</view>

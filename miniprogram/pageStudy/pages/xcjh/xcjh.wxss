@@ -55,6 +55,9 @@
     padding: 5rpx;
     border-radius:0 0 0 20rpx;
 }
+.item-title{
+    padding: 0 5px;
+}
 /* 自定义学习时长 */
 .body{
     box-shadow: 2rpx 5rpx 15rpx #ccc;

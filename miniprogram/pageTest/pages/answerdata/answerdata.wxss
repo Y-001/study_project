@@ -1,0 +1,99 @@
+/* pageTest/pages/answerdata/answerdata.wxss */
+.container{
+    position: relative;
+    width: 100%;
+    background-color: #fff;
+    height: 100vh;
+}
+.bc{
+    width: 100%;
+    height: 350rpx;
+    background-color: #667c70;
+    border-radius: 0 0 20rpx 20rpx;
+    margin-bottom: 100rpx;
+}
+.top{
+    width: 100%;
+    position: absolute;
+    top: 50rpx;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.info{
+    width: 90%;
+    display: flex;
+    align-items: center;
+    margin-bottom: 50rpx;
+}
+.avater{
+    width: 130rpx;
+    height: 130rpx;
+    border-radius: 50%;
+    margin-right: 30rpx;
+}
+.info-right{
+    color: #fff;
+}
+.title{
+    font-size: 30rpx;
+    margin-bottom: 20rpx;
+}
+.mingyan{
+    font-size: 36rpx;
+    margin-bottom: 5rpx;
+}
+.tishi{
+    font-size: 26rpx;
+}
+/* 卡片 */
+.card{
+    width: 90%;
+    background-color: #fff;
+    display: flex;
+    justify-content: space-around;
+    border-radius: 20rpx;
+    padding: 25rpx;
+    box-shadow: 0 20rpx 20rpx #ccc;
+}
+.card-item{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.card-item::after{
+    content: '';
+    position: absolute;
+    width: 1rpx;
+    height: 100rpx;
+    background-color: #667c70;
+    right: -45rpx;
+}
+.card-item:last-child::after{
+    content: '';
+    background-color: transparent;
+}
+.big{
+    font-size: 50rpx;
+}
+.small{
+    font-size: 26rpx;
+}
+
+
+/* 图表 */
+.ec-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100vw;
+    height: 700rpx;
+  }
+  
+  ec-canvas {
+    width: 90%;
+    height: 90%;
+  }

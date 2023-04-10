@@ -9,18 +9,23 @@
     position: relative;
 }
 .img-text{
+    box-sizing: border-box;
     background-color: #fff;
     padding: 5rpx;
     position: absolute;
     color: #000;
     z-index: 99;
-    writing-mode: vertical-lr;
-    width: 30%;
-    height: 60%;
+    /* writing-mode: vertical-lr; */
+    font-size: 40rpx;
+    line-height: 40rpx;
+    width: 45rpx;
+    /* height: 60%; */
+    max-height: 200rpx;
     top: 50%;
     left: 50%;
     transform: translateX(-50%);
     transform: translateY(-50%);
+    overflow: hidden;
 }
 .like-item-img{
     width: 100%;
@@ -39,6 +44,8 @@
 .like-right-desc{
     flex: 2;
     font-size: 32rpx;
+    line-height: 34rpx;
+    max-height: 99rpx;
     margin: 10rpx 0;
     /* 换行 */
     overflow: hidden;

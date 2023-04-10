@@ -2,13 +2,18 @@
 <view class="container">
     <view class="top">选择目标经典</view>
     <view class="book-list">
-        <view class="card {{item._id==select_id?'active':''}}" data-bookid="{{item.bookid}}" data-bookname="{{item.bookname}}" data-id="{{item._id}}" wx:for="{{starList}}" wx:key="index" bindtap="selectBook">
+        <view class="card" wx:if="{{starList.length==0}}" bindtap="toStore">
+            <view class="card-item">
+                <view class="item-top">推荐</view>
+                <view class="item-title">请先去收藏经典</view>
+            </view>
+        </view> 
+        <view wx:if="{{starList.length>0}}" class="card {{item._id==select_id?'active':''}}" data-bookid="{{item.bookid}}" data-bookname="{{item.bookname}}" data-id="{{item._id}}" wx:for="{{starList}}" wx:key="index" bindtap="selectBook">
             <view class="card-item">
                 <view class="item-top">推荐</view>
                 <view class="item-title">{{item.bookname}}</view>
             </view>
         </view> 
-
     </view>
     <!-- 自定义学习时长 -->
     <view class="body">

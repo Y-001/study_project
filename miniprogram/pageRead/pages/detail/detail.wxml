@@ -1,4 +1,5 @@
 <!--pages/detail/detail.wxml-->
+<wxs module='filter' src='./utils.wxs'></wxs>
 <view class="container">
     <view class="book-detail">
         <view class="book-manage">
@@ -9,10 +10,10 @@
                 </view>
                 <view class="manage-top-right">
                     <view class="manage-title">{{book.name}}</view>
-                    <view class="manage-author">作者：{{book.author}}</view>
-                    <view class="manage-num">朝代：{{book.dynasty}}</view>
-                    <view class="manage-num">年份：{{book.year}}</view>
-                    <view class="manage-star">收藏：{{book.like}}</view>
+                    <view class="manage-author">作者：{{book.author || '佚名'}}</view>
+                    <view class="manage-num">朝代：{{book.dynasty || '?'}}</view>
+                    <view class="manage-num">年份：{{book.year || '?'}} </view>
+                    <view class="manage-star">收藏：{{book.like || 0}}</view>
                 </view>
             </view>
             <view class="book-manage-bottom">
@@ -44,68 +45,47 @@
         </van-popup>
         <!-- 回复或者投诉 底部弹出层 -->
         <van-popup round custom-style="height: 40%;" show="{{ applyShow }}" position="bottom" bind:close="onCloseApply" close-on-click-overlay="true">
-            <view class="popup-content">
-                <view class="apply-comment">月光倾城：在破败中崛起，在逆境中永恒</view>
+            <view class="popup-content apply">
+                <view class="apply-comment">{{newComment.nickname}}：{{newComment.comment}}</view>
                 <van-divider />
-                <view class="apply-text">回复</view>
+                <view class="apply-text" bindtap="showWrite">回复</view>
                 <van-divider />
                 <view class="apply-text">投诉</view>
                 <van-divider />
-                <view class="apply-btn">取消</view>
+                <view class="apply-btn" bindtap="onCloseApply">取消</view>
             </view>
         </van-popup>
         <!-- 查看全部评论 底部弹出层 -->
         <van-popup closeable round custom-style="height: 90%;" show="{{ commentShow }}" position="bottom" bind:close="onCloseComment" close-on-click-overlay="true">
             <view class="popup-content popup-comment">
-                <view style="text-align: center;">35条回复</view>
-                <van-divider />
-                <view class="talk-content-item">
-                    <view class="talk-content-left">
-                        <image class="talk-avatar" src="../../images/test_img1.jpg"></image>
-                    </view>
-                    <view class="talk-content-right">
-                        <view class="talk-info">
-                            <view class="talk-name">月光倾城</view>
-                            <view class="talk-icon">
-                                <image class="talk-icon-img" src="{{dianzanIcon[0].icon}}"></image>
-                            </view>
-                        </view>
-                        <view class="talk-time">
-                            2023.1.14 3:42
-                        </view>
-                        <view class="talk-desc">
-                            在破败中崛起，在逆境中永恒
-                        </view>
-                    </view>
-                </view>
+                <view style="text-align: center;">{{lookComment.child.length}}条回复</view>
                 <van-divider />
                 <view class="content-child">
-                    <view class="talk-content-item">
+                    <view class="talk-content-item" wx:for-item="onedata" wx:for="{{lookComment.child}}" wx:key="index">
                         <view class="talk-content-left">
-                            <image class="talk-avatar" src="../../images/test_img1.jpg"></image>
+                            <image class="talk-avatar" src="{{onedata.rootComment.avatar}}"></image>
                         </view>
                         <view class="talk-content-right">
-                            <view class="talk-info" bindtap="openApply">
-                                <view class="talk-name">月光倾城</view>
+                            <view class="talk-info">
+                                <view class="talk-name">{{onedata.rootComment.nickname}}</view>
                                 <view class="talk-icon">
-                                    <image class="talk-icon-img" src="{{dianzanIcon[0].icon}}"></image>
+                                    <image wx:if="{{filter.isShow(onedata.rootComment.likeuserlist,openid)== -1}}" class="talk-icon-img" src="{{dianzanIcon[0].icon}}" data-commentid="{{onedata.rootComment.commentid}}" bindtap="dianzan"></image>
+                                    <image wx:else class="talk-icon-img" src="{{dianzanIcon[1].icon}}"></image>
+                                    <text>{{onedata.rootComment.likenum}}</text>
                                 </view>
                             </view>
                             <view class="talk-time">
-                                2023.1.14 3:42
+                                {{filter.geshi(onedata.rootComment.time)}}
                             </view>
-                            <view class="talk-desc">
-                                在破败中崛起，在逆境中永恒
+                            <view class="talk-desc" data-root="{{onedata.rootComment}}" bindtap="openApply">
+                                {{onedata.rootComment.comment}}
                             </view>
-                            <view class="talk-comment" bindtap="openComment">
+                            <!-- <view wx:if="{{onedata.child.length>0}}" class="talk-comment" bindtap="openComment"> -->
+                            <view wx:if="{{onedata.child.length>0}}" class="talk-comment">
                                 <view class="talk-comment-list">
-                                    <view class="talk-comment-item">
-                                        <text class="color-name">评论人</text>
-                                        ：更新太慢了，哎啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊
-                                    </view>
-                                    <view class="talk-comment-item">
-                                        <text class="color-name">评论人</text>
-                                        ：更新太慢了，哎啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊
+                                    <view class="talk-comment-item" wx:for-item="twodata" wx:for="{{onedata.child}}" wx:key="index">
+                                        <text class="color-name">{{twodata.rootComment.nickname}}</text>
+                                        ：{{twodata.rootComment.comment}}
                                     </view>
                                 </view>
                             </view>
@@ -113,17 +93,55 @@
                         </view>
                     </view>
                 </view>
-                
-
             </view>
         </van-popup>
+        <!-- 评论内容 -->
         <view class="talk-content">
-            <view class="talk-content-item">
+            <view class="talk-content-item" wx:for="{{commentList}}" wx:for-item="onedata" wx:key="index">
+                <view class="talk-content-left">
+                    <image class="talk-avatar" src="{{onedata.rootComment.avatar}}"></image>
+                </view>
+                <view class="talk-content-right">
+                    <view class="talk-info">
+                        <view class="talk-name">{{onedata.rootComment.nickname}}</view>
+                        <view class="talk-icon">
+                            <image wx:if="{{filter.isShow(onedata.rootComment.likeuserlist,openid)== -1}}" class="talk-icon-img" src="{{dianzanIcon[0].icon}}" data-commentid="{{onedata.rootComment.commentid}}" bindtap="dianzan"></image>
+                            <image wx:else class="talk-icon-img" src="{{dianzanIcon[1].icon}}"></image>
+                            <text>{{onedata.rootComment.likenum}}</text>
+                        </view>
+                    </view>
+                    <view class="talk-time">
+                        {{filter.geshi(onedata.rootComment.time)}}
+                    </view>
+                    <view class="talk-desc" data-root="{{onedata.rootComment}}" bindtap="openApply">
+                        {{onedata.rootComment.comment}}
+                    </view>
+                    <view wx:if="{{onedata.child.length>0}}" class="talk-comment" data-comment="{{onedata}}" bindtap="openComment">
+                        <view class="talk-comment-list">
+                            <view class="talk-comment-item" wx:for-item="twodata" wx:for="{{onedata.child}}" wx:key="index">
+                                <text class="color-name">{{twodata.rootComment.nickname}}</text>
+                                回复
+                                <text class="color-name">{{onedata.rootComment.nickname}}</text>：{{twodata.rootComment.comment}}
+                            </view>
+                            <!-- <view class="talk-comment-item">
+                                <text class="color-name">评论人</text>
+                                回复
+                                <text class="color-name">被评论人</text>：更新太慢了，哎啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊
+                            </view> -->
+                        </view>
+                        <view class="talk-look-btn color-name">
+                            共{{onedata.child.length}}条回复>
+                        </view>
+                    </view>
+                    <view class="comment-line"></view>
+                </view>
+            </view>
+            <!-- <view class="talk-content-item">
                 <view class="talk-content-left">
                     <image class="talk-avatar" src="../../images/test_img1.jpg"></image>
                 </view>
                 <view class="talk-content-right">
-                    <view class="talk-info" bindtap="openApply">
+                    <view class="talk-info">
                         <view class="talk-name">月光倾城</view>
                         <view class="talk-icon">
                             <image class="talk-icon-img" src="{{dianzanIcon[0].icon}}"></image>
@@ -132,7 +150,7 @@
                     <view class="talk-time">
                         2023.1.14 3:42
                     </view>
-                    <view class="talk-desc">
+                    <view class="talk-desc" bindtap="openApply">
                         在破败中崛起，在逆境中永恒
                     </view>
                     <view class="talk-comment" bindtap="openComment">
@@ -154,7 +172,7 @@
                     </view>
                     <view class="comment-line"></view>
                 </view>
-            </view>
+            </view> -->
         </view>
     </view>
 </view>

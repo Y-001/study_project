@@ -1,0 +1,58 @@
+<!--pageTest/pages/examrecord/examrecord.wxml-->
+<wxs module='filter' src='./utils.wxs'></wxs>
+<swiper style="height:{{swiperHeight}}px" duration="{{swiperDuration}}" current="{{current}}" bindchange="swiperChange">
+    <swiper-item wx:key="ssssss" wx:for="{{testlist}}">
+        <item-view>
+            <ProblemItemRecord answerOld="{{answerArr[currentIndex]}}" testlist="{{testlist}}" classify="{{classify}}" currentIndex="{{currentIndex}}" />
+            <!-- 底部导航 -->
+            <view wx:if="{{!showNum}}" class="bar">
+                <view class="bar-left" bindtap="openNum">
+                    <view class="item">
+                        <image class="item-icon" src="../../images/problem/pro-dui.png"></image>
+                        <text class="item-text">{{rightNum}}</text>
+                    </view>
+                    <view class="item">
+                        <image class="item-icon" src="../../images/problem/pro-error.png"></image>
+                        <text class="item-text">{{errorNum}}</text>
+                    </view>
+                    <view class="item">
+                        <image class="item-icon" src="../../images/problem/pro-all.png"></image>
+                        <text class="item-text">{{currentIndex+1}}/{{testlist.length}}</text>
+                    </view>
+                    <view class="bar-right" bindtap="toQuestion">
+                        <text class="item-text">回到题库</text>
+                    </view>
+                </view>
+
+
+            </view>
+            <!-- 答题卡弹窗 -->
+            <van-popup show="{{ showNum }}" position="bottom" custom-style="height: 50%;" bind:close="onCloseNum">
+                <view class="num-body">
+                    <view class="bar-new">
+                        <view class="bar-left" bindtap="openNum">
+                            <view class="item">
+                                <image class="item-icon" src="../../images/problem/pro-dui.png"></image>
+                                <text class="item-text" style="color: #45a126;">{{filter.daanNum(answerArr,1)}}</text>
+                            </view>
+                            <view class="item">
+                                <image class="item-icon" src="../../images/problem/pro-error.png"></image>
+                                <text class="item-text" style="color: #c3413c;">{{filter.daanNum(answerArr,0)}}</text>
+                            </view>
+                            <view class="item">
+                                <image class="item-icon" src="../../images/problem/pro-all.png"></image>
+                                <text class="item-text">{{currentIndex+1}}/{{testlist.length}}</text>
+                            </view>
+                        </view>
+                        <view class="bar-right" bindtap="toQuestion">
+                            <text class="item-text">回到题库</text>
+                        </view>
+                    </view>
+                    <view class="num-list">
+                        <view data-index="{{index}}" bindtap="goIndex" class="num-item {{index==currentIndex?'select-selected':filter.answerStatus(answerArr,index)==1?'select-right':filter.answerStatus(answerArr,index)==0?'select-error':''}}" wx:for="{{testlist}}" wx:key="index">{{index+1}}</view>
+                    </view>
+                </view>
+            </van-popup>
+        </item-view>
+    </swiper-item>
+</swiper>

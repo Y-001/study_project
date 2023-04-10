@@ -1,0 +1,23 @@
+/* pageHoutai/pages/tbank/tbank.wxss */
+
+
+/* 悬浮 */
+.toNotes {
+    width: 100rpx;
+    height: 100rpx;
+    border-radius: 50%;
+    position: fixed;
+    z-index: 100;
+    top: 80%;
+    left: 80%;
+    background-color: #667c70;
+    text-align: center;
+    line-height: 100rpx;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.note-icon {
+    width: 80rpx;
+    height: 80rpx;
+}

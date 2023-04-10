@@ -1,6 +1,6 @@
 <!--pages/notes/notes.wxml-->
 <view class="container">
-    <van-sticky> 
+    <van-sticky>
         <view class="top">
             <view class="notelx-list">
                 <view bindtap="changeClassify" class="notelx-item {{active== '全部' ? 'lx-active' : ''}}" data-name="全部">全部</view>
@@ -8,14 +8,41 @@
             </view>
         </view>
     </van-sticky>
-    <view class="content">
-        <view class="note-item" wx:for="{{noteList}}" wx:key="index">
+    <!-- <view class="content">
+        <view data-id="{{item._id}}" bindtap="toNotedetail" class="note-item" wx:for="{{noteList}}" wx:key="index">
             <view class="note-title">{{item.title}}</view>
             <view class="note-content">{{item.content}}</view>
             <view class="note-time">{{item.createtime}}</view>
         </view>
+    </view> -->
+    <view class="content">
+        <view class="left">
+            <block wx:for="{{noteList}}" wx:key="index">
+                <template is="item" data="{{...item}}" wx:if="{{index%2==0}}"></template>
+            </block>
+        </view>
+        <view class="right">
+            <block wx:for="{{noteList}}" wx:key="index">
+                <template is="item" data="{{...item}}" wx:if="{{index%2==1}}"></template>
+            </block>
+        </view>
     </view>
+    <template name="item">
+        <view class="item" style="background-color: {{color}};">
+            <image wx:if="{{imageUp.length>0}}" class="item-img" src="{{imageUp[0]}}" mode="widthFix"></image>
+            <view wx:else class="item-content">{{content}}</view>
+            <view class="item-title-box">
+                <view data-id="{{_id}}" bindtap="toNotedetail" class="item-title">{{title}}</view>
+            </view>
+            <view class="name">
+                <view class="heart">
+                    <text>{{classify}}</text>
+                </view>
+            </view>
+        </view>
+    </template>
 </view>
-<view class="toNotes" bindtap="toNotedetail">
+
+<view data-id="0" class="toNotes" bindtap="toNotedetail">
     <image class="note-icon" src="../../images/note_add.png"></image>
-</view> 
+</view>

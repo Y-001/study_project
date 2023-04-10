@@ -1,0 +1,16 @@
+<!--pageTest/pages/exam/exam.wxml-->
+<view class="top">
+    倒计时： 
+    <van-count-down data-type="1" bind:finish="tiJiao" time="{{ time }}" format=" mm : ss " />
+</view>
+<wxs module='filter' src='./utils.wxs'></wxs>
+<view wx:if="{{testlist.length==0}}">题库暂时没有收录题目，请稍后再试...</view>
+<swiper wx:else style="height:{{swiperHeight-50}}px" duration="{{swiperDuration}}" current="{{current}}" bindchange="swiperChange">
+    <swiper-item wx:key="ssssss" wx:for="{{testlist}}">
+        <item-view>
+            <view class="body">
+                <ProblemItemExam bind:tiJiao="tiJiao" bind:answerStatus="getAnswerStatus" testlist="{{testlist}}" currentIndex="{{currentIndex}}" />
+            </view>
+        </item-view>
+    </swiper-item>
+</swiper>

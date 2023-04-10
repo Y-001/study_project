@@ -8,7 +8,7 @@ Page({
      */
     data: {
         // 轮播图配置
-        background: ['../../images/book_lb1.jpg', '../../images/book_lb2.jpg', '../../images/book_lb3.jpg'],
+        background: ['cloud://project-4gak2jnr9bdf0df2.7072-project-4gak2jnr9bdf0df2-1307359075/swiper/book_lb1.jpg', 'cloud://project-4gak2jnr9bdf0df2.7072-project-4gak2jnr9bdf0df2-1307359075/swiper/book_lb2.jpg', 'cloud://project-4gak2jnr9bdf0df2.7072-project-4gak2jnr9bdf0df2-1307359075/swiper/book_lb3.jpg'],
         indicatorDots: true,
         vertical: false,
         autoplay: false,
@@ -17,15 +17,28 @@ Page({
         // 经典收藏的列表
         starList: [],
         //学习计划
-        studyplan:{},
+        studyplan:{
+            studytime:0,
+            studyday:0,
+            bookname:'暂无学习计划'
+        },
         //今日学习时长
-        todyTime:'',
+        todyTime:0,
         //是否完成今日学习
-        doneTody:false
+        doneTody:false,
+        //最近阅读
+        lastRead:[]
     },
     //开始学习
     toReadDetail(){
-        wx.navigateTo({
+        if(!this.data.studyplan?.bookid){
+            wx.showToast({
+              title: '请先去添加学习计划',
+              icon:'none'
+            })
+            return
+        }
+        wx.redirectTo({
             url: `/pageRead/pages/read/read?way=3&id=${this.data.studyplan.bookid}`,
         })
     },
@@ -36,7 +49,7 @@ Page({
     },
     toXcqd() {//签到
         wx.navigateTo({
-            url: '/pageStudy/pages/xcqd/xcqd',
+            url: '/pageStudy/pages/xcqd2/xcqd2',
         })
     },
     toXcsj() {//数据
@@ -54,14 +67,57 @@ Page({
             url: '/pages/question/question',
         })
     },
-    toDetail() {
+    toDetail(e) {
+        let id=e.currentTarget.dataset.id
         wx.navigateTo({
-            url: '/pageRead/pages/detail/detail',
+            url: '/pageRead/pages/detail/detail?id='+id,
         })
     },
     toStore() {
         wx.switchTab({
             url: '/pages/store/store',
+        })
+    },
+    // 刷新数据
+    toShaxun(){
+        let _this=this
+        //获取收藏经典列表
+        db.collection('bookstars').where({
+            _openid: wx.getStorageSync('openid')
+        }).get().then(res => {
+            res.data.forEach(item => {
+                item.createtime = dateFormat(item.createtime)
+            })
+            this.setData({
+                starList: res.data
+            })
+        })
+        //获取学习计划
+        db.collection('users').where({
+            _openid:wx.getStorageSync('openid')
+        }).get().then(res=>{
+            if(res.data[0]?.lastRead){
+                _this.setData({
+                    lastRead:res.data[0].lastRead
+                })
+            }
+            if(res.data[0]?.studyplan){
+                _this.setData({
+                    studyplan:res.data[0].studyplan,
+                })
+                let day=dateFormat(+new Date())
+            if(res.data[0].studyplan?.calendar){
+                res.data[0].studyplan.calendar.forEach(item=>{
+                    if(item.day==day){
+                        _this.setData({
+                            todyTime:item.stayTime,
+                            doneTody:item.progress
+                        })
+                    }
+                })
+            }
+            }
+            
         })
     },
     /**
@@ -80,37 +136,24 @@ Page({
                 }
             })
         }
-        //获取收藏经典列表
-        db.collection('bookstars').where({
-            _openid: wx.getStorageSync('openid')
-        }).get().then(res => {
-            res.data.forEach(item => {
-                item.createtime = dateFormat(item.createtime)
+        // 判断是否登录
+        let userInfo=wx.getStorageSync('userInfo')
+        if(!userInfo){
+            wx.reLaunch({
+              url: '/pages/login/login',
             })
-            this.setData({
-                starList: res.data
+        }else{
+            db.collection('users').where({
+                _openid:wx.getStorageSync('openid')
+            }).get().then(res=>{
+                if(res.data.length==0){
+                    wx.reLaunch({
+                        url: '/pages/login/login',
+                      })
+                }
             })
-        })
-        //获取学习计划
-        db.collection('users').where({
-            _openid:wx.getStorageSync('openid')
-        }).get().then(res=>{
-            // console.log(res.data)
-            _this.setData({
-                studyplan:res.data[0].studyplan
-            })
-            let day=dateFormat(+new Date())
-            if(Reflect.has(res.data[0].studyplan,"calendar")){
-                res.data[0].studyplan.calendar.forEach(item=>{
-                    if(item.day==day){
-                        _this.setData({
-                            todyTime:item.stayTime,
-                            doneTody:item.progress
-                        })
-                    }
-                })
-            }
-        })
+        }
+        this.toShaxun()
     },
 
     /**
@@ -124,7 +167,8 @@ Page({
      * 生命周期函数--监听页面显示
      */
     onShow: function () {
-        this.onLoad()
+        // this.onLoad()
+        this.toShaxun()
     },
 
     /**

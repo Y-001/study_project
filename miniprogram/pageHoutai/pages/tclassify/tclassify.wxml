@@ -1,0 +1,39 @@
+<!--pageHoutai/pages/tclassify/tclassify.wxml-->
+<view class="container">
+    <van-tabs active="{{ active }}" bind:change="onChange" color="#667c70">
+        <van-tab title="经论" name="经论"></van-tab>
+        <van-tab title="本草" name="本草"></van-tab>
+        <van-tab title="方言" name="方言"></van-tab>
+        <van-tab title="针灸" name="针灸"></van-tab>
+        <van-tab title="医论" name="医论"></van-tab>
+    </van-tabs>
+    <van-cell title="{{item.bank}}" wx:for="{{banks}}" wx:key="index">
+        <van-icon data-id="{{item._id}}" bindtap="toEditTclassify" slot="right-icon" name="edit" class="custom-icon" />
+    </van-cell>
+</view>
+<view data-id="0" class="toNotes" bindtap="toEditTclassify">
+    <image class="note-icon" src="../../images/note_add.png"></image>
+</view>
+<!-- 修改新增的弹窗 -->
+<van-dialog use-slot title="{{id==0?'新增题库':'修改题库分类'}}" show="{{ show }}" show-cancel-button bind:close="onClose" bind:confirm="edit">
+    <view class="body">
+        <picker bindchange="bindPickerChange" value="{{index}}" range="{{array}}">
+            <view class="picker">
+                <view class="text">
+                    题库分类名：
+                </view>
+                <view>
+                    {{array[index]}}
+                </view>
+            </view>
+        </picker>
+        <view class="picker">
+            <view class="text">
+                题库名：
+            </view>
+            <view>
+                <input value="{{nowbank}}" class="inp" type="text" name="" id="" bindinput="getBank" />
+            </view>
+        </view>
+    </view>
+</van-dialog>

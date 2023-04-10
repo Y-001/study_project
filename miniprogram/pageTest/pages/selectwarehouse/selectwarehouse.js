@@ -1,81 +1,14 @@
 // pages/selectwarehouse/selectwarehouse.js
+const db=wx.cloud.database()
+const _=db.command
+const $ = db.command.aggregate
 Page({
 
     /**
      * 页面的初始数据
      */
     data: {
-        items:[
-            {
-              // 导航名称
-              text: '本草',
-              // 禁用选项
-              disabled: false,
-              // 该导航下所有的可选项
-              children: [
-                {
-                  // 名称
-                  text: '本草纲目',
-                  // id，作为匹配选中状态的标识
-                  id: 1,
-                  // 禁用选项
-                //   disabled: true,
-                },
-                {
-                  text: '神农本草经',
-                  id: 2,
-                },
-              ],
-            },
-            {
-                // 导航名称
-                text: '方药',
-                // 禁用选项
-                disabled: false,
-                // 该导航下所有的可选项
-                children: [
-                  {
-                    // 名称
-                    text: '五十二病方',
-                    // id，作为匹配选中状态的标识
-                    id: 1,
-                    // 禁用选项
-                    // disabled: true,
-                  },
-                  {
-                    text: '苏沈良方',
-                    id: 2,
-                  },
-                ],
-              },
-              {
-                // 导航名称
-                text: '经络',
-                // 禁用选项
-                disabled: false,
-                // 该导航下所有的可选项
-                children: [
-                  {
-                    // 名称
-                    text: '奇经八脉考',
-                    // id，作为匹配选中状态的标识
-                    id: 1,
-                    // 禁用选项
-                    // disabled: false,
-                  },
-                  {
-                    text: '经络全书',
-                    id: 2,
-                  },
-                  {
-                    text: '上海',
-                    id: 3,
-                  }
-                ],
-              },
-             
-              
-          ],
+        items:[],
           /* 左侧选中项的索引 */
         mainActiveIndex: 0,
         /* 右侧选中项的id */
@@ -90,10 +23,10 @@ Page({
     /* 右侧导航点击时，触发事件 */
       onClickItem({ detail = {} }) {
         const activeId = this.data.activeId === detail.id ? null : detail.id;
-    
         this.setData({ activeId });
+        let classify=detail.text
         wx.navigateTo({
-          url: '/pageTest/pages/testdetail/testdetail',
+          url: '/pageTest/pages/testdetail/testdetail?classify='+encodeURIComponent(classify),
         })
       },
 
@@ -101,7 +34,33 @@ Page({
      * 生命周期函数--监听页面加载
      */
     onLoad(options) {
-
+        //获取题库
+        db.collection('testclassifys').aggregate()
+        .group({
+          // 按 category 字段分组
+          _id: '$title',
+          // 每组有一个 avgSales 字段，其值是组内所有记录的 sales 字段的平均值
+          children: $.push('$bank')
+        })
+        .end().then(res=>{
+           console.log(res.list)
+        let a=res.list.map(item=>{
+            let text=item._id
+            let children=item.children.map((item,index)=>{
+                return {
+                    text:item,
+                    id:index
+                }
+            })
+            return {
+                text,
+                children
+            }
+        })
+            this.setData({
+                items:a
+            })
+        })
     },
 
     /**

@@ -15,7 +15,7 @@
             <view class="card-list">
                 <view class="card-item">
                     <text class="text-num">{{todyTime}}</text>
-                    <text class="text-title">学习时长</text>
+                    <text class="text-title">今日学习时长</text> 
                 </view>
                 <view class="card-item">
                     <text class="text-num">{{studyplan.studytime}}</text>
@@ -23,7 +23,7 @@
                 </view>
                 <view class="card-item">
                     <text class="text-num">{{studyplan.studyday}}</text>
-                    <text class="text-title">剩余天数</text>
+                    <text class="text-title">计划天数</text>
                 </view>
             </view>
             <view class="card-btny">
@@ -32,19 +32,19 @@
         </view>
         <view class="daohang">
             <view class="dh-item" bindtap="toXcsj">
-                <image class="dh-icon" src="../../images/study/data.png"></image>
+                <image class="dh-icon" src="../../images/study/data.png" style="background-color: #A2BE92;"></image>
                 <text class="dh-text">学习数据</text>
             </view>
             <view class="dh-item" bindtap="toXcqd">
-                <image class="dh-icon" src="../../images/study/qiandao.png"></image>
+                <image class="dh-icon" src="../../images/study/qiandao.png" style="background-color: #B6D4A4;"></image>
                 <text class="dh-text">学习签到</text>
             </view>
             <view class="dh-item" bindtap="toNote">
-                <image class="dh-icon" src="../../images/study/note.png"></image>
+                <image class="dh-icon" src="../../images/study/note.png" style="background-color: #C7D9A9;"></image>
                 <text class="dh-text">学习笔记</text>
             </view>
             <view class="dh-item" bindtap="toTest">
-                <image class="dh-icon" src="../../images/study/test.png"></image>
+                <image class="dh-icon" src="../../images/study/test.png" style="background-color: #89A571;"></image>
                 <text class="dh-text">挑战答题</text>
             </view>
         </view>
@@ -64,7 +64,14 @@
                 <image bindtap="toStore" class="jd-top-icon" src="../../images/study/add.png"></image>
             </view>
             <view class="jd-list">
-                <view data-id="{{item.bookid}}" class="jd-item" bindtap="toDetail" wx:for="{{starList}}" wx:key="index">
+                <view bindtap="toStore" wx:if="{{starList.length==0}}"  class="jd-item">
+                    <view class="jd-item-con">
+                        <view class="jd-item-title">暂无收藏</view>
+                        <view class="jd-item-autho">去添加吧</view>
+                    </view>
+                    <view class="jb-item-bottom">0min</view>
+                </view>
+                <view wx:if="{{starList.length>0}}" data-id="{{item.bookid}}" class="jd-item" bindtap="toDetail" wx:for="{{starList}}" wx:key="index">
                     <view class="jd-item-con">
                         <view class="jd-item-title">{{item.bookname}}</view>
                         <view class="jd-item-autho">{{item.createtime}}</view>
@@ -80,12 +87,11 @@
             </view>
             <view class="lastsee-card">
                 <view class="last-card-con">
-                    <view class="last-con-item">本草纲目</view>
-                    <view class="last-con-item">本草纲目</view>
+                    <view class="last-con-item" wx:for="{{lastRead}}" wx:key="index">{{item}}</view>
                 </view>
                 <view class="last-card-db">
-                    <view class="last-db-text">近期读过<text class="blod">2</text>本经典</view>
-                    <view class="last-db-btn">去读更多</view>
+                    <view class="last-db-text">近期读过<text class="blod">{{lastRead.length}}</text>本经典</view>
+                    <view class="last-db-btn" bindtap="toStore">去读更多</view>
                 </view>
             </view>
         </view>

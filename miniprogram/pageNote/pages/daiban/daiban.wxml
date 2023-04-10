@@ -1,0 +1,28 @@
+<!--pageNote/pages/daiban/daiban.wxml-->
+<view class="todoPage">
+    <view class="inputBox">
+        <view class="iconBox">+</view>
+        <!-- add键盘回车事件 -->
+        <input type="text" placeholder="请输入..." model:value="{{name}}" bindconfirm="add" />
+    </view>
+    <view class="contentBox">
+    <!-- 渲染list数据 -->
+        <view class="singleBox" wx:for="{{list}}" wx:key="index">
+            <view class="nameBox">
+            <!-- 单个事件的勾选 传下标 -->
+                <checkbox bindtap="ass" data-index="{{index}}" checked="{{item.checked}}"></checkbox>
+                <view class="{{item.checked?'s':''}}">{{item.name}}</view>
+            </view>
+            <!-- 单个删除 id是传下标 -->
+            <icon class="icon-small" type="cancel" bindtap="del" id="{{index}}" size="23"></icon>
+        </view>
+    </view>
+    <view class="footerBox">
+    <!-- 全选反选 -->
+        <checkbox bindtap="checkAll" checked="{{isCheckAll}}">全选</checkbox>
+        <!-- 显示未完成的数量 -->
+        <view>{{Num}}未完成</view>
+        <!-- 多个删除 删除完成事件 -->
+        <view bindtap="dels">清空已完成</view>
+    </view>
+</view>

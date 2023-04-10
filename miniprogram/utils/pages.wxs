@@ -1,0 +1,30 @@
+// 需要注意:
+// 1.不支持let，const
+// 2.不支持箭头函数
+var filter = {
+    timegeshi: function (date) {
+        // date = new Date(date)
+        date=getDate(date)
+        var year = date.getFullYear();                // 年
+        var month = showTime(date.getMonth() + 1);        // 月
+        var day = showTime(date.getDate());          // 日
+        var hours = showTime(date.getHours());         // 小时
+        var minutes = showTime(date.getMinutes());    // 分钟
+        var second = showTime(date.getSeconds());     // 秒
+        var str = '';
+        // str = str + year + '-' + month + '-' + week + '-' + day + '-' + hours + '-' + minutes + '-' + second
+        str = str + year + '/' + month + '/' + day+' '+hours+':'+minutes+':'+second
+        // document.write(str);
+        return str
+        // 封装一个不够两位数就补零的函数
+        function showTime(t) {
+            var time
+            time = t > 10 ? t : '0' + t
+            return time
+        }
+    }
+}
+// 导出方法
+module.exports = {
+    timegeshi: filter.timegeshi
+}

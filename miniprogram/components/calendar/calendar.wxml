@@ -1,0 +1,16 @@
+<!--components/calendar/calendar.wxml-->
+<view class="calendar-box">
+  <view class="calendar-day">
+    <view class="day-item" wx:for="{{day}}" wx:key="index">
+      {{item}}
+    </view>
+  </view>
+  <view class="calendar-date-box">
+    <view class="date-item" wx:for="{{calendarList}}" wx:key="num">
+      <image wx:if="{{item.type=='day'}}" class="curbg" src="../../images/star.png" />
+      <view class="date-text {{item.type=='day'?'fontcur':''}} {{item.type=='before'?item.sign=='1'?'fontbf':'fontbfnos':''}} {{item.type=='after'?'fontaf':''}}">
+        {{item.num=='0'?'':item.num}}
+      </view>
+    </view>
+  </view>
+</view>

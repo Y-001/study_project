@@ -1,0 +1,176 @@
+/* pageTest/pages/shunxu/shunxu.wxss */ 
+.body{
+    width: 100%;
+    height: 100%;
+}
+/* 底部导航 */
+.bar{
+    box-sizing: border-box;
+    display: flex;
+    background-color: #fff;
+    padding: 40rpx 0;
+    position: fixed;
+    bottom: 0;
+    width: 100vw;
+    height: 130rpx;
+}
+.bar-new{
+    box-sizing: border-box;
+    display: flex;
+    background-color: #fff;
+    
+    width: 100%;
+    height: 130rpx;
+}
+.bar-left{
+    flex: 3;
+    display: flex;
+}
+.bar-left .item{
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.bar-right{
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.item-icon{
+    width: 50rpx;
+    height: 50rpx;
+}
+/* 选项选中时 正确 错误 不判断 */
+.select-right{
+    background-color: #d9f0dc;
+    border: 1px solid #6c9670;
+}
+.select-error{
+    background-color: #fadbd9;
+    border: 1px solid #c85c50;
+}
+.select-selected{
+    background-color: #cbe5fe;
+    border: 1px solid #1a7de2;
+    color: #177de2;
+}
+
+/* 答题卡片 */
+.key{
+    margin-top: 50rpx;
+}
+/* 选择错误 正确 不判断 颜色 */
+.key-type-error{
+    padding: 20rpx;
+    color: #fff;
+    background-color: #e44d44;
+    width: 30%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10rpx;
+}
+.key-type-right{
+    padding: 20rpx;
+    color: #fff;
+    background-color: #667c70;
+    width: 30%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10rpx;
+}
+.key-type-selected{
+    padding: 20rpx;
+    color: #fff;
+    background-color: #d8f6da;
+    width: 30%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10rpx;
+}
+
+
+
+
+.key-body{
+    background-color: #fff;
+    padding-bottom: 20rpx;
+    border-radius: 10rpx;
+}
+.key-top{
+    display: flex;
+}
+.key-key{
+    box-sizing: border-box;
+    padding: 20rpx;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-bottom: 1px solid #b7b7b7;
+}
+.key-key:nth-child(1){
+    border-right: 1px solid #b7b7b7;
+}
+.gray-text{
+    color: #b7b7b7;
+    margin-bottom: 20rpx;
+}
+.color-text{
+    color: #c4d9b0;
+}
+.desc-top{
+    color: #b7b7b7;
+    padding: 20rpx;
+}
+.desc-body{
+    padding: 0 20rpx;
+}
+/* 答题卡 */
+.num-list{
+    padding: 30rpx 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-content:center;
+}
+.num-item{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1rpx solid #b7b7b7;
+    padding: 20rpx;
+    width: 60rpx;
+    height: 60rpx;
+    margin: 10rpx;
+    border-radius: 50%;
+}
+/* 正确 */
+.num-item-right{
+    border: 1rpx solid #81cf81;
+    background-color: #d8f6da;
+    color: #81cf81;
+}
+/* 错误 */
+.num-item-right{
+    border: 1rpx solid #d79399;
+    background-color: #fededf;
+    color: #d79399;
+}
+/* 不判断 */
+.num-item-right{
+    border: 1rpx solid #b7b7b7;
+    background-color: #fff;
+    color: #000;
+}
+/* 让答题卡对齐 */
+.num-item:last-child {
+    margin-right: auto;
+}
+
+

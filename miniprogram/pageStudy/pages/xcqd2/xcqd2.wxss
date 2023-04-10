@@ -1,0 +1,49 @@
+/* pageStudy/pages/xcqd2/xcqd2.wxss */
+.context {
+    width: 96%;
+    margin: 0 auto;
+    padding: 8rpx;
+    position: relative;
+}
+.active{
+    background-color: #c4d9b0 !important;
+}
+
+/* 签到按钮 */
+.qd {
+    background-color: #667c70;
+    height: 400rpx;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.btn {
+    /* box-shadow:水平位置 垂直位置 模糊距离 阴影尺寸（影子大小） 阴影颜色  内/外阴影； */
+    box-shadow: 0 0 30rpx rgba(255, 255, 255, .6);
+    width: 200rpx;
+    height: 200rpx;
+    border-radius: 50%;
+    background-color: #fff;
+    padding: 20rpx;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    font-size: 34rpx;
+    color: #667c70;
+    border: 2rpx solid #666;
+}
+
+.btn-center {
+    width: 100%;
+    height: 3rpx;
+    background-color: #667c70;
+}
+.calendar{
+    position: absolute;
+    width: 90%;
+    top: 90%;
+    left: 50%;
+    transform: translateX(-50%);
+}

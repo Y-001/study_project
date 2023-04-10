@@ -1,6 +1,6 @@
 <view class="container">
     <view style="background-color: {{background[item]}};" class="content" bindtap="openContral">
-        <text user-select="true" style="color: {{item===3 ? '#f6f6f6':'#2c2c2c'}}; font-size: {{fontsize}}; line-height: {{lineheight}};">{{content}}</text>
+        <text space="nbsp" decode="{{true}}" user-select="true" style="color: {{item===3 ? '#f6f6f6':'#2c2c2c'}}; font-size: {{fontsize}}; line-height: {{lineheight}};">{{content}}</text>
     </view>
     <van-popup show="{{ control }}" position="bottom" custom-style="height: 42%;" bind:close="onClose">
         <view class="control">

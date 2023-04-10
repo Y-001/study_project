@@ -1,2 +1,8 @@
 <!--pageTest/pages/beiti/beiti.wxml-->
-<ProblemItem/>
+<view wx:if="{{testlist.length==0}}">暂时没有题目...</view>
+<swiper style="height:{{swiperHeight}}px" duration="{{swiperDuration}}" current="{{current}}" bindchange="swiperChange">
+  <swiper-item wx:key="ssssss" wx:for="{{testlist}}">
+    <item-view><ProblemItem bind:childIndex="getChildIndex" testlist="{{testlist}}" classify="{{classify}}" currentIndex="{{currentIndex}}"/></item-view>
+  </swiper-item>
+</swiper>
+

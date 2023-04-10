@@ -1,0 +1,31 @@
+<!--pageTest/pages/answerdata/answerdata.wxml-->
+<view class="container">
+    <view class="bc"></view>
+    <view class="top">
+        <view class="info">
+            <image class="avater" src="{{userInfo.avatar}}"></image>
+            <view class="info-right">
+                <view class="title">Hi,{{userInfo.nickName}}</view>
+                <view class="mingyan">总有人会看到你的光芒!</view>
+                <view class="tishi">你已经超越过99%学习者</view>
+            </view>
+        </view>
+        <view class="card">
+            <view class="card-item">
+                <view class="big">{{testcount}}</view>
+                <view class="small">累计模拟考试</view>
+            </view>
+            <view class="card-item">
+                <view class="big">{{scorecount}}</view>
+                <view class="small">累计考试得分</view>
+            </view>
+            <view class="card-item">
+                <view class="big">{{rightrate}}%</view>
+                <view class="small">累计正确率</view>
+            </view>
+        </view>
+    </view>
+    <view class="ec-container">
+        <ec-canvas wx:if="{{visible}}" canvas-id="echart-pie" ec="{{ec}}"></ec-canvas>
+    </view>
+</view>

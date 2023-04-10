@@ -1,0 +1,6 @@
+{
+    "usingComponents": {
+        "ProblemItemExam":"../../../components/ProblemItemExam/ProblemItemExam",
+        "van-count-down": "@vant/weapp/count-down/index"
+    }
+}
