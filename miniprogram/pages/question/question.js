@@ -7,7 +7,9 @@ Page({
      * 页面的初始数据
      */
     data: {
-        background: ['cloud://project-4gak2jnr9bdf0df2.7072-project-4gak2jnr9bdf0df2-1307359075/swiper/book_lb1.jpg', 'cloud://project-4gak2jnr9bdf0df2.7072-project-4gak2jnr9bdf0df2-1307359075/swiper/book_lb2.jpg', 'cloud://project-4gak2jnr9bdf0df2.7072-project-4gak2jnr9bdf0df2-1307359075/swiper/book_lb3.jpg'],
+        background: [
+            'cloud://project-4gak2jnr9bdf0df2.7072-project-4gak2jnr9bdf0df2-1307359075/swiper/lb002.jpg',
+         ],
         // 我的题库
         classifyList:[],
         mingyan:'名言警句： 锲而舍之,朽木不折,锲而不舍,金石可镂。 加油啊！中医人'

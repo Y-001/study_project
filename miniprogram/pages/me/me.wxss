@@ -38,17 +38,7 @@
     font-weight: bold;
   }
   
-  map,.mapBox{
-    left: 0;
-    z-index: 99;
-    mix-blend-mode: screen;  
-    height: 100rpx;   
-  }
-  
-  map,.mapBox{
-    width: 750rpx;
-    height: 300rpx;
-  }
+
   
   .text-center {
     background-color: #FFFDF5;
@@ -68,12 +58,30 @@
   }
   
   .avatar {
+    position: relative;
     width: 150rpx;
     height: 150rpx;
-    border-radius: 50%;
-    overflow: hidden;
+    /* border-radius: 50%; */
+    /* overflow: hidden; */
     z-index: 99;
   }
+  .avatar-img{
+      border-radius: 50%;
+  }
+.avatar .avatar-prize{
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    width: 50rpx;
+    height: 50rpx;
+    z-index: 10;
+    border-radius: 50%;
+    box-shadow: 2rpx 2rpx 5rpx #fff;
+}
+
+
+
+
   
   .tip-content {
     margin-top: 40rpx;

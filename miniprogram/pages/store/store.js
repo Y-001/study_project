@@ -7,7 +7,10 @@ Page({
      * 页面的初始数据
      */
     data: {
-        background: ['cloud://project-4gak2jnr9bdf0df2.7072-project-4gak2jnr9bdf0df2-1307359075/swiper/book_lb1.jpg', 'cloud://project-4gak2jnr9bdf0df2.7072-project-4gak2jnr9bdf0df2-1307359075/swiper/book_lb2.jpg', 'cloud://project-4gak2jnr9bdf0df2.7072-project-4gak2jnr9bdf0df2-1307359075/swiper/book_lb3.jpg'],
+        background: [
+            'cloud://project-4gak2jnr9bdf0df2.7072-project-4gak2jnr9bdf0df2-1307359075/swiper/lb003.jpg',
+             
+            ],
         hotBooksList: [],
         likeBooksList: []
     },

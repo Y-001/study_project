@@ -3,6 +3,8 @@ import {dateFormat} from "../../../utils/index"
 const db = wx.cloud.database()
 var hengData = [0]
 var shuData = [0]
+var myDate=[100, 100, 90, 50, 40,30,15]
+var typename='开始'
 function initChart(canvas, width, height, dpr) {
     const chart = echarts.init(canvas, null, {
         width: width,
@@ -10,7 +12,6 @@ function initChart(canvas, width, height, dpr) {
         devicePixelRatio: dpr
     });
     canvas.setChart(chart);
-
     var option = {
         title: {
             text: ''
@@ -22,10 +23,30 @@ function initChart(canvas, width, height, dpr) {
         xAxis: {
             type: 'category',
             boundaryGap: false,
+            axisLabel: {
+                textStyle: {
+                    color: '#666',
+                    padding: [0,0,0,0],
+                    fontSize: 8
+                },
+                interval:1
+            },
+            axisLine: { 
+                show: false,
+                lineStyle: {
+                    color: '#666',
+                    width:1,
+                },
+            },
             // data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
             data: hengData
         },
         yAxis: {
+            name: '时长（min）',
+            nameTextStyle: {
+                fontSize: 8,
+                padding:[0,0,0,0],
+            },
             type: 'value',
             axisLabel: {
                 formatter: '{value}'
@@ -37,39 +58,137 @@ function initChart(canvas, width, height, dpr) {
                 type: 'line',
                 // data: [10, 11, 13, 11, 12, 12, 9],
                 data: shuData,
-
-                // markLine: {
-                //     data: [{ type: 'average', name: 'Avg' }]
-                // }
             },
-            //   {
-            //     name: 'Lowest',
-            //     type: 'line',
-            //     data: [1, -2, 2, 5, 3, 2, 0],
-            //     markPoint: {
-            //       data: [{ name: '周最低', value: -2, xAxis: 1, yAxis: -1.5 }]
-            //     },
-            //     markLine: {
-            //       data: [
-            //         { type: 'average', name: 'Avg' }
-            //       ]
-            //     }
-            //   }
         ]
     };
     chart.setOption(option);
 
     return chart;
 }
+function initChart2(canvas, width, height, dpr) {
+    const chart = echarts.init(canvas, null, {
+        width: width,
+        height: height,
+        devicePixelRatio: dpr
+    });
+    canvas.setChart(chart);
+    var option = {
+        title: {
+            text: ''
+        },
+        tooltip: {
+            trigger: 'axis'
+        },
+        legend: {},
+        xAxis: {
+            type: 'category',
+            boundaryGap: false,
+            // data: ['0', '20分钟后', '1小时后', '1天后', '1周后', '1月后'],
+            data: ['开始', '1天后','2天后','3天后', '1周后', '1月后','3月后'],
+            axisLabel: {
+                textStyle: {
+                    color: '#666',
+                    padding: [10,0,0,0],
+                    fontSize: 10
+                },
+                interval:0
+            },
+            axisLine: { 
+                show: false,
+                lineStyle: {
+                    color: '#666',
+                    width:1,
+                },
+            },
+            splitLine: {
+                show: false,
+            },
+            axisTick: {
+                show: false,
+            },
+        },
+        yAxis: {
+            name: '记忆率（%）',
+            nameTextStyle: {
+                fontSize: 8,
+                padding:[0,0,0,0],
+            },
+        },
+        series: [
+            {
+                // name: '预警时间',
+                type: 'line',
+                markLine: {
+                    itemStyle: { //盒须图样式。
+                        normal: {
+                            label:{
+                                formatter: '今天'
+                            }
+                        }
+                    },
+                    //name: '预警时间',
+                    //yAxisIndex: 0,
+                    symbol:'none',//去掉箭头
+                    data: [[
+                        {coord: [typename, 0] },
+                        {coord: [typename, 100] }
+                    ]]
+                }
+            },
+            {
+                name: '艾宾浩斯遗忘曲线',
+                type: 'line',
+                symbol :'circle',
+                smooth: true,
+                data: [100,26,25,24, 23, 21,15]
+            },
+            {
+                name: '你的学习遗忘曲线',
+                type: 'line',
+                symbol :'circle',
+                smooth: true,
+                data: myDate
+            },
+        ]
+    };
+    chart.setOption(option);
 
+    return chart;
+}
 Page({
 
     /**
      * 页面的初始数据
      */
     data: {
-        ec: {
+        prizeList:[
+            {
+                img:'cloud://project-4gak2jnr9bdf0df2.7072-project-4gak2jnr9bdf0df2-1307359075/grade/21.png',
+                text:'坚持不懈',
+                score:5,
+            },
+            {
+                img:'cloud://project-4gak2jnr9bdf0df2.7072-project-4gak2jnr9bdf0df2-1307359075/grade/50.png',
+                text:'聚沙成塔',
+                score:50,
+            },
+            {
+                img:'cloud://project-4gak2jnr9bdf0df2.7072-project-4gak2jnr9bdf0df2-1307359075/grade/1000.png',
+                text:'天道酬勤',
+                score:1000,
+            },
+            {
+                img:'cloud://project-4gak2jnr9bdf0df2.7072-project-4gak2jnr9bdf0df2-1307359075/grade/2000.png',
+                text:'学富五车',
+                score:2000,
+            },
+        ],
+        pdprizeImg:'',
+        ec1: {
             onInit: initChart
+        },
+        ec2: {
+            onInit: initChart2
         },
         visible:false,
         //用户信息
@@ -90,6 +209,7 @@ Page({
         this.setData({
             userInfo: JSON.parse(wx.getStorageSync('userInfo'))
         })
+        let _this=this
         //获取用户计划
         db.collection('users').where({
             _openid: wx.getStorageSync('openid')
@@ -109,6 +229,17 @@ Page({
                         }
                     })
                 })
+                // 计算遗忘曲线 myData calendar
+                let tody=dateFormat(new Date().getTime()).slice(8)
+                // console.log(tody.slice(8))                
+                let dy=hengData.map(item=>{
+                    return item.toString().slice(8)
+                })
+                let chaday=tody-dy
+                typename=chaday==1?'1天后':chaday==2?'2天后':chaday==3 || 4?'3天后':chaday>=5||chaday<30?'1周后':chaday>=30||chaday<90?'1月后':'3月后'
+
+                
+
                 // console.log(shuData)
                 this.setData({
                     visible:true
@@ -119,6 +250,13 @@ Page({
                     totalBook:res.data[0].lastRead.length
                 })
             }
+            let pdprize=res.data[0]?.pdprize || ''
+                let img= _this.data.prizeList.filter(item=>{
+                    return item.text==pdprize
+                })[0]?.img || ''
+                _this.setData({
+                    pdprizeImg: img,
+                })
         })
         //获取累计学习分钟
         db.collection('bookstars').where({

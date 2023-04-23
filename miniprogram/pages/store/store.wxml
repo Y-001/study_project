@@ -11,7 +11,7 @@
     <view class="body">
         <!-- 轮播图 -->
         <view class="swiper-body">
-            <swiper class="swiper" indicator-dots="{{true}}" autoplay="{{true}}" interval="{{2000}}" duration="{{500}}">
+            <swiper class="swiper" indicator-dots="{{false}}" autoplay="{{true}}" interval="{{2000}}" duration="{{500}}">
                 <block wx:for="{{background}}" wx:key="*this">
                     <swiper-item>
                         <!-- <view class="swiper-item {{item}}"></view> -->

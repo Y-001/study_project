@@ -2,7 +2,7 @@
     position: relative;
     width: 100%;
     background-color: #fff;
-    height: 100vh;
+    /* height: 100vh; */
 }
 .bc{
     width: 100%;
@@ -80,7 +80,16 @@
 .small{
     font-size: 26rpx;
 }
-
+.avatar-prize{
+    position: absolute;
+    left: 120rpx;
+    top: 90rpx;
+    width: 50rpx;
+    height: 50rpx;
+    z-index: 10;
+    border-radius: 50%;
+    box-shadow: 2rpx 2rpx 5rpx #fff;
+}
 
 /* 图表 */
 .ec-container {

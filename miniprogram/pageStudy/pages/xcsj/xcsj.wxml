@@ -3,6 +3,7 @@
     <view class="top">
         <view class="info">
             <image class="avater" src="{{userInfo.avatar}}"></image>
+            <image class="avatar-prize" src="{{pdprizeImg}}" mode=""/>
             <view class="info-right">
                 <view class="title">Hi,{{userInfo.nickName}}</view>
                 <view class="mingyan">总有人会看到你的光芒!</view>
@@ -25,6 +26,10 @@
         </view>
     </view>
     <view class="ec-container">
-        <ec-canvas wx:if="{{visible}}" canvas-id="echart-pie" ec="{{ec}}"></ec-canvas>
+        <ec-canvas wx:if="{{visible}}" canvas-id="echart-pie" ec="{{ec2}}"></ec-canvas>
     </view>
+    <view class="ec-container">
+        <ec-canvas wx:if="{{visible}}" canvas-id="echart-pie" ec="{{ec1}}"></ec-canvas>
+    </view>
+    
 </view>

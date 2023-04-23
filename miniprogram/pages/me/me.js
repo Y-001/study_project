@@ -1,14 +1,38 @@
 const defaultAvatarUrl = 'https://mmbiz.qpic.cn/mmbiz/icTdbqWNOwNRna42FI242Lcia07jQodd2FJGIYQfG0LAJGFxM4FbnQP6yfMxBgJ0F3YRqJCJ1aPAK2dQagdusBZg/0'
+const db=wx.cloud.database()
 Page({
 
     /**
      * 页面的初始数据
      */
     data: {
+        prizeList:[
+            {
+                img:'cloud://project-4gak2jnr9bdf0df2.7072-project-4gak2jnr9bdf0df2-1307359075/grade/21.png',
+                text:'坚持不懈',
+                score:5,
+            },
+            {
+                img:'cloud://project-4gak2jnr9bdf0df2.7072-project-4gak2jnr9bdf0df2-1307359075/grade/50.png',
+                text:'聚沙成塔',
+                score:50,
+            },
+            {
+                img:'cloud://project-4gak2jnr9bdf0df2.7072-project-4gak2jnr9bdf0df2-1307359075/grade/1000.png',
+                text:'天道酬勤',
+                score:1000,
+            },
+            {
+                img:'cloud://project-4gak2jnr9bdf0df2.7072-project-4gak2jnr9bdf0df2-1307359075/grade/2000.png',
+                text:'学富五车',
+                score:2000,
+            },
+        ],
         avatar: '', //用户头像
         isLogin: false,
         show: false,
         nickName: '', //用户名称
+        pdprizeImg:''
     },
     onShow() {
         let _this=this
@@ -20,7 +44,25 @@ Page({
                 avatar: userInfo.avatar,
                 nickName: userInfo.nickName
             })
+            db.collection('users').where({
+                _openid:wx.getStorageSync('openid')
+            }).get().then(res=>{
+                let pdprize=res.data[0]?.pdprize || ''
+                let img= _this.data.prizeList.filter(item=>{
+                    return item.text==pdprize
+                })[0]?.img || ''
+                _this.setData({
+                    pdprizeImg: img,
+                })
+            })
         }
+
+    },
+    // 去勋章页面
+    toPrize(){
+        wx.navigateTo({
+          url: '/pageStudy/pages/xcxz/xcxz',
+        })
     },
     // 去代办页面
     toDaiban(){

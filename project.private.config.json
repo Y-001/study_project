@@ -661,6 +661,27 @@
                     "query": "",
                     "launchMode": "default",
                     "scene": null
+                },
+                {
+                    "name": "",
+                    "pathName": "pageStudy/pages/xcsj/xcsj",
+                    "query": "",
+                    "launchMode": "default",
+                    "scene": null
+                },
+                {
+                    "name": "",
+                    "pathName": "pageTest/pages/ranking/ranking",
+                    "query": "",
+                    "launchMode": "default",
+                    "scene": null
+                },
+                {
+                    "name": "",
+                    "pathName": "pageStudy/pages/xcxz/xcxz",
+                    "query": "",
+                    "launchMode": "default",
+                    "scene": null
                 }
             ]
         }

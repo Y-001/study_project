@@ -1,0 +1,17 @@
+// 需要注意:
+// 1.不支持let，const
+// 2.不支持箭头函数
+var filter = {
+    isLq: function (list,data) {
+        for(var i=0;i<list.length;i++){
+            if(list[i]==data){
+                return true
+            }
+        }
+        return false
+    }
+}
+// 导出方法
+module.exports = {
+    isLq: filter.isLq
+}

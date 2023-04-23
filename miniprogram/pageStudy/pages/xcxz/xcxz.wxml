@@ -1,0 +1,18 @@
+<!--pageStudy/pages/xcxz/xcxz.wxml-->
+<wxs module='filter' src='./xcxz.wxs'></wxs>
+<view class="container">
+    <view class="title">成长勋章
+        <text class="total">({{lqprize.length}}/4)</text>
+        <text class="total" style="margin-left: 400rpx;">总积分{{score}}</text>
+    </view>
+    <view class="list">
+        <view class="item" wx:for="{{prizeList}}" wx:key="index">
+            <image src="{{item.img}}" mode="" class="img" />
+            <view  class="text">{{item.text}}</view>
+            <view class="btn">
+                <view data-text="{{item.text}}" bindtap="lqPrzie" class="lq {{filter.isLq(lqprize,item.text) || score<item.score?'ylq':''}}">{{filter.isLq(lqprize,item.text)?'已领取':'领取'}}</view>
+                <view data-text="{{item.text}}" bindtap="pdPrize" class="lq {{pdprize==item.text || !filter.isLq(lqprize,item.text)  ?'ylq':''}}">{{pdprize==item.text ?'已佩戴':'佩戴'}}</view>
+            </view>
+        </view>
+    </view>
+</view>
