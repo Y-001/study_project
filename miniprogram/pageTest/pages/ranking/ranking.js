@@ -16,41 +16,49 @@ Page({
     async onLoad(options) {
         const countResult=await db.collection('testexams').count()
         const total=countResult.total
-        const MAX_LIMIT=2
+        const MAX_LIMIT=20
         const total_times=Math.ceil(total/MAX_LIMIT)
         var userSorce=[]
         for(let i=1;i<=total_times;i++){
             await db.collection('testexams').skip((i-1)*MAX_LIMIT).limit(MAX_LIMIT).get().then(res=>{
-                res.data.forEach(item=>{
-                    if(userSorce.length==0){
-                        userSorce.push({
-                            _openid:item._openid,
-                            userInfo:item.userInfo,
-                            score:item.score
-                        })
-                    }else{
-                        for(let i=0;i<userSorce.length;i++){
-                            if(userSorce[i]._openid==item._openid){
-                                userSorce[i].score+=item.score
-                                break
-                            }
-                            if(i==userSorce.length-1){
-                                userSorce.push({
-                                    _openid:item._openid,
-                                    userInfo:item.userInfo,
-                                    score:item.score
-                                })
-                                return
-                            }
-                        }
-                    }
-                })
+
+                userSorce=Object.values(
+                    res.data.reduce((acc,{_openid,userInfo,score})=>{
+                        if(!acc[_openid]) acc[_openid]={_openid,userInfo,score:0};
+                        acc[_openid].score +=score
+                        return acc
+                    },{})
+                ).map(({_openid,userInfo,score})=>({_openid,userInfo,score}))
+                // res.data.forEach(item=>{
+                //     if(userSorce.length==0){
+                //         userSorce.push({
+                //             _openid:item._openid,
+                //             userInfo:item.userInfo,
+                //             score:item.score
+                //         })
+                //     }else{
+                //         for(let i=0;i<userSorce.length;i++){
+                //             if(userSorce[i]._openid==item._openid){
+                //                 userSorce[i].score+=item.score
+                //                 break
+                //             }
+                //             if(i==userSorce.length-1){
+                //                 userSorce.push({
+                //                     _openid:item._openid,
+                //                     userInfo:item.userInfo,
+                //                     score:item.score
+                //                 })
+                //                 return
+                //             }
+                //         }
+                //     }
+                // })
             })
         }
         // userSorce.score.sort((a,b)=>{
         //     return a-b
         // })
-        this.sortArr(userSorce,'score',false)
+        // this.sortArr(userSorce,'score',false)
 
         this.setData({
             userSorce

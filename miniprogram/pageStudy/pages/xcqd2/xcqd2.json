@@ -1,5 +1,6 @@
 {
     "usingComponents": {
         "calendar":"/components/calendar/calendar"
-    }
+    },
+    "navigationBarTitleText":"学习签到"
 }

@@ -6,6 +6,8 @@ Page({
      * 页面的初始数据
      */
     data: {
+        // 权限判断
+        auth:0,
         prizeList:[
             {
                 img:'cloud://project-4gak2jnr9bdf0df2.7072-project-4gak2jnr9bdf0df2-1307359075/grade/21.png',
@@ -33,6 +35,19 @@ Page({
         show: false,
         nickName: '', //用户名称
         pdprizeImg:''
+    },
+    onLoad(){
+        let _this=this
+        // 查看权限
+        db.collection('authoritys').where({
+            openid:wx.getStorageSync("openid")
+        }).get().then(res=>{
+            if(res.data.length!=0){
+                _this.setData({
+                    auth:res.data[0].role
+                })
+            }
+        })
     },
     onShow() {
         let _this=this

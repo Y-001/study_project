@@ -15,7 +15,8 @@
                 "pages/tbank/tbank",
                 "pages/daoh/daoh",
                 "pages/tclassify/tclassify",
-                "pages/editbank/editbank"
+                "pages/editbank/editbank",
+                "pages/role/role"
             ]
         },
         {

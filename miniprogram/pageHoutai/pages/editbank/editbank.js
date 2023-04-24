@@ -161,11 +161,16 @@ Page({
                 answer:a.data.answer,
                 analysis:a.data.analysis,
                 index:array.indexOf(a.data.classify),
-                optA:a.data.options[0].content,
-                optB:a.data.options[1].content,
-                optC:a.data.options[2].content,
-                optD:a.data.options[3].content
             })
+            if(a.data.type==0){
+                this.setData({
+                    optA:a.data.options[0].content,
+                    optB:a.data.options[1].content,
+                    optC:a.data.options[2].content,
+                    optD:a.data.options[3].content
+                })
+            }
+            
         }
     },
 

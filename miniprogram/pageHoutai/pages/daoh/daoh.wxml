@@ -1,5 +1,6 @@
 <!--pageHoutai/pages/daoh/daoh.wxml-->
 <view class="container">
-    <view class="item" bindtap="toTclassify">题库分类管理</view>
-    <view class="item" bindtap="toTbank">题库管理</view>
+    <view wx:if="{{auth == 1}}" class="item" bindtap="toRole">角色管理</view>
+    <view wx:if="{{auth == 1 || auth==2}}" class="item" bindtap="toTclassify">题库分类管理</view>
+    <view wx:if="{{auth == 1 || auth==2}}" class="item" bindtap="toTbank">题库管理</view>
 </view>

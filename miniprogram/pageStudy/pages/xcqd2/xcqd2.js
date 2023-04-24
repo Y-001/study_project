@@ -13,6 +13,8 @@ Page({
         num: 0,
         //是否签过
         active: false,
+        // 总积分
+        score:0
     },
     signup() {
         if(this.data.active) return
@@ -23,17 +25,23 @@ Page({
             _openid: wx.getStorageSync('openid')
         }).update({
             data: {
-                signlist: _.push(day)
+                signlist: _.push(day),
+                score:_.inc(1)
             }
         }).then(res => {
             wx.showToast({
-                title: '签到成功',
+                title: '签到成功,积分+1',
                 icon: 'none'
             })
             this.setData({
                 active: true
             })
             _this.onLoad()
+        })
+    },
+    toLqxun(){
+        wx.navigateTo({
+            url: '/pageStudy/pages/xcxz/xcxz',
         })
     },
 
@@ -56,7 +64,8 @@ onLoad(options) {
             this.setData({
                 list: list,
                 active: active,
-                num: res.data[0].signlist.length
+                num: res.data[0].signlist.length,
+                score:res.data[0].score
             })
         }
     })

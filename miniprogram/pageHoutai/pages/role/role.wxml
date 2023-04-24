@@ -1,0 +1,32 @@
+<!--pageHoutai/pages/tclassify/tclassify.wxml-->
+<view class="container">
+    <van-cell title="{{item.bank}}" wx:for="{{banks}}" wx:key="index">
+        <van-icon data-id="{{item._id}}" bindtap="toEditTclassify" slot="right-icon" name="edit" class="custom-icon" />
+    </van-cell>
+</view>
+<view data-id="0" class="toNotes" bindtap="toEditTclassify">
+    <image class="note-icon" src="../../images/note_add.png"></image>
+</view>
+<!-- 修改新增的弹窗 -->
+<van-dialog use-slot title="{{id==0?'新增角色':'修改角色分类'}}" show="{{ show }}" show-cancel-button bind:close="onClose" bind:confirm="edit">
+    <view class="body">
+        <picker bindchange="bindPickerChange" value="{{index}}" range="{{array}}">
+            <view class="picker">
+                <view class="text">
+                    角色名：
+                </view>
+                <view>
+                    {{array[index]}}
+                </view>
+            </view>
+        </picker>
+        <view class="picker">
+            <view class="text">
+                人员名：
+            </view>
+            <view>
+                <input value="{{nowbank}}" class="inp" type="text" name="" id="" bindinput="getBank" />
+            </view>
+        </view>
+    </view>
+</van-dialog>

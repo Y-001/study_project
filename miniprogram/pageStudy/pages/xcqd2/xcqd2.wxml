@@ -1,14 +1,30 @@
 <!--pageStudy/pages/xcqd2/xcqd2.wxml-->
 <view class="context">
     <view class="qd">
-        <view class="btn {{active?'active':''}}" bindtap="signup">
+        <!-- <view class="btn {{active?'active':''}}" bindtap="signup">
             <view class="btn-top">{{active?'已签到':'签到'}}</view>
             <view class="btn-center"></view>
             <view class="btn-bottom">已签{{num}}天</view>
+        </view> -->
+        <view class="info">
+            <view class="info-box">
+                <text><text class="info-num">{{score}}</text>分</text>
+                <text>总积分</text>
+            </view>
+            <view class="info-box">
+                <text><text class="info-num">{{num}}</text>次</text>
+                <text>累计签到</text>
+            </view>
+        </view>
+        <view class="btn" bindtap="signup">
+            {{active?'已签到':'签到'}}
         </view>
     </view>
     <!-- //list:['2023-3-1','2023-3-3'] //已签的日期 -->
     <view class="calendar">
         <calendar lists="{{list}}"></calendar>
+        <view bindtap="toLqxun" class="btnto">
+            领取勋章
+        </view>
     </view>
 </view>

@@ -1,7 +1,8 @@
 /* pages/ranking/ranking.wxss */
 .container{
     min-height: 100vh;
-    background-color: #667c70;
+    /* background-color: #667c70; */
+    background: linear-gradient(to left top, #8EA27B, #667c70);
 }
 .ranking-list{
     padding-top: 20rpx;

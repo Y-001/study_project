@@ -23,7 +23,8 @@
 
 .day-item {
     width: 14.2%;
-    color: #C5C5C5;
+    /* color: #C5C5C5; */
+    color: #667c70;
 }
 
 .calendar-date-box {
