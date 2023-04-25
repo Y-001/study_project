@@ -1,4 +1,13 @@
 /* pageHoutai/pages/role/role.wxss */
+.avatar{
+    width: 70rpx;
+    height: 70rpx;
+    border-radius: 50%;
+    margin-right: 10rpx;
+}
+.custom-icon{
+    margin-left: 15rpx !important;
+}
 
 /* 悬浮 */
 .toNotes {
@@ -36,3 +45,14 @@
     border-bottom: 1px solid #ccc;
 }
 
+/* 搜索名字列表 */
+.list{
+    max-height: 200rpx;
+    overflow: scroll;
+}
+.avatar-xuan{
+    width: 50rpx;
+    height: 50rpx;
+    border-radius: 50%;
+    margin-right: 5rpx;
+}

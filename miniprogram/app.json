@@ -65,7 +65,8 @@
                 "pages/notes/notes",
                 "pages/notedetail/notedetail",
                 "pages/userinfo/userinfo",
-                "pages/daiban/daiban"
+                "pages/daiban/daiban",
+                "pages/daiban2/daiban2"
             ]
         }
     ],

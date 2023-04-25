@@ -710,6 +710,27 @@
                     "query": "",
                     "launchMode": "default",
                     "scene": null
+                },
+                {
+                    "name": "",
+                    "pathName": "pageHoutai/pages/role/role",
+                    "query": "",
+                    "launchMode": "default",
+                    "scene": null
+                },
+                {
+                    "name": "",
+                    "pathName": "pageNote/pages/daiban/daiban",
+                    "query": "",
+                    "launchMode": "default",
+                    "scene": null
+                },
+                {
+                    "name": "",
+                    "pathName": "pageNote/pages/daiban2/daiban2",
+                    "query": "",
+                    "launchMode": "default",
+                    "scene": null
                 }
             ]
         }
