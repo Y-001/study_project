@@ -1,15 +1,2 @@
 <!--pageNote/pages/daiban2/daiban2.wxml-->
-<view class="todoPage">
-    <view class="inputBox">
-        <view class="iconBox">+</view>
-        <!-- add键盘回车事件 -->
-        <input type="text" placeholder="请输入..." model:value="{{content}}" bindconfirm="add" />
-    </view>
-    <van-swipe-cell right-width="{{ 50 }}" data-id="{{item._id}}" async-close bind:close="onClose" wx:for="{{list}}" wx:key="index">
-        <view class="nameBox">
-                <checkbox checked="{{item.checked}}" data-id="{{item._id}}" bindtap="ass"></checkbox>
-                <view class="{{item.checked?'s':''}}">{{item.content}}</view>
-         </view>
-        <view slot="right">删除</view>
-    </van-swipe-cell>
-</view>
+<text>pageNote/pages/daiban2/daiban2.wxml</text>

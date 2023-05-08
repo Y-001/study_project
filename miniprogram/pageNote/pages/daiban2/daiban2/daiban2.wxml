@@ -1,0 +1,30 @@
+<!--pageNote/pages/daiban2/daiban2.wxml-->
+<view>
+    <view class="btn" bindtap="toAdd">添加代办</view>
+    <!-- 添加代办的弹窗 -->
+    <van-dialog use-slot title="新建待办" show="{{ show }}" show-cancel-button bind:close="onClose" bind:getuserinfo="getUserInfo">
+        <view class="tanchuang">
+            <!-- <view class="info">
+                <view class="title">待办事项</view>
+                <input class="int" type="text" placeholder="请输入待办事项" />
+                <van-divider customStyle="border-color: #ccc;" />
+                <view class="title">详细描述</view>
+                <input class="int" type="text" placeholder="请输入待办事项" />
+            </view>
+            <view class="rili"></view>
+            <view class="switch">
+                <view class="s-title">是否开启提醒</view>
+            </view> -->
+
+            <van-cell-group inset>
+                <van-cell value="内容" icon="shop-o" is-link>
+                    <view slot="title">
+                        <view class="van-cell-text">待办事项</view>
+                        <input type="text" placeholder="请输入您的待办"/>
+                    </view>
+                </van-cell>
+            </van-cell-group>
+        </view>
+
+    </van-dialog>
+</view>

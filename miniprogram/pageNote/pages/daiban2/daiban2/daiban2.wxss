@@ -1,0 +1,40 @@
+/* pageNote/pages/daiban2/daiban2.wxss */
+
+/* 左右滑动的按钮 */
+.van-swipe-cell__left,
+.van-swipe-cell__right {
+    display: inline-block;
+    /* height: 44px; */
+    width: 50px;
+    text-align: center;
+    /* font-size: 15px; */
+    /* line-height: 44px; */
+    color: #fff;
+    text-align: center;
+    background-color: #667c70;
+}
+
+
+/* 弹窗的代码 */
+.van-dialog,.van-popup{
+    background-color: #eee !important;
+}
+
+
+.tanchuang{
+    width: 100%;
+    margin: auto;
+    box-sizing: border-box;
+    padding: 15rpx 0;
+}
+.info{
+    background-color: #eee;
+    box-sizing: border-box;
+    padding:16px 10rpx;
+    border-radius: 10rpx;
+}
+.int{
+    margin: 6rpx 0 0 12rpx;
+    font-size: 0.9em;
+}
+
