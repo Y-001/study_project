@@ -4,49 +4,49 @@
     <view class="head">
         <view class="head-left" bindtap="toPublish">发布</view>
         <view class="head-right">
-            <van-icon wx:if="{{isMy}}" bindtap="tuiMyPublish" class="head-icon" name="todo-list" size="50rpx" color="#667c70"/>
-            <van-icon wx:else  bindtap="myPublish" class="head-icon" name="todo-list-o" size="50rpx" color="#667c70"/>
-            <van-icon bindtap="toStar" class="head-icon" name="star-o" size="50rpx" color="#667c70"/>
+            <van-icon wx:if="{{isMy}}" bindtap="tuiMyPublish" class="head-icon" name="todo-list" size="50rpx" color="#667c70" />
+            <van-icon wx:else bindtap="myPublish" class="head-icon" name="todo-list-o" size="50rpx" color="#667c70" />
+            <van-icon bindtap="toStar" class="head-icon" name="star-o" size="50rpx" color="#667c70" />
         </view>
     </view>
     <view class="tab">
         <van-tabs active="{{ active }}" bind:change="onChange" color="#667c70">
-            <van-tab title="吐槽" name="吐槽"/>
-            <van-tab title="热门" name="热门"/>
-            <van-tab title="读书" name="读书"/>
-            <van-tab title="答题" name="答题"/>
-            <van-tab title="求助" name="求助"/>
+            <van-tab title="吐槽" name="吐槽" />
+            <van-tab title="热门" name="热门" />
+            <van-tab title="读书" name="读书" />
+            <van-tab title="答题" name="答题" />
+            <van-tab title="求助" name="求助" />
         </van-tabs>
 
     </view>
     <van-empty wx:if="{{list.length==0}}" description="暂无内容" />
     <view wx:if="{{list.length>0}}" class="talk-list">
-        <view class="talk-item" wx:for="{{list}}" wx:key="index" >
-        <view >
+        <view class="talk-item" wx:for="{{list}}" wx:key="index">
             <view class="item-top">
                 <view class="item-top-left">
                     <image class="item-img" src="{{item.avatar}}"></image>
                     <view class="text">{{item.nickName}}</view>
                 </view>
                 <view class="item-top-right">
-                    <van-icon wx:if="{{filter.isStar(item._id,starList)}}" data-sign="0" data-item="{{item}}" bindtap="getStar" class="head-icon" name="star" size="40rpx" color="#667c70"/>
-                    <van-icon wx:else data-sign="1" data-item="{{item}}" bindtap="getStar" class="head-icon" name="star-o" size="40rpx" color="#667c70"/>
+                    <van-icon wx:if="{{filter.isStar(item._id,starList)}}" data-sign="0" data-item="{{item}}" bindtap="getStar" class="head-icon" name="star" size="40rpx" color="#667c70" />
+                    <van-icon wx:else data-sign="1" data-item="{{item}}" bindtap="getStar" class="head-icon" name="star-o" size="40rpx" color="#667c70" />
                     <!-- <image class="item-icon" src="../../images/test/test-beiti.png"></image> -->
                     <van-icon data-id="{{item._id}}" wx:if="{{openid==item._openid}}" bindtap="delete" class="item-icon" name="delete-o" size="40rpx" color="#667c70" />
                 </view>
             </view>
-            <view class="item-content" data-id="{{item._id}}" bindtap="toTalkdetail">
-                <view class="item-content-title">
-                    【{{item.title}}】
-                </view>
-                <view class="item-content-body">
-                    {{item.content}}
+            <view class="item-content">
+                <view data-id="{{item._id}}" bindtap="toTalkdetail">
+                    <view class="item-content-title">
+                        【{{item.title}}】
+                    </view>
+                    <view class="item-content-body">
+                        {{item.content}}
+                    </view>
                 </view>
                 <view class="item-content-imglist">
                     <image bindtap="previewSqs" data-item="{{item}}" data-index="{{index}}" wx:for-item="img" wx:for="{{item.imgUp}}" wx:key="index" class="item-content-img" src="{{img}}"></image>
                 </view>
             </view>
-        </view>
             <view class="item-bottom">
                 <view class="item-bottom-left">
                     <view class="time-tag">{{item.classify}}</view>
@@ -54,12 +54,12 @@
                 </view>
                 <view class="item-bottom-iconlist">
                     <view class="item-bottom-iconitem" data-id="{{item._id}}" bindtap="toTalkdetail">
-                        <van-icon class="head-icon" name="chat-o" size="40rpx" color="#667c70"/>
+                        <van-icon class="head-icon" name="chat-o" size="40rpx" color="#667c70" />
                         <text class="iconitem-num">{{!item.comment?0:item.comment.length}}</text>
                     </view>
                     <view class="item-bottom-iconitem">
-                        <van-icon data-item="{{item}}" bindtap="dodeleteStar" wx:if="{{filter.isStar(openid,item.star)}}" class="head-icon" name="good-job" size="40rpx" color="#667c70"/>
-                        <van-icon data-id="{{item._id}}" bindtap="doStar" wx:else class="head-icon" name="good-job-o" size="40rpx" color="#667c70"/>
+                        <van-icon data-item="{{item}}" bindtap="dodeleteStar" wx:if="{{filter.isStar(openid,item.star)}}" class="head-icon" name="good-job" size="40rpx" color="#667c70" />
+                        <van-icon data-id="{{item._id}}" bindtap="doStar" wx:else class="head-icon" name="good-job-o" size="40rpx" color="#667c70" />
                         <text class="iconitem-num">{{!item.star?0:item.star.length}}</text>
                     </view>
                 </view>

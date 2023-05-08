@@ -83,7 +83,7 @@ Page({
     // 去代办页面
     toDaiban(){
         wx.navigateTo({
-          url: '/pageNote/pages/daiban/daiban',
+          url: '/pageNote/pages/daiban2/daiban2',
         })
     },
     // 去个人信息页面

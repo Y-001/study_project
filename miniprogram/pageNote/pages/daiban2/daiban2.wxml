@@ -1,7 +1,4 @@
 <!--pageNote/pages/daiban2/daiban2.wxml-->
-<<<<<<< HEAD
-<text>pageNote/pages/daiban2/daiban2.wxml</text>
-=======
 <view>
     <!-- 展示待办的部分 -->
     <view wx:if="{{todoList.length==0}}">
@@ -57,4 +54,3 @@
     <image class="note-icon" src="../../images/note_add.png"></image>
 </view>
 <van-dialog id="van-dialog" />
->>>>>>> ca76ee910539ef51c49e8bb81f63fe77f64fbfcf

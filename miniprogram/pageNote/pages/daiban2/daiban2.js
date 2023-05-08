@@ -1,20 +1,12 @@
-<<<<<<< HEAD
-// pageNote/pages/daiban2/daiban2.js
-=======
 const db = wx.cloud.database()
 const _ = db.command
 import Dialog from '@vant/weapp/dialog/dialog';
->>>>>>> ca76ee910539ef51c49e8bb81f63fe77f64fbfcf
 Page({
 
     /**
      * 页面的初始数据
      */
     data: {
-<<<<<<< HEAD
-
-    },
-=======
         todoList: [],//待办数组
         show: false,//是否显示待办
         showCalendar: false,//是否显示日历
@@ -185,15 +177,10 @@ Page({
             })
         })
     },
->>>>>>> ca76ee910539ef51c49e8bb81f63fe77f64fbfcf
 
     /**
      * 生命周期函数--监听页面加载
      */
-<<<<<<< HEAD
-    onLoad(options) {
-
-=======
     onLoad: function (options) {
         this.getTodos()
         let _this=this
@@ -213,7 +200,6 @@ Page({
               }
             }
           })
->>>>>>> ca76ee910539ef51c49e8bb81f63fe77f64fbfcf
     },
 
     /**
