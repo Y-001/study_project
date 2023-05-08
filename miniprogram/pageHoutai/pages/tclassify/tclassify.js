@@ -26,6 +26,31 @@ Page({
           index: e.detail.value
         })
       },
+    //   删除题库类型
+       delete(e){
+          let id=e.currentTarget.dataset.id
+          let _this=this
+          wx.showModal({
+            title: '确定要删除此题库分类',
+            content: '',
+            complete: (res) => {
+              if (res.cancel) {
+                
+              }
+          
+              if (res.confirm) {
+                db.collection('testclassifys').doc(id).remove().then(res=>{
+                    wx.showToast({
+                      title: '删除此题库分类成功',
+                      icon:'none'
+                    })
+                    _this.onLoad()
+                })
+              }
+            }
+          })
+           
+      },
     async edit() {
         console.log('确认');
         let {id,array,index,nowbank}=this.data

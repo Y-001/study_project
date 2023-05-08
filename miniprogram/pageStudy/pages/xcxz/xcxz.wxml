@@ -9,6 +9,9 @@
         <view class="item" wx:for="{{prizeList}}" wx:key="index">
             <image src="{{item.img}}" mode="" class="img" />
             <view  class="text">{{item.text}}</view>
+            <view class="progress">
+                <van-progress color="#667c70" percentage="{{(score/item.score)*100>=100?100:(score/item.score)*100<1?'1':(score/item.score)*100}}"  />
+            </view>
             <view class="btn">
                 <view data-text="{{item.text}}" bindtap="lqPrzie" class="lq {{filter.isLq(lqprize,item.text) || score<item.score?'ylq':''}}">{{filter.isLq(lqprize,item.text)?'已领取':'领取'}}</view>
                 <view data-text="{{item.text}}" bindtap="pdPrize" class="lq {{pdprize==item.text || !filter.isLq(lqprize,item.text)  ?'ylq':''}}">{{pdprize==item.text ?'已佩戴':'佩戴'}}</view>

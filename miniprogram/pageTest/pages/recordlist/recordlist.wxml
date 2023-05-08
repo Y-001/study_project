@@ -1,5 +1,5 @@
 <!--pageTest/pages/recordlist/recordlist.wxml-->
-<view wx:if="{{testbank.length==0}}">暂时没有考试记录....</view>
+<van-empty wx:if="{{testbank.length==0}}" description="暂时没有考试记录" />
 <van-cell-group>
   <van-cell value="{{item.score}}分" data-id="{{item._id}}" bindtap="toExamRecord" wx:for="{{testbank}}" wx:key="index" title="{{item.classify}}" is-link label="{{item.createtime}}"  />
 </van-cell-group>

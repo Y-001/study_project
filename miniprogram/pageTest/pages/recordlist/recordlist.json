@@ -1,7 +1,8 @@
 {
     "usingComponents": {
         "van-cell": "@vant/weapp/cell/index",
-        "van-cell-group": "@vant/weapp/cell-group/index"
+        "van-cell-group": "@vant/weapp/cell-group/index",
+        "van-empty": "@vant/weapp/empty/index"
     },
     "navigationBarTitleText":"考试记录"
 }

@@ -1,0 +1,37 @@
+<!--pages/publish/publish.wxml-->
+<view class="container">
+    <view class="top">
+        <!-- <view class="top-keep">保存</view> -->
+        <view class="top-send" bindtap="publish">发布</view>
+    </view>
+    <view class="content">
+        <view class="title">
+            <input bindinput="getTitle" value="{{title}}" type="text" placeholder="请输入标题"/>
+        </view>
+        <view class="body">
+            <textarea bindinput="getContent" value="{{content}}"  placeholder="分享你的见解"  id="" cols="25" rows="10"></textarea>
+        </view>
+        <view class="upload">
+            <view class="upload-top">
+                <text>最多选择6张图片</text>
+                <text>{{imgList.length}}/6</text>
+            </view>
+            <view class="upload-list">
+                <view class="img-list" wx:for="{{imgList}}" wx:key="index">
+                    <image class="common" src="{{item}}"></image>
+                    <image data-index="{{index}}" bindtap="deleteImg" class="delete" src="../../images/delete.png"></image>
+                </view>
+                <image wx:if="{{imgList.length<6}}" bindtap="uploadImg" class="default" src="../../images/upload.png"></image>
+            </view>
+        </view>
+        <view class="select">
+            <view class="text">请选择文章类别</view>
+            <view class="select-list" bindtap="selectClassify">
+                <view data-name="吐槽" class="select-item {{classify=='吐槽'?'selected':''}}">吐槽</view>
+                <view data-name="读书" class="select-item {{classify=='读书'?'selected':''}}">读书</view>
+                <view data-name="答题" class="select-item {{classify=='答题'?'selected':''}}">答题</view>
+                <view data-name="求助" class="select-item {{classify=='求助'?'selected':''}}">求助</view>
+            </view>
+        </view>
+    </view>
+</view>

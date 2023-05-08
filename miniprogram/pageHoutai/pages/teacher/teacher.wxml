@@ -1,0 +1,71 @@
+<wxs module='filter' src='./teacher.wxs'></wxs>
+<view class="container">
+    <van-cell title="{{item.nickName}}" wx:for="{{teacher}}" label="{{item.banks}}" wx:key="index">
+        <image slot="icon" class="avatar" src="{{item.avatar}}" />
+        <van-icon wx:if="{{item.role!=1}}" data-item="{{item}}" bindtap="toEditRole" slot="right-icon" name="edit" class="custom-icon" />
+        <van-icon class="delete" wx:if="{{item.role!=1}}" data-item="{{item}}" bindtap="delete" slot="right-icon" name="delete-o" class="custom-icon" />
+    </van-cell>
+</view>
+<view data-id="0" class="toNotes" bindtap="toAddRole">
+    <image class="note-icon" src="../../images/note_add.png"></image>
+</view>
+<!-- 修改的弹窗 -->
+<van-dialog use-slot title="修改角色" show="{{ showEdit }}" show-cancel-button bind:close="onClose" bind:confirm="edit">
+    <view class="body">
+        <view class="picker">
+            <view class="text">
+                题库分类：
+            </view>
+            <view>
+                <input class="inp" value="{{nowrole.banks}}" disabled type="text" name="" id="" />
+                <view class="check-list">
+                    <view class="check-item"  wx:for="{{list}}" wx:key="index" data-name="{{item.name}}" bindtap='changeSelect'>
+                        <checkbox class="checkbox" checked="{{filter.isChecked(nowrole.banks,item)}}" />
+                        <view>{{item.name}}</view>
+                    </view>
+                </view>
+            </view>
+        </view>
+        <view class="picker">
+            <view class="text">
+                人员名：
+            </view>
+            <view>
+                <input value="{{nowrole.nickName}}" disabled type="text" name="" id="" />
+            </view>
+        </view>
+    </view>
+</van-dialog>
+<!-- 新增的弹窗 -->
+<van-dialog use-slot title="新增角色" show="{{ show }}" show-cancel-button bind:close="onClose" bind:confirm="add">
+    <view class="body">
+        <view class="picker">
+            <view class="text">
+                题库分类：
+            </view>
+            <view>
+                <input class="inp" value="{{checkName}}" disabled type="text" name="" id="" />
+                <view class="check-list">
+                    <view class="check-item"  wx:for="{{list}}" wx:key="index" data-id="{{item.id}}" bindtap='select'>
+                        <checkbox class="checkbox" checked="{{item.checked}}" />
+                        <view>{{item.name}}</view>
+                    </view>
+                </view>
+            </view>
+        </view>
+        <view class="picker">
+            <view class="text">
+                人员名：
+            </view>
+            <view>
+                <input value="{{name}}" class="inp" type="text" name="" id="" bindinput="getName" />
+
+                <view class="list" wx:if="{{userList.length>0}}">
+                    <van-cell title="{{item.nickName}}" wx:for="{{userList}}" wx:key="index" data-item="{{item}}" bindtap="chooseUser">
+                        <image slot="icon" class="avatar-xuan" src="{{item.avatar}}" />
+                    </van-cell>
+                </view>
+            </view>
+        </view>
+    </view>
+</van-dialog>

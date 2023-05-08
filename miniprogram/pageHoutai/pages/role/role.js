@@ -17,7 +17,7 @@ Page({
         // 当前是哪个人的权限
         nowrole: {},
         // 角色类型
-        array: ['用户', '超级管理员', '题库老师'],
+        array: ['用户', '超级管理员', '题库老师','题库管理员'],
         index: 0,
         // 输入用户名字
         name: '',
@@ -147,7 +147,8 @@ Page({
                 openid: chooseuser._openid,
                 role: Number(index),
                 nickName: chooseuser.nickName,
-                avatar: chooseuser.avatar
+                avatar: chooseuser.avatar,
+                bank:[]
             }
         }).then(res => {
             wx.showToast({
@@ -161,7 +162,10 @@ Page({
     // 按关键词搜索所有用户
     getUser(name) {
         db.collection('users').where({
-            nickName: name
+            nickName: {
+                $regex: '.*' + name,
+                $options: 'i' 
+              }
         }).get().then(res => {
             if (res.data.length > 0) {
                 this.setData({

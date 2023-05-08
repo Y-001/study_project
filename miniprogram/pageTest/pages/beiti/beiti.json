@@ -1,5 +1,6 @@
 {
     "usingComponents": {
-        "ProblemItem":"../../../components/ProblemItem/ProblemItem"
+        "ProblemItem":"../../../components/ProblemItem/ProblemItem",
+        "van-empty": "@vant/weapp/empty/index"
     }
 }

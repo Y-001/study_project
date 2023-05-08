@@ -7,8 +7,80 @@ Page({
      * 页面的初始数据
      */
     data: {
-        testList:[],
-        id:0,
+        searchQ:'',//搜索框的值
+        //下拉菜单值
+        option1: [
+            { text: '全部分类', value: '全部分类',icon:'' },
+          ],
+          option2: [
+            { text: '全部题目', value: 0,icon:'' },
+            { text: '我的题目', value: 1,icon:'' },
+          ],
+          value1: '全部分类',
+          value2: 0,
+        testList:[],//下边展示的题目数组
+        id:0,//选中题目的id
+    },
+    //删除题目
+    delete(e){
+        let id=e.currentTarget.dataset.id
+        wx.showModal({
+          title: '确定删除此道题目？',
+          content: '',
+          complete: (res) => {
+            if (res.cancel) {
+              
+            }
+        
+            if (res.confirm) {
+              db.collection('testbanks').doc(id).remove().then(res=>{
+                  wx.showToast({
+                    title: '删除成功',
+                  })
+                  this.getTestList()
+                  this.setData({
+                    value1: '全部分类',
+                    value2: 0,
+                  })
+              })
+            }
+          }
+        })
+    },
+    //当点击搜索
+    search(e){
+        wx.showLoading({
+            title: '加载中...',
+        })
+        let data=e.detail
+        db.collection('testbanks').where({
+            title: {
+                $regex: '.*' + data+'.*',
+                $options: 'i' 
+              }
+        }).get().then(res=>{
+            this.setData({
+                testList:res.data,
+                value1: '全部分类',
+                value2: 0,
+            })
+            wx.hideLoading()
+        })
+    },
+    //筛选展示
+    changeA(e){
+        this.setData({
+            value1:e.detail,
+            searchQ:""
+        })
+        this.getTestList(this.data.value1,this.data.value2)
+    },
+    changeB(e){
+        this.setData({
+            value2:e.detail,
+            searchQ:""
+        })
+        this.getTestList(this.data.value1,this.data.value2)
     },
     // 新增修改题目
     editTest(e){
@@ -21,11 +93,24 @@ Page({
         })
     },
     // 获取题目列表
-    getTestList(){
-        db.collection('testbanks').get().then(res=>{
+    getTestList(val1='全部分类',val2=0){
+        wx.showLoading({
+          title: '加载中...',
+        })
+        let data={}
+        if(val1!='全部分类'){
+            data.classify=val1
+        }
+        if(val2==1){
+            data._openid=wx.getStorageSync('openid')
+        }
+        db.collection('testbanks').where({
+            ...data
+        }).get().then(res=>{
             this.setData({
                 testList:res.data
             })
+            wx.hideLoading()
         })
     },
 
@@ -34,6 +119,26 @@ Page({
      */
     onLoad(options) {
         this.getTestList()
+        //获取分类列表
+        db.collection('testclassifys').get().then(res=>{
+            let data=res.data.map(item=>{
+                let text=item.bank
+                let value=item.bank
+                let icon=''
+                return {
+                    text,value,icon
+                }
+            })
+            data.unshift({
+                text:'全部分类',
+                value:'全部分类',
+                icon:''
+            })
+            this.setData({
+                option1:data,
+                value1:data[0].value
+            })
+        })
     },
 
     /**

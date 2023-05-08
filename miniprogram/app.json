@@ -16,7 +16,19 @@
                 "pages/daoh/daoh",
                 "pages/tclassify/tclassify",
                 "pages/editbank/editbank",
-                "pages/role/role"
+                "pages/role/role",
+                "pages/teacher/teacher",
+                "pages/review/review",
+                "pages/publishbank/publishbank"
+            ]
+        },
+        {
+            "root": "pageTalk",
+            "pages": [
+                "pages/publish/publish",
+                "pages/talk/talk",
+                "pages/talkdetail/talkdetail",
+                "pages/star/star"
             ]
         },
         {

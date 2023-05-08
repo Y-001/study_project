@@ -19,12 +19,23 @@ var filter = {
         // 封装一个不够两位数就补零的函数
         function showTime(t) {
             var time
-            time = t > 10 ? t : '0' + t
+            time = t >= 10 ? t : '0' + t
             return time
         }
+    },
+    // 判断是否点赞
+    isStar:function(openid,list){
+        if(!list || list.length==0) return false
+        for(var i=0;i<list.length;i++){
+            if(openid==list[i]){
+                return true
+            }
+        }
+        return false
     }
 }
 // 导出方法
 module.exports = {
-    timegeshi: filter.timegeshi
+    timegeshi: filter.timegeshi,
+    isStar:filter.isStar
 }

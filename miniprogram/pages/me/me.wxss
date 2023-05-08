@@ -1,10 +1,19 @@
 /* pages/my/my.wxss */
+.heng{
+    width: 90%;
+    margin: 20rpx auto;
+}
+
+.van-grid-item__content{
+    padding: 8px !important;
+}
+
 .UCenter-bg {
     background-size: cover;
     height: 350rpx;
     display: flex;
     justify-content: center;
-    padding: 40rpx 0;
+    /* padding: 40rpx 0; */
     overflow: hidden;
     position: relative;
     flex-direction: column;

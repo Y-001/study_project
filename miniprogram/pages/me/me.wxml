@@ -3,17 +3,24 @@
     <view style="display: flex;flex-direction: column;align-items: center;">
         <view class="avatar">
             <image class="avatar-img" width="10rem" height="10rem" src="{{avatar}}" />
-            <image class="avatar-prize" src="{{pdprizeImg}}" mode=""/>
+            <image class="avatar-prize" src="{{pdprizeImg}}" mode="" />
         </view>
         <view class="margin-top-sm">
-            <text>{{nickName}}</text> 
+            <text>{{nickName}}</text>
         </view>
     </view>
 </view>
 
-<van-cell bindtap="toDaiban"  title="待办事项" is-link />
-<van-cell bindtap="toUserinfo"  title="个人信息" is-link />
-<van-cell bindtap="toPrize"  title="我的勋章" is-link />
-<van-cell wx:if="{{auth !=0}}" url="/pageHoutai/pages/daoh/daoh"  title="后台管理" is-link />
-<van-cell bindtap="logout" title="退出登录" is-link />
+<view class="heng">
+    <van-grid column-num="3">
+        <van-grid-item icon="chat-o" link-type="navigateTo" url="/pageTalk/pages/talk/talk" text="我的圈子" />
+        <van-grid-item icon="gem-o" bindtap="toPrize" text="我的勋章" />
+        <van-grid-item icon="todo-list-o" bindtap="toDaiban" text="待办事项" />
+    </van-grid>
+</view>
 
+<!-- <van-cell bindtap="toDaiban" title="待办事项" is-link /> -->
+<van-cell icon="user-o" bindtap="toUserinfo" title="个人信息" is-link />
+<!-- <van-cell bindtap="toPrize" title="我的勋章" is-link /> -->
+<van-cell icon="points" wx:if="{{auth !=0}}" url="/pageHoutai/pages/daoh/daoh" title="后台管理" is-link />
+<van-cell icon="revoke" bindtap="logout" title="退出登录" is-link />
