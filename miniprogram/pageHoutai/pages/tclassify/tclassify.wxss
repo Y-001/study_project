@@ -3,6 +3,9 @@
     /* background-color: rgba(255, 255, 0, 0); */
     background-color: #c4d9b0;
 }
+.custom-icon{
+    margin-left: 15rpx !important;
+}
 /* 悬浮 */
 .toNotes {
     width: 100rpx;

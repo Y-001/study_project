@@ -2,12 +2,12 @@
 .container{
     box-sizing: border-box;
     width: 100vw;
-    height: 100wh;
+    height: 100vh;
     display: flex;
     flex-direction: column;
-    /* justify-content: center; */
+    justify-content: center;
     align-items: center;
-    padding-top: 300rpx;
+    /* padding-top: 200rpx; */
 }
 .item{
     width: 80%;

@@ -1,0 +1,30 @@
+<!--pageHoutai/pages/tbank/tbank.wxml-->
+<view class="container">
+    <van-sticky>
+        <van-search bind:search="search" value="{{ searchQ }}" shape="round" background="#667c70" placeholder="请输入题目关键词" />
+        <van-dropdown-menu active-color="#667c70">
+            <van-dropdown-item value="{{ value1 }}" options="{{ option1 }}" bind:change="changeA" />
+            <van-dropdown-item value="{{ value2 }}" options="{{ option2 }}" bind:change="changeB" />
+            <van-dropdown-item value="{{ value3 }}" options="{{ option3 }}" bind:change="changeC" />
+        </van-dropdown-menu>
+    </van-sticky>
+    <van-cell wx:if="{{testList.length>=0}}" wx:for="{{testList}}" wx:key="index">
+        <view slot="title">
+            <view class="van-cell-text">{{item.title}}</view>
+            <view class="label">
+                <view>{{item.classify}}</view>
+                <view wx:if="{{item.status!=0}}">审核员：{{item.shuser}}</view>
+                <van-tag plain round color="#667c70">{{item.status==0 ?'待审核':item.status==1?'通过':'未通过'}}</van-tag>
+            </view>
+        </view>
+        <van-icon data-id="{{item._id}}" bindtap="editTest" slot="right-icon" name="edit" class="custom-icon" />
+        <van-icon class="delete" data-item="{{item}}" bindtap="delete" slot="right-icon" name="delete-o" class="custom-icon" />
+        <van-icon wx:if="{{item.status==2}}" color="red" class="delete" data-advice="{{item.advice}}" bindtap="seeAdvice" slot="right-icon" name="warning-o" class="custom-icon" />
+    </van-cell>
+    <van-empty wx:if="{{testList.length==0}}" description="暂无记录" />
+</view>
+<!-- 加号 -->
+<view data-id="0" class="toNotes" bindtap="editTest">
+    <image class="note-icon" src="../../images/note_add.png"></image>
+</view>
+<van-dialog id="van-dialog" />

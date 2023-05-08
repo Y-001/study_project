@@ -1,0 +1,74 @@
+<!--pageHoutai/pages/review/review.wxml-->
+<view class="container">
+    <van-dropdown-menu active-color="#667c70">
+        <van-dropdown-item value="{{ value1 }}" options="{{ option1 }}" bind:change="changeA" />
+        <van-dropdown-item value="{{ value2 }}" options="{{ option2 }}" bind:change="changeB" />
+    </van-dropdown-menu>
+    <van-cell wx:for="{{testList}}" wx:key="index">
+        <view slot="title">
+            <view class="van-cell-text">{{item.title}}</view>
+            <view class="label">
+                <view>{{item.classify}}</view>
+                <view>申请人：{{item.czuser}}</view>
+                <van-tag plain round color="#667c70">{{item.operate==0?'新增':item.operate==1?'修改':'删除'}}</van-tag>
+            </view>
+        </view>
+        <van-icon slot="right-icon" name="user-o" class="custom-icon" data-item="{{item}}" bindtap="getDeatil" />
+    </van-cell>
+    <!-- 详情弹窗 -->
+    <van-dialog close-on-click-overlay="true" use-slot title="题目详情" confirm-button-text="通过" cancel-button-text="不通过" confirm-button-color="#667c70" show="{{ show }}" show-cancel-button bind:close="onClose" bind:cancel="noPass" bind:confirm="pass">
+        <view class="dialog">
+            <view class="lei">
+                <text class="kongxie">题库名称：</text>
+                <text style="font-size: 0.95em;">{{nowitem.classify}}</text>
+            </view>
+            <view class="lei">
+                <text class="kongxie">题库类型：</text>
+                <text style="font-size: 0.95em;">{{nowitem.type==3?'填空':'选择'}}</text>
+            </view>
+            <view class="lei">
+                <view class="kongxie">题目</view>
+                <van-cell>
+                    <view slot="title">
+                        <view class="van-cell-text">{{nowitem.title}}</view>
+                    </view>
+                </van-cell>
+            </view>
+            <view class="lei" wx:if="{{nowitem.type==0}}">
+                <view class="kongxie">题目选项</view>
+                <van-cell>
+                    <view slot="title">
+                        <view class="van-cell-text" wx:for="{{nowitem.options}}" wx:key="index">{{item.code}}:{{item.content}}</view>
+                    </view>
+                </van-cell>
+            </view>
+            <view class="lei">
+                <view class="kongxie">正确答案</view>
+                <van-cell>
+                    <view slot="title">
+                        <view class="van-cell-text">{{nowitem.answer}}</view>
+                    </view>
+                </van-cell>
+            </view>
+            <view class="lei">
+                <view class="kongxie">题目解析</view>
+                <van-cell>
+                    <view slot="title">
+                        <view class="van-cell-text">{{nowitem.analysis}}</view>
+                    </view>
+                </van-cell>
+            </view>
+
+        </view>
+    </van-dialog>
+    <!-- 审核意见 -->
+    <van-dialog close-on-click-overlay="true" use-slot title="题目详情" confirm-button-text="保存" cancel-button-text="不通过" confirm-button-color="#667c70" show="{{ showAdvice }}" bind:close="onClose"  bind:confirm="putAdvice">
+        <view class="dialog">
+            <view class="lei">
+                <view class="kongxie">审核意见</view>
+                <van-field model:value="{{ advice }}" placeholder="请输入审核意见" border="{{ false }}"  />
+            </view>
+
+        </view>
+    </van-dialog>
+</view>

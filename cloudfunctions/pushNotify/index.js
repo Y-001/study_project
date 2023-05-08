@@ -16,7 +16,7 @@ exports.main = async (event, context) => {
         // 查询条件
         .where({
           checked: false,
-          pushed: false,
+          pushed: true,
         })
         .get()
   
@@ -25,7 +25,7 @@ exports.main = async (event, context) => {
         // 发送订阅消息
         await cloud.openapi.subscribeMessage.send({
           touser: msgData._openid, // 要发送用户的openid
-          page: '/pageNote/pages/daiban/daiban', // 用户通过消息通知点击进入小程序的页面
+          page: '/pageNote/pages/daiban2/daiban2', // 用户通过消息通知点击进入小程序的页面
           lang: 'zh_CN',
           // 订阅消息模板ID
           // 替换为你的模板id!
@@ -41,7 +41,7 @@ exports.main = async (event, context) => {
             },
             // 待办的详情
             time2: {
-              value: '别忘了待办事项哟'
+              value: forTime(msgData.date)
             },
           }
         })
@@ -53,7 +53,7 @@ exports.main = async (event, context) => {
           .doc(msgData._id)
           .update({
             data: {
-              pushed: true
+              pushed: false
             },
           })
       }
@@ -75,7 +75,21 @@ exports.main = async (event, context) => {
 //         unionid: wxContext.UNIONID,
 //     }
 // }
-
+function forTime(time){
+    let date=new Date(time)
+    let yy=date.getFullYear()
+    let mon=date.getMonth()
+    let day=date.getDate()
+    let h=date.getHours()
+    let min=date.getMinutes()
+    if(min<10){
+        min='0'+min
+    }
+    if(h<10){
+        h='0'+h
+    }
+    return yy+'年'+mon+'月'+day+'日'+' '+h+':'+min
+}
 // 将太长的文本截短
 function sliceBodyStr(str, length) {
     if (str.length <= length) {

@@ -13,8 +13,8 @@
             题目类型
         </view>
         <van-radio-group  value="{{ type }}" bind:change="onChangeType" direction="horizontal">
-        <van-radio name="0">单选</van-radio>
-        <van-radio name="3">填空</van-radio>
+        <van-radio checked-color="#667c70" name="0">单选</van-radio>
+        <van-radio checked-color="#667c70" name="3">填空</van-radio>
     </van-radio-group>
     </view>
     <view class="kongxie">
@@ -38,5 +38,5 @@
             题目解析
         </view>
     <van-field autosize type="textarea"  model:value="{{ analysis }}" placeholder="请输入题目解析" border="{{ false }}" />
-    <view class="btn" bindtap="toAddtest">提交</view>
+    <view class="btn" bindtap="toAddtest">提交审核</view>
 </view>

@@ -1,16 +1,19 @@
 <!--pageHoutai/pages/tbank/tbank.wxml-->
 <view class="container">
-    <van-cell title="{{item.title}}" label="{{item.classify}}" wx:for="{{testList}}" wx:key="index">
+    <van-sticky>
+        <van-search bind:search="search" value="{{ searchQ }}" shape="round" background="#667c70" placeholder="请输入题目关键词" />
+        <van-dropdown-menu active-color="#667c70">
+            <van-dropdown-item value="{{ value1 }}" options="{{ option1 }}" bind:change="changeA"/>
+            <van-dropdown-item value="{{ value2 }}" options="{{ option2 }}" bind:change="changeB"/>
+        </van-dropdown-menu>
+    </van-sticky>
+    <van-cell wx:if="{{testList.length>=0}}" title="{{item.title}}" label="{{item.classify}}" wx:for="{{testList}}" wx:key="index">
         <van-icon data-id="{{item._id}}" bindtap="editTest" slot="right-icon" name="edit" class="custom-icon" />
+        <van-icon class="delete" data-id="{{item._id}}" bindtap="delete" slot="right-icon" name="delete-o" class="custom-icon" />
     </van-cell>
+    <van-empty wx:if="{{testList.length==0}}" description="暂无记录" />
 </view>
 <!-- 加号 -->
 <view data-id="0" class="toNotes" bindtap="editTest">
     <image class="note-icon" src="../../images/note_add.png"></image>
 </view>
-
-
-
-
-
-

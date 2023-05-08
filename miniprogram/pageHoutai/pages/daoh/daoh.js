@@ -8,6 +8,21 @@ Page({
     data: {
         auth:0
     },
+    toTeacher(){
+        wx.navigateTo({
+          url: '/pageHoutai/pages/teacher/teacher',
+        })
+    },
+    toReview(){
+        wx.navigateTo({
+          url: '/pageHoutai/pages/review/review',
+        })
+    },
+    toPublishbank(){
+        wx.navigateTo({
+          url: '/pageHoutai/pages/publishbank/publishbank',
+        })
+    },
     toTclassify(){
         wx.navigateTo({
           url: '/pageHoutai/pages/tclassify/tclassify',

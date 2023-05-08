@@ -2,6 +2,14 @@
     "usingComponents": {
         "van-swipe-cell": "@vant/weapp/swipe-cell/index",
         "van-cell": "@vant/weapp/cell/index",
-        "van-cell-group": "@vant/weapp/cell-group/index"
-    }
+        "van-cell-group": "@vant/weapp/cell-group/index",
+        "van-dialog": "@vant/weapp/dialog/index",
+        "van-divider": "@vant/weapp/divider/index",
+        "van-field": "@vant/weapp/field/index",
+        "van-calendar": "@vant/weapp/calendar/index",
+        "van-switch": "@vant/weapp/switch/index",
+        "van-checkbox": "@vant/weapp/checkbox/index",
+  "van-checkbox-group": "@vant/weapp/checkbox-group/index"
+    },
+    "navigationBarTitleText":"待办事项"
 }

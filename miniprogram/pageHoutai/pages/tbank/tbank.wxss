@@ -1,5 +1,7 @@
 /* pageHoutai/pages/tbank/tbank.wxss */
-
+.custom-icon{
+    margin-left: 15rpx !important;
+}
 
 /* 悬浮 */
 .toNotes {

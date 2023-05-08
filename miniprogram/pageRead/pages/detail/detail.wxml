@@ -36,7 +36,7 @@
             <view class="talk-top-left">精彩评论</view>
             <view class="talk-top-right" bindtap="showWrite">写评论</view>
         </view>
-        <!-- 写评论 底部弹出层 -->
+        <!-- 写评论 底部弹出层 --> 
         <van-popup show="{{ write }}" position="bottom" custom-style="height: 10%;" bind:close="onCloseWrite" close-on-click-overlay="true">
             <view class="popup-content popup-write">
                 <input value="{{comment}}" bindinput="writeComment" placeholder="发表自己的观点" type="text" class="comment-input {{submit ? 'comment-input-show':''}}" />

@@ -1,73 +1,68 @@
 /* pageNote/pages/daiban2/daiban2.wxss */
 
+/* 单元格的背景 */
+.bg{
+    background-color: aquamarine !important;
+}
+.dealin{
+    text-decoration: line-through;
+}
+.item{
+    margin-bottom: 20rpx;
+}
 /* 左右滑动的按钮 */
 .van-swipe-cell__left,
 .van-swipe-cell__right {
-    display: inline-block;
-    /* height: 44px; */
-    width: 50px;
-    text-align: center;
-    /* font-size: 15px; */
-    /* line-height: 44px; */
-    color: #fff;
-    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     background-color: #667c70;
+    width: 50px;
+    color: #fff;
 }
 
 
+/* 弹窗的代码 */
+.van-dialog,.van-popup{
+    background-color: #eee !important;
+}
 
-.todoPage {
+
+.tanchuang{
     width: 100%;
+    margin: auto;
     box-sizing: border-box;
-    padding: 0 20rpx;
+    padding: 15rpx 0;
 }
-
-.inputBox {
-    margin: 20rpx 0;
-    display: flex;
-    align-items: center;
-    border: 1rpx solid #ccc;
-    border-radius: 10rpx;
-    height: 90rpx;
+.info{
+    background-color: #eee;
     box-sizing: border-box;
-    padding: 0 20rpx;
-}
-
-.inputBox>.iconBox {
-    font-size: 60rpx;
-    color: #ccc;
-    margin-right: 20rpx;
-}
-
-.contentBox {
-    border: 1rpx solid #ccc;
-    overflow: hidden;
+    padding:16px 10rpx;
     border-radius: 10rpx;
 }
-
-.singleBox {
-    display: flex;
-    box-sizing: border-box;
-    height: 90rpx;
-    align-items: center;
-    justify-content: space-between;
-    padding: 0 20rpx;
-
-    border-bottom: 1rpx solid #ccc;
+.int{
+    margin: 6rpx 0 0 12rpx;
+    font-size: 0.9em;
 }
 
-.nameBox {
-    display: flex;
-}
-
-.footerBox {
-    display: flex;
-    margin-top: 30rpx;
-    justify-content: space-between;
-    align-items: center;
+/* 悬浮 */
+.toNotes {
+    width: 100rpx;
     height: 100rpx;
+    border-radius: 50%;
+    position: fixed;
+    z-index: 100;
+    top: 80%;
+    left: 80%;
+    background-color: #667c70;
+    text-align: center;
+    line-height: 100rpx;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-.s {
-    text-decoration: line-through;
+.note-icon {
+    width: 80rpx;
+    height: 80rpx;
 }

@@ -1,0 +1,69 @@
+/* pageHoutai/pages/role/role.wxss */
+.avatar{
+    width: 70rpx;
+    height: 70rpx;
+    border-radius: 50%;
+    margin-right: 10rpx;
+}
+.custom-icon{
+    margin-left: 15rpx !important;
+}
+/* 多选框 */
+.check-list{
+    max-height: 200rpx;
+    overflow: scroll;
+}
+.check-item{
+    display: flex;
+}
+.checkbox{
+    transform: scale(0.7,0.7);
+}
+
+/* 悬浮 */
+.toNotes {
+    width: 100rpx;
+    height: 100rpx;
+    border-radius: 50%;
+    position: fixed;
+    z-index: 100;
+    top: 80%;
+    left: 80%;
+    background-color: #667c70;
+    text-align: center;
+    line-height: 100rpx;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.note-icon {
+    width: 80rpx;
+    height: 80rpx;
+}
+.body{
+    box-sizing: border-box;
+    padding: 20rpx;
+}
+.picker{
+    display: flex;
+    margin-bottom: 20rpx;
+}
+.text{
+    width: 40%;
+    text-align: right;
+}
+.inp{
+    border-bottom: 1px solid #ccc;
+}
+
+/* 搜索名字列表 */
+.list{
+    max-height: 200rpx;
+    overflow: scroll;
+}
+.avatar-xuan{
+    width: 50rpx;
+    height: 50rpx;
+    border-radius: 50%;
+    margin-right: 5rpx;
+}

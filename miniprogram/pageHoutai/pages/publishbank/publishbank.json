@@ -1,0 +1,17 @@
+{
+    "usingComponents": {
+        "van-tab": "@vant/weapp/tab/index",
+        "van-tabs": "@vant/weapp/tabs/index",
+        "van-cell": "@vant/weapp/cell/index",
+        "van-cell-group": "@vant/weapp/cell-group/index",
+        "van-icon": "@vant/weapp/icon/index",
+        "van-dialog": "@vant/weapp/dialog/index",
+        "van-search": "@vant/weapp/search/index",
+        "van-sticky": "@vant/weapp/sticky/index",
+        "van-dropdown-menu": "@vant/weapp/dropdown-menu/index",
+        "van-dropdown-item": "@vant/weapp/dropdown-item/index",
+        "van-empty": "@vant/weapp/empty/index",
+        "van-tag": "@vant/weapp/tag/index"
+    },
+    "navigationBarTitleText": "题库管理"
+}

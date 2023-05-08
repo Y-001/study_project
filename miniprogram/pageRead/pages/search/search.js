@@ -34,7 +34,7 @@ Page({
             db.collection('booklists').where({
                 name: {
                   $regex: '.*' + name,
-                  $options: 'i'
+                  $options: 'i' 
                 }
               }).get().then(res=>{
                   let books=res.data

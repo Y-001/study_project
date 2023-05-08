@@ -1,0 +1,26 @@
+/* pageHoutai/pages/review/review.wxss */
+.label{
+    width: 95%;
+    display: flex;
+    justify-content: space-between;
+    color: rgb(150, 151, 153);
+}
+/* 弹窗 */
+.dialog{
+    width: 95%;
+    margin: 10rpx auto;
+    max-height: 60vh;
+    overflow: scroll;
+}
+.lei{
+    padding: 10rpx 0;
+}
+.kongxie{
+    font-size: 34rpx;
+    color: #667c70;
+    padding: 15rpx 0;
+}
+/* 弹窗的代码 */
+.van-dialog,.van-popup{
+    background-color: #eee !important;
+}

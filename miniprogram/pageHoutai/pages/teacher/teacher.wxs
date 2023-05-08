@@ -1,0 +1,19 @@
+// 需要注意:
+// 1.不支持let，const
+// 2.不支持箭头函数
+var filter = {
+    isChecked: function (banks,item) {
+        if(!banks) return false
+        for(var i=0;i<banks.length;i++){
+            if(banks[i]==item.name){
+                return true
+            }
+        }
+        return false
+        
+    }
+}
+// 导出方法
+module.exports = {
+    isChecked: filter.isChecked
+}

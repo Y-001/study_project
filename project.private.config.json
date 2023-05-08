@@ -731,6 +731,118 @@
                     "query": "",
                     "launchMode": "default",
                     "scene": null
+                },
+                {
+                    "name": "",
+                    "pathName": "pageNote/pages/daiban2/daiban2",
+                    "query": "",
+                    "launchMode": "default",
+                    "scene": null
+                },
+                {
+                    "name": "",
+                    "pathName": "pageHoutai/pages/tclassify/tclassify",
+                    "query": "",
+                    "launchMode": "default",
+                    "scene": null
+                },
+                {
+                    "name": "",
+                    "pathName": "pageHoutai/pages/tbank/tbank",
+                    "query": "",
+                    "launchMode": "default",
+                    "scene": null
+                },
+                {
+                    "name": "",
+                    "pathName": "pageHoutai/pages/teacher/teacher",
+                    "query": "",
+                    "launchMode": "default",
+                    "scene": null
+                },
+                {
+                    "name": "",
+                    "pathName": "pageHoutai/pages/publishbank/publishbank",
+                    "query": "",
+                    "launchMode": "default",
+                    "scene": null
+                },
+                {
+                    "name": "",
+                    "pathName": "pageHoutai/pages/editbank/editbank",
+                    "query": "id=0",
+                    "launchMode": "default",
+                    "scene": null
+                },
+                {
+                    "name": "",
+                    "pathName": "pageHoutai/pages/review/review",
+                    "query": "",
+                    "launchMode": "default",
+                    "scene": null
+                },
+                {
+                    "name": "",
+                    "pathName": "pageHoutai/pages/publishbank/publishbank",
+                    "query": "",
+                    "launchMode": "default",
+                    "scene": null
+                },
+                {
+                    "name": "",
+                    "pathName": "pageStudy/pages/xcxz/xcxz",
+                    "query": "",
+                    "launchMode": "default",
+                    "scene": null
+                },
+                {
+                    "name": "",
+                    "pathName": "pageTalk/pages/publish/publish",
+                    "query": "",
+                    "launchMode": "default",
+                    "scene": null
+                },
+                {
+                    "name": "",
+                    "pathName": "pageTalk/pages/talkdetail/talkdetail",
+                    "query": "",
+                    "launchMode": "default",
+                    "scene": null
+                },
+                {
+                    "name": "",
+                    "pathName": "pageTalk/pages/talk/talk",
+                    "query": "",
+                    "launchMode": "default",
+                    "scene": null
+                },
+                {
+                    "name": "",
+                    "pathName": "pageTalk/pages/talkdetail/talkdetail",
+                    "query": "id=4429a59c645864540006b6676cf6c745",
+                    "launchMode": "default",
+                    "scene": null
+                },
+                {
+                    "name": "",
+                    "pathName": "pageTalk/pages/talk/talk",
+                    "query": "",
+                    "launchMode": "default",
+                    "scene": null
+                },
+                {
+                    "name": "",
+                    "pathName": "pageTalk/pages/star/star",
+                    "query": "",
+                    "launchMode": "default",
+                    "scene": null
+                },
+                {
+                    "name": "",
+                    "pathName": "pageTalk/pages/talkdetail/talkdetail",
+                    "query": "id=0dc816dd6458b3d4001311277f40fff1",
+                    "launchMode": "default",
+                    "scene": null
                 }
             ]
         }

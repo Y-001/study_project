@@ -1,6 +1,6 @@
 <!--pages/ranking/ranking.wxml-->
 <view class="container">
-    <view wx:if="{{userSorce.length==0}}">暂时没有排名......</view>
+    <van-empty wx:if="{{userSorce.length==0}}" description="暂时没有排名" />
     <view wx:else class="ranking-list">
         <view class="ranking-item" wx:for="{{userSorce}}" wx:key="index">
             <view class="left">

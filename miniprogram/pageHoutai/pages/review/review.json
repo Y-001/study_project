@@ -1,0 +1,13 @@
+{
+    "usingComponents": {
+        "van-dropdown-menu": "@vant/weapp/dropdown-menu/index",
+        "van-dropdown-item": "@vant/weapp/dropdown-item/index",
+        "van-cell": "@vant/weapp/cell/index",
+        "van-cell-group": "@vant/weapp/cell-group/index",
+        "van-tag": "@vant/weapp/tag/index",
+        "van-icon": "@vant/weapp/icon/index",
+        "van-dialog": "@vant/weapp/dialog/index",
+        "van-field": "@vant/weapp/field/index"
+    },
+    "navigationBarTitleText": "题目审核管理"
+}

@@ -1,15 +1,56 @@
 <!--pageNote/pages/daiban2/daiban2.wxml-->
-<view class="todoPage">
-    <view class="inputBox">
-        <view class="iconBox">+</view>
-        <!-- add键盘回车事件 -->
-        <input type="text" placeholder="请输入..." model:value="{{content}}" bindconfirm="add" />
+<view>
+    <!-- 展示待办的部分 -->
+    <view wx:if="{{todoList.length==0}}">
+        暂时没有待办，快来添加吧!
     </view>
-    <van-swipe-cell right-width="{{ 50 }}" data-id="{{item._id}}" async-close bind:close="onClose" wx:for="{{list}}" wx:key="index">
-        <view class="nameBox">
-                <checkbox checked="{{item.checked}}" data-id="{{item._id}}" bindtap="ass"></checkbox>
-                <view class="{{item.checked?'s':''}}">{{item.content}}</view>
-         </view>
-        <view slot="right">删除</view>
-    </van-swipe-cell>
+    <view  class="item" wx:for="{{todoList}}" wx:key="index">
+        <van-swipe-cell data-id="{{item._id}}" id="swipe-cell" right-width="{{ 50 }}" async-close bind:close="onCloseTodo">
+            <van-cell value="{{item.date}}" label="{{item.info}}">
+                <view slot="title">
+                    <view class="{{item.checked ? 'dealin':''}}">{{item.content}}</view>
+                </view>
+                <van-checkbox data-id="{{item._id}}" checked-color="#ccc" slot="icon" value="{{ item.checked }}" bind:change="onChangeDone"></van-checkbox>
+            </van-cell>
+            <view slot="right">删除</view>
+        </van-swipe-cell>
+    </view>
+    <!-- 添加代办的弹窗 -->
+    <van-dialog confirm-button-color="#667c70" use-slot title="新建待办" show="{{ show }}" show-cancel-button bind:close="onCloseT" bind:confirm="confirmAdd">
+        <view class="tanchuang">
+            <van-cell-group inset>
+                <van-cell icon="todo-list-o">
+                    <view slot="title">
+                        <view class="van-cell-text">待办事项</view>
+                        <input value="{{content}}" bindinput="changeContent" type="text" placeholder="请输入您的待办" />
+                    </view>
+                </van-cell>
+                <van-cell icon="bulb-o">
+                    <view slot="title">
+                        <view class="van-cell-text">详细描述</view>
+                        <input value="{{info}}" bindinput="changeInfo" type="text" placeholder="请输入详细描述（选填）" />
+                    </view>
+                </van-cell>
+            </van-cell-group>
+            <view style="margin: 15rpx 0;">
+                <van-cell-group inset>
+                    <van-cell icon="calendar-o" title="截止日期" value="{{ date }}" bind:click="onDisplay" label="选择您的截止日期" is-link />
+                </van-cell-group>
+            </view>
+            <van-cell-group inset>
+                <van-cell icon="bullhorn-o" title="是否开启提醒">
+                    <view slot="right-icon">
+                        <van-switch checked="{{ pushed }}" bind:change="onChangeSwitch" size="30rpx" active-color="#667c70"/>
+                    </view>
+                </van-cell>
+            </van-cell-group>
+        </view>
+
+    </van-dialog>
+    <!-- 展示日历 -->
+    <van-calendar color="#667c70" show="{{ showCalendar }}" bind:close="onCloseCalendar" bind:confirm="onConfirmCalendar" />
 </view>
+<view class="toNotes" bindtap="toAdd">
+    <image class="note-icon" src="../../images/note_add.png"></image>
+</view>
+<van-dialog id="van-dialog" />

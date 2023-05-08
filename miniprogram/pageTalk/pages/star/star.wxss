@@ -1,0 +1,108 @@
+/* pageTalk/pages/star/star.wxss */
+.container{
+    padding-bottom: 100rpx;
+}
+.head{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20rpx;
+    background-color: #c4d9b0;
+}
+.head-left{
+    background-color: #667c70;
+    padding: 15rpx;
+    border-radius: 20rpx;
+    color: #fff;
+    font-size: 30rpx;
+}
+.head-icon{
+    /* width: 50rpx;
+    height: 50rpx; */
+    margin: 0 10rpx;
+}
+/* tab栏换颜色 */
+.van-tabs .van-tabs__scroll {
+    /* background-color: rgba(255, 255, 0, 0); */
+    background-color: #fff;
+}
+.tab{
+    border-bottom: 1rpx solid #c4d9b0;
+}
+/* 发的内容 */
+.talk-list{
+    background-color: #fff;
+}
+.talk-item{
+    border-bottom: 1px solid #c4d9b0;
+    padding: 20rpx 20rpx;
+}
+/* 头部 */
+.item-top{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20rpx;
+}
+.item-top-left{
+    display: flex;
+    align-items: center;
+}
+.item-top-left .item-img{
+    width: 100rpx;
+    height: 100rpx;
+    border-radius: 50%;
+    margin-right: 20rpx;
+}
+.item-top-right .item-icon{
+    width: 70rpx;
+    height: 70rpx;
+}
+/* 中间内容部分 */
+.item-content-imglist{
+    display: flex;
+    flex-wrap: wrap;
+    margin: 20rpx 0; 
+}
+.item-content-imglist .item-content-img{
+    width: 32%;
+    height: 220rpx;
+    margin: 5rpx;
+}
+
+/* 最底部内容 */
+.item-bottom{
+    display: flex;
+    justify-content: space-between;
+}
+.item-bottom-left{
+    display: flex;
+    align-items: center;
+}
+.time-tag{
+    padding: 10rpx;
+    background-color: #c4d9b0;
+    border-radius: 20rpx;
+    margin-right: 10rpx;
+}
+.item-time{
+    font-size: 30rpx;
+    color: #666;
+}
+.item-bottom-iconlist{
+    display: flex;
+}
+.item-bottom-iconlist .item-bottom-iconitem{
+    display: flex;
+    align-items: center;
+}
+.item-bottom-iconitem .iconitem-talk{
+    width: 45rpx;
+    height: 45rpx;
+    margin: 0 10rpx;
+}
+
+.item-bottom-iconitem .iconitem-num{
+    font-size: 30rpx;
+}
+

@@ -99,39 +99,45 @@ Page({
             },
         ] 
         if(id==0){
-            await db.collection('testbanks').add({
+            await db.collection('reviewtests').add({
                 data:{
                     classify:array[index],
                     title,
                     type:Number(type),
                     options,
                     answer,
-                    analysis
+                    analysis,
+                    status:0,
+                    operate:0,
+                    czuser:JSON.parse(wx.getStorageSync('userInfo')).nickName
                 }
             })
             wx.showToast({
-              title: '添加成功',
+              title: '提交审核成功',
               icon:'none'
             })
         }else{
-            await db.collection('testbanks').doc(id).update({
+            await db.collection('reviewtests').doc(id).update({
                 data:{
                     classify:array[index],
                     title,
                     type:Number(type),
                     options,
                     answer,
-                    analysis
+                    analysis,
+                    status:0,
+                    operate:1,
+                    czuser:JSON.parse(wx.getStorageSync('userInfo')).nickName
                 }
             })
             wx.showToast({
-                title: '修改成功',
+                title: '提交审核成功',
                 icon:'none'
               })
         }
         setTimeout(()=>{
-            wx.navigateTo({
-                url: '/pageHoutai/pages/tbank/tbank',
+            wx.redirectTo({
+                url: '/pageHoutai/pages/publishbank/publishbank',
               })
         },500)
     },
@@ -144,17 +150,27 @@ Page({
         this.setData({
             id
         })
-        let res=await db.collection('testclassifys').get()
-        let array=res.data.map(item=>{
-            return item.bank
-        })
+        let array=[]
+        if (wx.getStorageSync('auth') == 1 || wx.getStorageSync('auth') == 3) {
+            //获取分类列表
+            let res=await db.collection('testclassifys').get()
+            array=res.data.map(item => {
+                return item.bank
+            })
+           
+        }else{
+            let res2=await db.collection('authoritys').where({
+                openid:wx.getStorageSync("openid")
+            }).get()
+            array=res2.data[0].banks
+        }
         this.setData({
             array
         })
         // 数据回显
         
         if(id!=0){
-            let a=await db.collection('testbanks').doc(id).get()
+            let a=await db.collection('reviewtests').doc(id).get()
             this.setData({
                 type:a.data.type.toString(),
                 title:a.data.title,

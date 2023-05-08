@@ -46,6 +46,7 @@ Page({
                 _this.setData({
                     auth:res.data[0].role
                 })
+                wx.setStorageSync('auth', res.data[0].role)
             }
         })
     },

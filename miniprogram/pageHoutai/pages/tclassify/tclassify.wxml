@@ -9,6 +9,7 @@
     </van-tabs>
     <van-cell title="{{item.bank}}" wx:for="{{banks}}" wx:key="index">
         <van-icon data-id="{{item._id}}" bindtap="toEditTclassify" slot="right-icon" name="edit" class="custom-icon" />
+        <van-icon class="delete" data-id="{{item._id}}" bindtap="delete" slot="right-icon" name="delete-o" class="custom-icon" />
     </van-cell>
 </view>
 <view data-id="0" class="toNotes" bindtap="toEditTclassify">

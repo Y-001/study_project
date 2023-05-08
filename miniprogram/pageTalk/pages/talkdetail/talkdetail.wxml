@@ -1,0 +1,145 @@
+<!--pageTalk/pages/talkdetail/talkdetail.wxml-->
+<wxs module='filter' src='../../../utils/pages.wxs'></wxs>
+<view class="container">
+    <view class="talk-item">
+        <view>
+            <view class="item-top">
+                <view class="item-top-left">
+                    <image class="item-img" src="{{info.avatar}}"></image>
+                    <view class="text">{{info.nickName}}</view>
+                </view>
+                <view class="item-top-right">
+                    <!-- <image class="item-icon" src="../../images/test/test-beiti.png"></image> -->
+                    <van-icon wx:if="{{openid==info._openid}}" bindtap="delete" class="item-icon" name="delete-o" size="40rpx" color="#667c70" />
+                </view>
+            </view>
+            <view class="item-content">
+                <view class="item-content-title">
+                    【{{info.title}}】
+                </view>
+                <view class="item-content-body">
+                    {{info.content}}
+                </view>
+                <view class="item-content-imglist">
+                    <image bindtap="previewSqs" data-index="{{index}}" wx:for="{{info.imgUp}}" wx:key="index" class="item-content-img" src="{{item}}"></image>
+                </view>
+            </view>
+        </view>
+
+        <view class="item-bottom">
+            <view class="item-bottom-left">
+                <view class="time-tag">{{info.classify}}</view>
+                <view class="item-time">{{filter.timegeshi(info.time)}}</view>
+            </view>
+            <view class="item-bottom-iconlist">
+                <view class="item-bottom-iconitem" bindtap="showWrite">
+                    <van-icon style="margin: 0 15rpx;" class="head-icon" name="chat-o" size="40rpx" color="#667c70" />
+                    <text class="iconitem-num">{{!info.comments?0:info.comments.length}}</text>
+                </view>
+                <view class="item-bottom-iconitem">
+                    <van-icon style="margin: 0 15rpx;" data-sign="0" bindtap="doStar" wx:if="{{filter.isStar(openid,info.star)}}" class="head-icon" name="good-job" size="40rpx" color="#667c70" />
+                    <van-icon style="margin: 0 15rpx;" data-sign="1" bindtap="doStar" wx:else class="head-icon" name="good-job-o" size="40rpx" color="#667c70" />
+                    <text class="iconitem-num">{{!info.star?0:info.star.length}}</text>
+                </view>
+            </view>
+        </view>
+    </view>
+    <!-- 评论区 -->
+    <view class="comment">
+        <view class="com-top">
+            答疑区
+        </view>
+        <view class="com-list">
+            <view class="com-item" wx:for="{{commentList}}" wx:for-item="onedata" wx:key="index">
+                <view class="com-left">
+                    <!-- <view class="com-img"></view> -->
+                    <image class="com-img" src="{{onedata.rootComment.avatar}}"></image>
+                </view>
+                <view class="com-right">
+                    <view class="com-info">
+                        <view class="com-name">{{onedata.rootComment.nickName}}</view>
+                        <view style="font-size: 0.9em;" class="com-content" data-root="{{onedata.rootComment}}" bindtap="openApply">{{onedata.rootComment.comment}}</view>
+                    </view>
+                    <view class="com-com" wx:if="{{onedata.child.length>0}}" data-comment="{{onedata}}" bindtap="openComment">共{{onedata.child.length}}条回复</view>
+                    <view class="com-bottom">
+                        <view class="com-time">{{filter.timegeshi(onedata.rootComment.time)}}</view>
+                        <view class="com-caozuo">
+                            <view class="item-bottom-iconitem">
+                                <van-icon style="margin: 0 15rpx;" class="head-icon" name="chat-o" size="30rpx" color="#667c70" />
+                                <text class="iconitem-num">{{onedata.child.length}}</text>
+                            </view>
+                            <view class="item-bottom-iconitem">
+                                <van-icon data-sign="0" data-com="{{onedata.rootComment}}" bindtap="doplStar" wx:if="{{filter.isStar(openid,onedata.rootComment.like)}}" style="margin: 0 15rpx;" class="head-icon" name="good-job" size="30rpx" color="#667c70" />
+                                <van-icon wx:else data-sign="1" data-com="{{onedata.rootComment}}" bindtap="doplStar" style="margin: 0 15rpx;" class="head-icon" name="good-job-o" size="30rpx" color="#667c70" />
+                                <text class="iconitem-num">{{onedata.rootComment.like.length}}</text>
+                            </view>
+                        </view>
+                    </view>
+                </view>
+            </view>
+
+        </view>
+    </view>
+
+    <!-- 写评论 底部弹出层 -->
+    <van-popup show="{{ write }}" position="bottom" custom-style="height: 10%;" bind:close="onCloseWrite" close-on-click-overlay="true">
+        <view class="popup-content popup-write">
+            <input value="{{comment}}" bindinput="writeComment" placeholder="发表自己的观点" type="text" class="comment-input {{submit ? 'comment-input-show':''}}" />
+            <view wx:if="{{submit}}" class="comment-submit" bindtap="submiteComment">发布</view>
+        </view>
+    </van-popup>
+    <!-- 回复或者投诉 底部弹出层 -->
+    <van-popup round custom-style="height: 40%;" show="{{ applyShow }}" position="bottom" bind:close="onCloseApply" close-on-click-overlay="true">
+        <view class="popup-content apply">
+            <view class="apply-comment">{{newComment.nickName}}：{{newComment.comment}}</view>
+            <van-divider />
+            <view class="apply-text" bindtap="showWrite">回复</view>
+            <van-divider />
+            <view class="apply-text">投诉</view>
+            <van-divider />
+            <view class="apply-btn" bindtap="onCloseApply">取消</view>
+        </view>
+    </van-popup>
+    <!-- 查看全部评论 底部弹出层 -->
+    <van-popup closeable round custom-style="height: 90%;" show="{{ commentShow }}" position="bottom" bind:close="onCloseComment" close-on-click-overlay="true">
+        <view class="popup-content popup-comment">
+            <view style="text-align: center;">{{lookComment.child.length}}条回复</view>
+            <van-divider />
+            <view class="content-child">
+                <view class="talk-content-item" wx:for-item="onedata" wx:for="{{lookComment.child}}" wx:key="index">
+                    <view class="talk-content-left">
+                        <image class="talk-avatar" src="{{onedata.rootComment.avatar}}"></image>
+                    </view>
+                    <view class="talk-content-right">
+                        <view class="talk-info">
+                            <view class="talk-name">{{onedata.rootComment.nickName}}</view>
+                            <view class="talk-icon">
+                                <!-- <image wx:if="{{filter.isShow(onedata.rootComment.likeuserlist,openid)== -1}}" class="talk-icon-img" src="{{dianzanIcon[0].icon}}" data-commentid="{{onedata.rootComment.commentid}}" bindtap="dianzan"></image>
+                                <image wx:else class="talk-icon-img" src="{{dianzanIcon[1].icon}}"></image>
+                                <text>{{onedata.rootComment.likenum}}</text> -->
+                                <van-icon data-sign="0" data-com="{{onedata.rootComment}}" bindtap="doplStar" wx:if="{{filter.isStar(openid,onedata.rootComment.like)}}" style="margin: 0 15rpx;" class="head-icon" name="good-job" size="30rpx" color="#667c70" />
+                                <van-icon wx:else data-sign="1" data-com="{{onedata.rootComment}}" bindtap="doplStar" style="margin: 0 15rpx;" class="head-icon" name="good-job-o" size="30rpx" color="#667c70" />
+                                <text class="iconitem-num">{{onedata.rootComment.like.length}}</text>
+                            </view>
+                        </view>
+                        <view class="talk-time">
+                            {{filter.timegeshi(onedata.rootComment.time)}}
+                        </view>
+                        <view class="talk-desc" data-root="{{onedata.rootComment}}" bindtap="openApply">
+                            {{onedata.rootComment.comment}}
+                        </view>
+                        <view wx:if="{{onedata.child.length>0}}" class="talk-comment">
+                            <view class="talk-comment-list">
+                                <view class="talk-comment-item" wx:for-item="twodata" wx:for="{{onedata.child}}" wx:key="index">
+                                    <text class="color-name">{{twodata.rootComment.nickName}}</text>
+                                    ：{{twodata.rootComment.comment}}
+                                </view>
+                            </view>
+                        </view>
+                        <van-divider />
+                    </view>
+                </view>
+            </view>
+        </view>
+    </van-popup>
+</view>

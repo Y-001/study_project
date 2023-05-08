@@ -11,8 +11,6 @@ Page({
     data: {
         //父评论
         fatherRoot: 'root',
-        //各个状态值
-
         /* 是否展示底部弹出层 */
         write: false,
         //发布按钮是否出现

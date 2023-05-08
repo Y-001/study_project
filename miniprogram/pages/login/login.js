@@ -48,7 +48,9 @@ Page({
         if (this.data.isLogin) return
         let db = wx.cloud.database() //获取数据库信息
         //users集合有权限设置,导致只能查到自己以前添加过得数据
-        db.collection('users').get().then(res => {
+        db.collection('users').where({
+            _openid:wx.getStorageSync('openid')
+        }).get().then(res => {
             if (res.data.length != 0) { 
                 console.log(res.data)
                 _this.setData({

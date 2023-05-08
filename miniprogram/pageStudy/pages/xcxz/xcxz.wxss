@@ -49,3 +49,9 @@
 .ylq{
     background-color: rgb(167, 165, 165);
 }
+/* 进度条 */
+.progress{
+    width: 85%;
+    margin: 15rpx 0;
+}
+
