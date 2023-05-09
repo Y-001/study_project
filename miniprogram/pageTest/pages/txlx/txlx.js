@@ -18,6 +18,12 @@ Page({
           url: '/pageTest/pages/shunxu/shunxu?type='+type+'&classify='+encodeURIComponent(this.data.classify),
         })
     },
+    toTowast(){
+        wx.showToast({
+          title: '暂时未收录该题型的试题',
+          icon:'none'
+        })
+    },
 
     /**
      * 生命周期函数--监听页面加载

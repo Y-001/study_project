@@ -86,7 +86,7 @@
         "backgroundColor": "#F6F6F6",
         "backgroundTextStyle": "light",
         "navigationBarBackgroundColor": "#F6F6F6",
-        "navigationBarTitleText": "巧记中医经典",
+        "navigationBarTitleText": "中医经典导读熟背",
         "navigationBarTextStyle": "black"
     },
     "tabBar": {

@@ -13,7 +13,8 @@ Page({
         rightrate: 0,
         usetime: 0,
         score: 0,
-        id:''
+        id:'',
+        name:''
     },
     toExamRecord(){
         let {id}=this.data
@@ -36,6 +37,7 @@ Page({
             id
         })
         db.collection('testexams').doc(id).get().then(res => {
+            let name=res.data.classify
             let examresult = res.data.answerArr
             // ?️ 获取完整分钟数
             let minutes = Math.floor(res.data.continuetime/1000 / 60);
@@ -51,7 +53,7 @@ Page({
             
             rightrate = score / 25 *100
             this.setData({
-                rightnum, score, rightrate,usetime
+                rightnum, score, rightrate,usetime,name
             })
         })
     },

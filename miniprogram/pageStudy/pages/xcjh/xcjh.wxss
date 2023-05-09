@@ -13,6 +13,12 @@
     width: 95%;
     display: flex;
     margin: 20rpx 0 32rpx;
+    overflow-x: scroll;
+    overflow-y: unset;
+}
+::-webkit-scrollbar {
+    /*隐藏滚轮*/
+    display: none;
 }
 .card{
     position: relative;
@@ -23,7 +29,7 @@
     border:2rpx solid #667c70;
     border-radius: 20rpx;
 }
-.active::after{
+/* .active::after{
     content: '';
     position: absolute;
     border: 10rpx solid transparent;
@@ -31,7 +37,7 @@
     bottom: -30rpx;
     left: 50%;
     transform: translateY(-50%);
-}
+} */
 
 .card-item{
     color: #fff;

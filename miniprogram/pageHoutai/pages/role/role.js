@@ -148,7 +148,7 @@ Page({
                 role: Number(index),
                 nickName: chooseuser.nickName,
                 avatar: chooseuser.avatar,
-                bank:[]
+                banks:[]
             }
         }).then(res => {
             wx.showToast({

@@ -1,6 +1,8 @@
 {
     "usingComponents": {
         "ProblemItemTest":"../../../components/ProblemItemTest/ProblemItemTest",
-        "van-popup": "@vant/weapp/popup/index"
-    }
+        "van-popup": "@vant/weapp/popup/index",
+        "van-empty": "@vant/weapp/empty/index"
+    },
+    "navigationBarTitleText": "顺序练习"
 }

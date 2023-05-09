@@ -193,6 +193,7 @@
 .last-card-con{
     display: flex;
     padding: 20rpx;
+    flex-wrap: wrap;
 }
 .last-con-item{
     font-size: 28rpx;

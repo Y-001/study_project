@@ -83,16 +83,21 @@ Page({
         }).update({
             data:{
                 studyplan:{
-                    select_id,studyday,studytime,donetime,bookname,bookid,
+                    select_id,studyday,studytime,donetime,bookname,bookid,calendar:[],
                     createtime:new Date().getTime()
                 }
             }
         }).then(res=>{
             // console.log(res)
             wx.showToast({
-              title: '添加成功',
+              title: '确认学习计划成功',
               icon:'none'
             })
+            setTimeout(()=>{
+                wx.switchTab({
+                  url: '/pages/index/index',
+                })
+            },500)
         })
     },
 

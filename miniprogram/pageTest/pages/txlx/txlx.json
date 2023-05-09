@@ -2,5 +2,6 @@
     "usingComponents": {
         "van-cell": "@vant/weapp/cell/index",
         "van-cell-group": "@vant/weapp/cell-group/index"
-    }
+    },
+    "navigationBarTitleText": "选择练习的题型"
 }

@@ -106,7 +106,7 @@
                         <view class="talk-name">{{onedata.rootComment.nickname}}</view>
                         <view class="talk-icon">
                             <image wx:if="{{filter.isShow(onedata.rootComment.likeuserlist,openid)== -1}}" class="talk-icon-img" src="{{dianzanIcon[0].icon}}" data-commentid="{{onedata.rootComment.commentid}}" bindtap="dianzan"></image>
-                            <image wx:else class="talk-icon-img" src="{{dianzanIcon[1].icon}}"></image>
+                            <image wx:else class="talk-icon-img" src="{{dianzanIcon[1].icon}}" data-comment="{{onedata.rootComment}}" bindtap="qxdianzan"></image>
                             <text>{{onedata.rootComment.likenum}}</text>
                         </view>
                     </view>

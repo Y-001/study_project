@@ -2,7 +2,7 @@
 <view class="container">
     <view class="topbg"></view>
     <view class="body">
-        <view class="title">初级技能</view>
+        <view class="title">{{name}}</view>
         <view class="head">
             <view class="name">
                 <image class="name-img" src="{{userInfo.avatar}}" alt="" />

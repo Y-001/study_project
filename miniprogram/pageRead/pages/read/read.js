@@ -260,7 +260,7 @@ Page({
             res.data.name = name.match(/《(.*?)》/g)[0].replace("《", '').replace("》", '')
             let lastname=res.data.name
             let desc=res.data.desc
-            res.data.desc=desc.replace(/。/g,'。\n&nbsp;&nbsp;').replace(/<*strong>/g,'')
+            res.data.desc=desc.replace(/。/g,'。\n  ').replace(/<*strong>/g,'')
             this.setData({
                 book: res.data,
                 content: res.data.desc

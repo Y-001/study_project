@@ -7,7 +7,7 @@
     </view>
     <view class="content">
         <view class="title">
-            <input bindinput="changeTitle" value="{{title}}" type="text" placeholder="标题"/>
+            <input bindinput="changeTitle" value="{{title}}" type="text" placeholder="标题" class="title-inp"/>
         </view>
         <view class="date">
             <text class="date-month">{{time.day}}</text>
@@ -18,14 +18,14 @@
         </view>
         <!-- 上传图片 -->
         <view class="upload">
-            <view class="upload-top">
+            <view class="upload-top" wx:if="{{id==0}}">
                 <text>最多选择3张图片</text>
                 <text>{{imgList.length}}/3</text>
             </view>
             <view class="upload-list">
                 <view class="img-list" wx:for="{{imgList}}" wx:key="index">
                     <image bindtap="changePreview" data-src="{{item}}" class="common" src="{{item}}"></image>
-                    <image wx:if="{{!id}}" data-index="{{index}}" bindtap="deleteImg" class="delete" src="../../images/delete.png"></image>
+                    <image wx:if="{{id==0}}"  data-index="{{index}}" bindtap="deleteImg" class="delete" src="../../images/delete.png"></image>
                 </view> 
                 <image wx:if="{{imgList.length<3 && id==0}}" bindtap="uploadImg" class="default" src="../../images/upload.png"></image>
             </view>

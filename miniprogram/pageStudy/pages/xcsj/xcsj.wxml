@@ -3,7 +3,7 @@
     <view class="top">
         <view class="info">
             <image class="avater" src="{{userInfo.avatar}}"></image>
-            <image class="avatar-prize" src="{{pdprizeImg}}" mode=""/>
+            <image wx:if="{{pdprizeImg}}" class="avatar-prize" src="{{pdprizeImg}}" mode=""/>
             <view class="info-right">
                 <view class="title">Hi,{{userInfo.nickName}}</view>
                 <view class="mingyan">总有人会看到你的光芒!</view>

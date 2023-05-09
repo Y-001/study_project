@@ -84,7 +84,7 @@ Component({
                     kongVal:e.detail.value
                 })
                 // console.log(e.detail.value)
-            },1000)
+            },500)
         },
         
         /* 选择答案操作 */
@@ -117,7 +117,7 @@ Component({
             }
         },
         // 填空题提交答案操作
-        getKongAnswer(e){
+        async getKongAnswer(e){
             let{kongVal,testlist,currentIndex,answerStatus}=this.data
             let resStatus=kongVal==testlist[currentIndex].answer ? true:false;
             answerStatus={
@@ -130,18 +130,20 @@ Component({
                 showAnswer: true,
                 resultIcon:resStatus,
             })
-            // wx.setStorageSync('answerArr', JSON.stringify(answerArr))
-            this.triggerEvent('answerStatus', answerStatus)
             if(resStatus==false){
                 const addData = testlist[currentIndex]
                 addData.myOption={}
                 addData.myAnswer=kongVal
-                db.collection('testerrors').add({
+                delete addData._openid
+                delete addData._id
+                await db.collection('testerrors').add({
                     data:addData
                 }).then(res=>{
                     console.log('错题加入成功')
                 }).catch(err=>{})
             }
+            // wx.setStorageSync('answerArr', JSON.stringify(answerArr))
+            this.triggerEvent('answerStatus', answerStatus)
         },
     },
     lifetimes:{

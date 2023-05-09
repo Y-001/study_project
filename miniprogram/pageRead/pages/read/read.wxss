@@ -1,6 +1,7 @@
 
 .content{
     padding: 0 20rpx 20rpx;
+    min-height: 100vh;
 }
 .active{
     background-color: #667c70;
@@ -120,12 +121,16 @@
     color: #000;
     z-index: 99;
     writing-mode: vertical-lr;
-    width: 30%;
-    height: 60%;
+    /* width: 30%; */
+    /* height: 60%; */
+    width: 31rpx;
+    height: 120rpx;
+    text-align: center;
     top: 50%;
     left: 50%;
     transform: translateX(-50%);
     transform: translateY(-50%);
+    overflow: hidden;
 }
  .headimg{
     width: 150rpx;
@@ -139,10 +144,12 @@
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
+    font-weight: bold;
 }
 .shelf-author{
     padding: 15rpx 0;
     font-size: 32rpx;
+    color: #666;
 }
 
 .shelf-item{

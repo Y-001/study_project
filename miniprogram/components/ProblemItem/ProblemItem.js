@@ -89,7 +89,7 @@ Component({
                     kongVal: e.detail.value
                 })
                 console.log(e.detail.value)
-            }, 1000)
+            }, 500)
         },
         /* 收藏操作 */
         getStar(e) {
@@ -97,6 +97,7 @@ Component({
             let { testlist, currentIndex } = this.data
             const addData = testlist[currentIndex]
             if (star[0].text == '收藏') {
+                delete addData._openid
                 db.collection("teststars").add({
                     data: addData
                 }).then(res => {

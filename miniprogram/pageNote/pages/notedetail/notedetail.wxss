@@ -42,10 +42,14 @@
 .title{
     /* box-sizing: border-box; */
     padding: 10rpx;
-    font-size: 45rpx;
+    /* font-size: 45rpx; */
     color: #000;
-    padding-bottom: 20rpx;
+    /* padding-bottom: 20rpx; */
     margin-bottom: 20rpx;
+}
+.title-inp{
+    /* font-weight: bold; */
+    font-size: 1.2em;
 }
 .body{
     /* margin: 20rpx 0; */

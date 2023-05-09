@@ -79,6 +79,13 @@ Page({
             })
         }
         if(pageType=='收藏夹'){
+            //更换导航栏名字
+            wx.setNavigationBarTitle({
+                title: '收藏夹',
+                fail: function () {
+                    //todo 显示错误页面
+                }
+            });
             db.collection('teststars').where({
                 _openid:wx.getStorageSync('openid'),
                 classify:this.data.classify

@@ -14,15 +14,15 @@
             </view>
             <view class="card-list">
                 <view class="card-item">
-                    <text class="text-num">{{todyTime}}</text>
+                    <text class="text-num">{{todyTime}}<text style="font-size: 0.6em;">min</text></text>
                     <text class="text-title">今日学习时长</text> 
                 </view>
                 <view class="card-item">
-                    <text class="text-num">{{studyplan.studytime}}</text>
+                    <text class="text-num">{{studyplan.studytime}}<text style="font-size: 0.6em;">min</text></text>
                     <text class="text-title">计划时长</text>
                 </view>
                 <view class="card-item">
-                    <text class="text-num">{{studyplan.studyday}}</text>
+                    <text class="text-num">{{studyplan.studyday}}<text style="font-size: 0.6em;">day</text></text>
                     <text class="text-title">计划天数</text>
                 </view>
             </view>

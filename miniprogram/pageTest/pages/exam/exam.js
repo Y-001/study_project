@@ -28,9 +28,11 @@ Page({
         chongfu:false
     },
     // 每道题打完之后的结果
-    getAnswerStatus(e) {
+    getAnswerStatus(e) { 
+        let {currentIndex,current}=this.data
         let answerStatus = e.detail
         // console.log(answerStatus)
+        // console.log(currentIndex)
         let { answerArr } = this.data
         if (answerArr.length > 0) {
             let status = true
@@ -46,8 +48,22 @@ Page({
             answerArr.push(answerStatus)
         }
         this.setData({
-            answerArr
+            answerArr,
         })
+        if(current != 4){
+            this.setData({
+                currentIndex:currentIndex+1,
+                current:current+1
+            })
+        }
+        if(current == 4)
+        {
+            wx.showToast({
+              title: '已经是最后一题了',
+            })
+        }
+        
+        console.log(this.data.currentIndex)
         // console.log(answerArr)
     },
     // 交卷

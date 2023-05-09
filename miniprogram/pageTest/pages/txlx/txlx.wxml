@@ -1,7 +1,7 @@
 <!--pages/txlx/txlx.wxml-->
 <van-cell-group>
   <van-cell data-type="0" title="单选题" is-link label="共{{dnum}}题" bindtap="toShunXu" />
-  <van-cell title="多选题" is-link label="共0题" />
-  <van-cell title="判断题" is-link label="共0题" />
+  <van-cell title="多选题" is-link label="共0题" bindtap="toTowast"/>
+  <van-cell title="判断题" is-link label="共0题" bindtap="toTowast"/>
   <van-cell data-type="3" title="填空题" is-link label="共{{tnum}}题"  bindtap="toShunXu"/>
 </van-cell-group>

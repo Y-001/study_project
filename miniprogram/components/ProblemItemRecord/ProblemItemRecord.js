@@ -87,7 +87,7 @@ Component({
                     kongVal:e.detail.value
                 })
                 // console.log(e.detail.value)
-            },1000)
+            },500)
         },
         
        

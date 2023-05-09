@@ -184,6 +184,7 @@ Page({
                   title: '修改笔记成功',
                   icon:'none'
                 })
+                this.getNoteDetail(id)
             })
         } else {
             const imageUp = [];
@@ -216,7 +217,10 @@ Page({
                                         title: '保存成功',
                                         icon: 'none'
                                     })
-                                    this.onLoad()
+                                    this.setData({
+                                        classifyA:'',
+                                        inputShow:false
+                                    })
                                 })
                             },
                         })
@@ -253,20 +257,17 @@ Page({
                         title: '保存成功',
                         icon: 'none'
                     })
-                    this.onLoad()
+                    this.setData({
+                        classifyA:'',
+                        inputShow:false
+                    })
+                    this.getNoteDetail(res._id)
                 })
             }
         }
     },
-
-
-
-    /**
-     * 生命周期函数--监听页面加载
-     */
-    onLoad(options) {
-        let id = options?.id
-        // console.log(id)
+    // 回显页面
+    getNoteDetail(id){
         this.setData({
             id
         })
@@ -274,7 +275,10 @@ Page({
         let createtime = new Date().getTime()
         // console.log(createtime)
         let day = `${new Date(createtime).getMonth() + 1}月${new Date(createtime).getDate()}日`
-        let min = `${new Date(createtime).getHours()}:${new Date(createtime).getMinutes()}`
+        let m=new Date(createtime).getMinutes() ;
+        // >=10 ?new Date(createtime).getMinutes() >=10:'0'+new Date(createtime).getMinutes() >=10
+        m=m >=10 ? m:'0'+m
+        let min = `${new Date(createtime).getHours()}:${m}`
         this.setData({
             time: {
                 createtime,
@@ -310,6 +314,20 @@ Page({
                 })
             })
         }
+    },
+
+
+
+    /**
+     * 生命周期函数--监听页面加载
+     */
+    onLoad(options) {
+        let id = options?.id
+        // console.log(id)
+        this.setData({
+            id
+        })
+        this.getNoteDetail(id)
 
     },
 

@@ -2,5 +2,6 @@
     "usingComponents": {
         "ProblemItem":"../../../components/ProblemItem/ProblemItem",
         "van-empty": "@vant/weapp/empty/index"
-    }
+    },
+    "navigationBarTitleText": "背题模式"
 }

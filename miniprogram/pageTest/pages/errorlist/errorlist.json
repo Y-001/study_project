@@ -1,5 +1,7 @@
 {
     "usingComponents": {
-        "ProblemItemError":"../../../components/ProblemItemError/ProblemItemError"
-    }
+        "ProblemItemError":"../../../components/ProblemItemError/ProblemItemError",
+        "van-empty": "@vant/weapp/empty/index"
+    },
+    "navigationBarTitleText": "错题集"
 }

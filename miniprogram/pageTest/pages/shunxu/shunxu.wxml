@@ -1,5 +1,5 @@
 <wxs module='filter' src='./utils.wxs'></wxs>
-<view wx:if="{{testlist.length==0}}">题库暂时没有收录题目，请稍后再试...</view>
+<van-empty wx:if="{{testlist.length==0}}" description="题库暂时没有收录题目" />
 <swiper wx:else style="height:{{swiperHeight}}px" duration="{{swiperDuration}}" current="{{current}}" bindchange="swiperChange">
     <swiper-item wx:key="ssssss" wx:for="{{testlist}}">
         <item-view>

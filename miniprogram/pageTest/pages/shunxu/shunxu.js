@@ -99,6 +99,7 @@ Page({
         let { testlist, currentIndex } = this.data
         const addData = testlist[currentIndex]
         if (star[0].text == '收藏') {
+            delete addData._openid
             db.collection("teststars").add({
                 data: addData
             }).then(res => {
@@ -223,18 +224,30 @@ Page({
             classify:classify,
             // pageType: '顺序练习'
         })
-        if(type){
+        if(type ==0 || type==3){
             if(type==0){
                 this.setData({
                     pageType:'单选题',
                     type:type
                 })
-            }
-            if(type==3){
+                //更换导航栏名字
+            wx.setNavigationBarTitle({
+                title: '单选题型练习',
+                fail: function () {
+                    //todo 显示错误页面
+                }
+            });
+            }else if(type==3){
                 this.setData({
                     pageType:'填空题',
                     type:type
                 })
+                wx.setNavigationBarTitle({
+                    title: '填空题型练习',
+                    fail: function () {
+                        //todo 显示错误页面
+                    }
+                });
             }
             db.collection('testbanks').where({
                 classify: this.data.classify,

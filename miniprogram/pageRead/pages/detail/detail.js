@@ -9,6 +9,8 @@ Page({
      * 页面的初始数据
      */
     data: {
+        //是否已经是学习计划中
+        isPlan:false,
         //父评论
         fatherRoot: 'root',
         /* 是否展示底部弹出层 */
@@ -53,6 +55,31 @@ Page({
 
     },
     // 点赞操作
+    qxdianzan(e){
+        let {comment}=e.currentTarget.dataset;
+        let openid=wx.getStorageSync('openid');
+        console.log(comment)
+        let list=comment.likeuserlist.filter(item=>{
+            return item!=openid
+        })
+        db.collection('booklists').where({
+            comments:{
+                commentid:comment.commentid
+            }
+        }).update({
+            data:{
+                'comments.$.likenum': _.inc(-1),
+                'comments.$.likeuserlist': list
+            }
+        }).then(res=>{
+            wx.showToast({
+              title: '取消点赞成功',
+              icon:'none'
+            })
+            this.getBookInfo()
+        })
+    },
+    // 取消点赞
     dianzan(e){
         let {commentid}=e.currentTarget.dataset;
         console.log(commentid)
@@ -73,7 +100,7 @@ Page({
             this.getBookInfo()
         })
     },
-    /* 加入书架操作 */
+    /* 加入收藏操作 */
     addBookshelf(e) {
         let _this = this
         const addBookshelfIcon = this.data.addBookshelfIcon;
@@ -105,6 +132,13 @@ Page({
             })
         }
         if (addBookshelfIcon[0].text == '从收藏移除') {
+            if(this.data.isPlan==true){
+                wx.showToast({
+                  title: '经典在学习计划中不可移除',
+                  icon:'none'
+                })
+                return
+            }
             db.collection('bookstars').where({
                 bookid: this.data.book._id,
                 _openid: this.data.openid
@@ -300,6 +334,17 @@ Page({
             this.setData({
                 commentList: list
             })
+        })
+        // 获取此本书是否已被列入学习计划
+        db.collection('users').where({
+            _openid:wx.getStorageSync('openid')
+        }).get().then(res=>{
+            let planbookid=res.data[0].studyplan.bookid
+            if(id==planbookid){
+                this.setData({
+                    isPlan:true
+                })
+            }
         })
 
 

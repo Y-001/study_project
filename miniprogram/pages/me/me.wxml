@@ -3,7 +3,7 @@
     <view style="display: flex;flex-direction: column;align-items: center;">
         <view class="avatar">
             <image class="avatar-img" width="10rem" height="10rem" src="{{avatar}}" />
-            <image class="avatar-prize" src="{{pdprizeImg}}" mode="" />
+            <image wx:if="{{pdprizeImg}}" class="avatar-prize" src="{{pdprizeImg}}" mode="" />
         </view>
         <view class="margin-top-sm">
             <text>{{nickName}}</text>
