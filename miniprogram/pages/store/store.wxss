@@ -72,8 +72,10 @@
     /* writing-mode: vertical-lr; */
     font-size: 40rpx;
     line-height: 40rpx;
-    width: 45rpx;
-    height: 160rpx;
+    /* width: 45rpx; */
+    width: 48rpx;
+    /* height: 160rpx; */
+    height: 164rpx;
     overflow: hidden;
     top: 50%;
     left: 50%;
