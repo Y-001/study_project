@@ -1,4 +1,6 @@
 {
-    "usingComponents": {},
+    "usingComponents": {
+        "van-switch": "@vant/weapp/switch/index"
+    },
     "navigationBarTitleText": "定制学习计划"
 }

@@ -878,11 +878,18 @@
                     "query": "classify=%25E4%25B8%25AD%25E8%258D%25AF%25E7%2582%25AE%25E5%2588%25B6",
                     "launchMode": "default",
                     "scene": null
+                },
+                {
+                    "name": "",
+                    "pathName": "pageStudy/pages/xcjh/xcjh",
+                    "query": "",
+                    "launchMode": "default",
+                    "scene": null
                 }
             ]
         }
     },
     "description": "项目私有配置文件。此文件中的内容将覆盖 project.config.json 中的相同字段。项目的改动优先同步到此文件中。详见文档：https://developers.weixin.qq.com/miniprogram/dev/devtools/projectconfig.html",
-    "projectname": "project",
+    "projectname": "study_project",
     "libVersion": "2.25.4"
 }
