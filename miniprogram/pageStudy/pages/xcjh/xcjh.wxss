@@ -113,7 +113,7 @@
 }
 .input{
     border-radius: 10rpx;
-    box-shadow:2rpx 2rpx 2px #667c70;
+    /* box-shadow:2rpx 2rpx 2px #667c70; */
     text-align: center;
     font-size: 40rpx;
 }
@@ -124,6 +124,7 @@
     margin: 0 0 50rpx;
     width: 95%;
     display: flex;
+    flex-direction: column;
     justify-content: center;
 }
 .zs-item{

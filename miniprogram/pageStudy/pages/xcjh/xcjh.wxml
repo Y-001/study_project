@@ -7,13 +7,13 @@
                 <view class="item-top">推荐</view>
                 <view class="item-title">请先去收藏经典</view>
             </view>
-        </view> 
+        </view>
         <view wx:if="{{starList.length>0}}" class="card {{item._id==select_id?'active':''}}" data-bookid="{{item.bookid}}" data-bookname="{{item.bookname}}" data-id="{{item._id}}" wx:for="{{starList}}" wx:key="index" bindtap="selectBook">
             <view class="card-item">
                 <view class="item-top">推荐</view>
                 <view class="item-title">{{item.bookname}}</view>
             </view>
-        </view> 
+        </view>
     </view>
     <!-- 自定义学习时长 -->
     <view class="body">
@@ -23,7 +23,12 @@
                 <view class="xz-name">每日学习时长</view>
                 <view class="xz-int">
                     <view class="xz-int-sr">
-                        <input bindinput="changeStudytime" value="{{studytime}}" type="text" class="input" />
+                        <picker mode="multiSelector" bindchange="bindMultiPickerChange" value="{{multiIndex}}" range="{{multiArray}}">
+                            <!-- <input bindinput="changeStudytime" value="{{studytime}}" type="text" class="input" /> -->
+                            <view class="input">
+                                {{multiArray[0][multiIndex[0]]}}
+                            </view>
+                        </picker>
                     </view>
                     <text class="xz-int-text">分钟</text>
                 </view>
@@ -32,18 +37,29 @@
                 <view class="xz-name">完成天数</view>
                 <view class="xz-int">
                     <view class="xz-int-sr">
-                        <input bindinput="changeStudyday" value="{{studyday}}" type="text" class="input" />
-                    </view>
-                    <text class="xz-int-text">天数</text>
+                    <picker mode="multiSelector" bindchange="bindMultiPickerChange" value="{{multiIndex}}" range="{{multiArray}}">
+                        <!-- <input bindinput="changeStudyday" value="{{studyday}}" type="text" class="input" /> -->
+                        <view class="input">
+                            {{multiArray[1][multiIndex[1]]}}
+                        </view>
+                    </picker>
                 </view>
-            </view>
-        </view>
-        <view class="body-zs">
-            <view class="zs-item">
-                <view class="zs-left">完成日期</view>
-                <view class="zs-right">{{donetime}}</view>
+                <text class="xz-int-text">天数</text>
             </view>
         </view>
     </view>
-    <view class="btn" bindtap="getPlan">确认学习计划</view>
+    <view class="body-zs">
+        <view class="zs-item">
+            <view class="zs-left">完成日期</view>
+            <view class="zs-right">{{donetime}}</view>
+        </view>
+        <view class="zs-item">
+            <view class="zs-left">微信提醒</view>
+            <view class="zs-right">
+                <van-switch active-color="#667c70" size="1.5em" checked="{{ checked }}" bind:change="onChangeSwitch" />
+            </view>
+        </view>
+    </view>
+</view>
+<view class="btn" bindtap="getPlan">确认学习计划</view>
 </view>

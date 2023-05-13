@@ -18,13 +18,21 @@
                     <text class="text-title">今日学习时长</text> 
                 </view>
                 <view class="card-item">
+                    <text class="text-num">{{studyplan.syday}}<text style="font-size: 0.6em;">day</text></text>
+                    <text class="text-title">剩余天数</text>
+                </view>
+                <!-- <view class="card-item">
+                    <text class="text-num">{{studyplan.jindu}}<text style="font-size: 0.6em;">%</text></text>
+                    <text class="text-title">学习进度</text>
+                </view> -->
+                <view class="card-item">
                     <text class="text-num">{{studyplan.studytime}}<text style="font-size: 0.6em;">min</text></text>
                     <text class="text-title">计划时长</text>
                 </view>
-                <view class="card-item">
+                <!-- <view class="card-item">
                     <text class="text-num">{{studyplan.studyday}}<text style="font-size: 0.6em;">day</text></text>
                     <text class="text-title">计划天数</text>
-                </view>
+                </view> -->
             </view>
             <view class="card-btny">
                 <view class="card-btn" bindtap="toReadDetail">{{doneTody?'完成今日计划':'开始学习'}}</view>
