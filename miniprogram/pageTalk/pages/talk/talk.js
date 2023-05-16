@@ -10,7 +10,7 @@ Page({
         // 发布的文章内容
         list:[],
         openid:wx.getStorageSync('openid'),
-        active:'吐槽',
+        active:'热门',
         //是否是我的发布页面
         isMy:false,
         starList:[]
@@ -72,12 +72,12 @@ Page({
     },
     // 查看我的发布的内容
     myPublish(){
-        let active='吐槽'
+        let active='热门'
         this.setData({
-            active:'吐槽',
+            active:'热门',
             isMy:true
         })
-        this.getList('吐槽',1)
+        this.getList('热门',1)
         //更换导航栏名字
         wx.setNavigationBarTitle({
             title: '我的发布',
@@ -87,12 +87,12 @@ Page({
         });
     },
     tuiMyPublish(){
-        let active='吐槽'
+        let active='热门'
         this.setData({
-            active:'吐槽',
+            active:'热门',
             isMy:false
         })
-        this.getList('吐槽',0)
+        this.getList('热门',0)
         //更换导航栏名字
         wx.setNavigationBarTitle({
             title: '圈子',
@@ -147,10 +147,14 @@ Page({
         })
     },
     // 获取帖子列表
-    getList(classify="吐槽",openid=0){
-        wx.showLoading()
+    getList(classify="热门",openid=0){
+        wx.showLoading({
+          title: '加载中',
+        })
         let data={}
-        data.classify=classify
+        if(classify!='热门'){
+            data.classify=classify
+        }
         if(openid==1){
             data._openid=wx.getStorageSync('openid')
         }
@@ -183,12 +187,15 @@ Page({
     // 点赞
     doStar(e){
         let id=e.currentTarget.dataset.id
+        let active=this.data.active
+        let isMy=this.data.isMy
+        let status= isMy ? 1:0
         db.collection('circles').doc(id).update({
             data:{
                 star:_.push(wx.getStorageSync('openid'))
             }
         }).then(res=>{
-            this.getList()
+            this.getList(active,status)
             wx.showToast({
                 title: '点赞成功',
                 icon:'none'
@@ -197,6 +204,9 @@ Page({
     },
     // 取消点赞
     dodeleteStar(e){
+        let active=this.data.active
+        let isMy=this.data.isMy
+        let status= isMy ? 1:0
         let item=e.currentTarget.dataset.item
         let openid=wx.getStorageSync('openid')
         let star=item.star.filter(item=>{
@@ -207,7 +217,7 @@ Page({
                 star:star
             }
         }).then(res=>{
-            this.getList()
+            this.getList(active,status)
             wx.showToast({
               title: '取消点赞成功',
               icon:'none'

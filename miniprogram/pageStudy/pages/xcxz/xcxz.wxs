@@ -9,9 +9,14 @@ var filter = {
             }
         }
         return false
+    },
+    bit:function(score,score2){
+        // (score/item.score)*100>=100?100:(score/item.score)*100<1?'1':(score/item.score)*100
+        return (score/score2)*100>=100 ? 100:(score/score2)*100<1 ? '1': Math.round((score/score2)*100)
     }
 }
 // 导出方法
 module.exports = {
-    isLq: filter.isLq
+    isLq: filter.isLq,
+    bit:filter.bit
 }

@@ -34,7 +34,7 @@
     <view class="talk">
         <view class="talk-top">
             <view class="talk-top-left">精彩评论</view>
-            <view class="talk-top-right" bindtap="showWrite">写评论</view>
+            <view data-sign="1" class="talk-top-right" bindtap="showWrite">写评论</view>
         </view>
         <!-- 写评论 底部弹出层 --> 
         <van-popup show="{{ write }}" position="bottom" custom-style="height: 10%;" bind:close="onCloseWrite" close-on-click-overlay="true">
@@ -96,7 +96,10 @@
             </view>
         </van-popup>
         <!-- 评论内容 -->
-        <view class="talk-content">
+        <view class="talk-content" wx:if="{{commentList.length==0}}">
+            <van-empty description="暂无评论" />
+        </view>
+        <view class="talk-content" wx:if="{{commentList.length>0}}">
             <view class="talk-content-item" wx:for="{{commentList}}" wx:for-item="onedata" wx:key="index">
                 <view class="talk-content-left">
                     <image class="talk-avatar" src="{{onedata.rootComment.avatar}}"></image>
@@ -118,7 +121,7 @@
                     </view>
                     <view wx:if="{{onedata.child.length>0}}" class="talk-comment" data-comment="{{onedata}}" bindtap="openComment">
                         <view class="talk-comment-list">
-                            <view class="talk-comment-item" wx:for-item="twodata" wx:for="{{onedata.child}}" wx:key="index">
+                            <view class="talk-comment-item" wx:for-item="twodata" wx:for="{{onedata.child}}"wx:if="{{index < 2}}" wx:key="index">
                                 <text class="color-name">{{twodata.rootComment.nickname}}</text>
                                 回复
                                 <text class="color-name">{{onedata.rootComment.nickname}}</text>：{{twodata.rootComment.comment}}

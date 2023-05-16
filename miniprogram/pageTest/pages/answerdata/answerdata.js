@@ -3,6 +3,7 @@ const db = wx.cloud.database()
 const $ = db.command.aggregate
 var hengData = []
 var shuData = []
+var dtcassify = []
 function initChart(canvas, width, height, dpr) {
     const chart = echarts.init(canvas, null, {
         width: width,
@@ -13,16 +14,20 @@ function initChart(canvas, width, height, dpr) {
 
     var option = {
         title: {
-            text: ''
+            text: '答题得分分析',
+            left: 'center'
+
         },
         tooltip: {
             trigger: 'axis'
         },
-        legend: {},
+        legend: {
+            orient: 'vertical',
+            left: 'left'
+        },
         xAxis: {
             type: 'category',
             boundaryGap: false,
-            //   data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
             data: hengData
         },
         yAxis: {
@@ -35,30 +40,69 @@ function initChart(canvas, width, height, dpr) {
             {
                 name: '考试得分',
                 type: 'line',
-                // data: [10, 11, 13, 11, 12, 12, 9],
                 data: shuData,
-
-                // markLine: {
-                //     data: [{ type: 'average', name: 'Avg' }]
-                // }
             },
-            //   {
-            //     name: 'Lowest',
-            //     type: 'line',
-            //     data: [1, -2, 2, 5, 3, 2, 0],
-            //     markPoint: {
-            //       data: [{ name: '周最低', value: -2, xAxis: 1, yAxis: -1.5 }]
-            //     },
-            //     markLine: {
-            //       data: [
-            //         { type: 'average', name: 'Avg' }
-            //       ]
-            //     }
-            //   }
         ]
     };
     chart.setOption(option);
 
+    return chart;
+}
+function initChart2(canvas, width, height, dpr) {
+    const chart = echarts.init(canvas, null, {
+        width: width,
+        height: height,
+        devicePixelRatio: dpr // new
+    });
+    canvas.setChart(chart);
+
+    var option = {
+        title: {
+            text: '答题类型统计',
+            left: 'center'
+        },
+        tooltip: {
+            trigger: 'item'
+        },
+        backgroundColor: "#ffffff",
+        series: [{
+            label: {
+                normal: {
+                    fontSize: 14
+                }
+            },
+            type: 'pie',
+            // center: ['50%', '50%'],
+            // radius: ['20%', '40%'],
+            radius: '50%',
+            // data: [{
+            //     value: 55,
+            //     name: '北京'
+            // }, {
+            //     value: 20,
+            //     name: '武汉'
+            // }, {
+            //     value: 10,
+            //     name: '杭州'
+            // }, {
+            //     value: 20,
+            //     name: '广州'
+            // }, {
+            //     value: 38,
+            //     name: '上海'
+            // }],
+            data: dtcassify,
+            emphasis: {
+                itemStyle: {
+                    shadowBlur: 10,
+                    shadowOffsetX: 0,
+                    shadowColor: 'rgba(0, 0, 0, 0.5)'
+                }
+            }
+        }]
+    };
+
+    chart.setOption(option);
     return chart;
 }
 
@@ -71,7 +115,10 @@ Page({
         ec: {
             onInit: initChart
         },
-        visible:false,
+        ec2: {
+            onInit: initChart2
+        },
+        visible: false,
         //用户信息
         userInfo: {},
         // 累计考试次数
@@ -101,33 +148,35 @@ Page({
                 scorecount += item.score;
                 rightnum += item.rightnum;
             })
-            let rightrate = rightnum / (testcount*5) * 100 || 0
+            let rightrate = Math.round(rightnum / (testcount * 5) * 100) || 0
             this.setData({
                 testcount,
                 scorecount,
                 rightrate
             })
         })
-       await db.collection('testexams').aggregate()
-       .match({
-           _openid:wx.getStorageSync('openid')
-       })
+        await db.collection('testexams').aggregate()
+            .match({
+                _openid: wx.getStorageSync('openid')
+            })
             .group({
                 _id: '$classify',
-                num: $.sum('$score')
+                num: $.sum('$score'),
+                sum: $.sum(1),
             })
-            .end().then(res=>{
+            .end().then(res => {
                 // console.log(res.list)
-                if(res.list.length!=0){
-                    res.list.forEach(item=>{
+                if (res.list.length != 0) {
+                    res.list.forEach(item => {
                         hengData.push(item._id)
                         shuData.push(item.num)
+                        dtcassify.push({ name: item._id, value: item.sum })
                     })
                 }
             })
-            this.setData({
-                visible:true
-            })
+        this.setData({
+            visible: true
+        })
     },
 
     /**
@@ -147,14 +196,18 @@ Page({
      * 生命周期函数--监听页面隐藏
      */
     onHide: function () {
-
+        hengData = []
+        shuData = []
+        dtcassify = []
     },
 
     /**
      * 生命周期函数--监听页面卸载
      */
     onUnload: function () {
-
+        hengData = []
+        shuData = []
+        dtcassify = []
     },
 
     /**

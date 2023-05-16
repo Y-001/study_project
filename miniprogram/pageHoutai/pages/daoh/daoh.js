@@ -6,7 +6,8 @@ Page({
      * 页面的初始数据
      */
     data: {
-        auth:0
+        auth:0,
+        userInfo:{},
     },
     toTeacher(){
         wx.navigateTo({
@@ -43,6 +44,10 @@ Page({
      * 生命周期函数--监听页面加载
      */
     onLoad(options) {
+        let userInfo=JSON.parse(wx.getStorageSync('userInfo'))
+        this.setData({
+            userInfo
+        })
         db.collection('authoritys').where({
             openid:wx.getStorageSync('openid')
         }).get().then(res=>{

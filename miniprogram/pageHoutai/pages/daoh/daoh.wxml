@@ -1,5 +1,14 @@
 <!--pageHoutai/pages/daoh/daoh.wxml-->
 <view class="container">
+    <view class="top">
+        <image class="img" src="{{userInfo.avatar}}" mode=""/>
+        <view class="name">
+            {{userInfo.nickName}}
+        </view>
+        <view class="role">
+            {{auth==1?'超级管理员':auth==2?'题库老师':auth==3?'题库管理员':'用户'}}
+        </view>
+    </view>
     <view wx:if="{{auth == 1}}" class="item" bindtap="toRole">角色管理</view>
     <view wx:if="{{auth == 1 || auth==3}}" class="item" bindtap="toTclassify">题库分类管理</view>
     <view wx:if="{{auth == 1 || auth==3}}" class="item" bindtap="toTeacher">题库老师管理</view>

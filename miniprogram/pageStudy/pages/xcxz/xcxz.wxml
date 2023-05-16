@@ -10,7 +10,7 @@
             <image src="{{item.img}}" mode="" class="img" />
             <view  class="text">{{item.text}}</view>
             <view class="progress">
-                <van-progress color="#667c70" percentage="{{(score/item.score)*100>=100?100:(score/item.score)*100<1?'1':(score/item.score)*100}}"  />
+                <van-progress color="#667c70" percentage="{{filter.bit(score,item.score)}}"  />
             </view>
             <view class="btn">
                 <view data-text="{{item.text}}" bindtap="lqPrzie" class="lq {{filter.isLq(lqprize,item.text) || score<item.score?'ylq':''}}">{{filter.isLq(lqprize,item.text)?'已领取':'领取'}}</view>

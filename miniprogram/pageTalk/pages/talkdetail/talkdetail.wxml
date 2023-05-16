@@ -32,7 +32,7 @@
                 <view class="item-time">{{filter.timegeshi(info.time)}}</view>
             </view>
             <view class="item-bottom-iconlist">
-                <view class="item-bottom-iconitem" bindtap="showWrite">
+                <view class="item-bottom-iconitem" data-sign="1" bindtap="showWrite">
                     <van-icon style="margin: 0 15rpx;" class="head-icon" name="chat-o" size="40rpx" color="#667c70" />
                     <text class="iconitem-num">{{!info.comments?0:info.comments.length}}</text>
                 </view>

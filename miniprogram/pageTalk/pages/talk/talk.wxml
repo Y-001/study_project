@@ -11,8 +11,8 @@
     </view>
     <view class="tab">
         <van-tabs active="{{ active }}" bind:change="onChange" color="#667c70">
-            <van-tab title="吐槽" name="吐槽" />
             <van-tab title="热门" name="热门" />
+            <van-tab title="吐槽" name="吐槽" />
             <van-tab title="读书" name="读书" />
             <van-tab title="答题" name="答题" />
             <van-tab title="求助" name="求助" />
@@ -55,7 +55,7 @@
                 <view class="item-bottom-iconlist">
                     <view class="item-bottom-iconitem" data-id="{{item._id}}" bindtap="toTalkdetail">
                         <van-icon class="head-icon" name="chat-o" size="40rpx" color="#667c70" />
-                        <text class="iconitem-num">{{!item.comment?0:item.comment.length}}</text>
+                        <text class="iconitem-num">{{!item.comments?0:item.comments.length}}</text>
                     </view>
                     <view class="item-bottom-iconitem">
                         <van-icon data-item="{{item}}" bindtap="dodeleteStar" wx:if="{{filter.isStar(openid,item.star)}}" class="head-icon" name="good-job" size="40rpx" color="#667c70" />

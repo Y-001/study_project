@@ -1,10 +1,10 @@
 import * as echarts from "../../../components/ec-canvas/echarts.min";
-import {dateFormat} from "../../../utils/index"
+import { dateFormat } from "../../../utils/index"
 const db = wx.cloud.database()
 var hengData = [0]
 var shuData = [0]
-var myDate=[100, 100, 90, 50, 40,30,15]
-var typename='开始'
+var myDate = [100, 100, 90, 50, 40, 30, 15]
+var typename = '开始'
 function initChart(canvas, width, height, dpr) {
     const chart = echarts.init(canvas, null, {
         width: width,
@@ -26,16 +26,16 @@ function initChart(canvas, width, height, dpr) {
             axisLabel: {
                 textStyle: {
                     color: '#666',
-                    padding: [0,0,0,0],
+                    padding: [0, 0, 0, 0],
                     fontSize: 8
                 },
-                interval:1
+                interval: 0
             },
-            axisLine: { 
+            axisLine: {
                 show: false,
                 lineStyle: {
                     color: '#666',
-                    width:1,
+                    width: 1,
                 },
             },
             // data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
@@ -45,7 +45,7 @@ function initChart(canvas, width, height, dpr) {
             name: '时长（min）',
             nameTextStyle: {
                 fontSize: 8,
-                padding:[0,0,0,0],
+                padding: [0, 0, 0, 0],
             },
             type: 'value',
             axisLabel: {
@@ -84,20 +84,20 @@ function initChart2(canvas, width, height, dpr) {
             type: 'category',
             boundaryGap: false,
             // data: ['0', '20分钟后', '1小时后', '1天后', '1周后', '1月后'],
-            data: ['开始', '1天后','2天后','3天后', '1周后', '1月后','3月后'],
+            data: ['开始', '1天后', '2天后', '3天后', '1周后', '1月后', '3月后'],
             axisLabel: {
                 textStyle: {
                     color: '#666',
-                    padding: [10,0,0,0],
+                    padding: [10, 0, 0, 0],
                     fontSize: 10
                 },
-                interval:0
+                interval: 0
             },
-            axisLine: { 
+            axisLine: {
                 show: false,
                 lineStyle: {
                     color: '#666',
-                    width:1,
+                    width: 1,
                 },
             },
             splitLine: {
@@ -111,7 +111,7 @@ function initChart2(canvas, width, height, dpr) {
             name: '记忆率（%）',
             nameTextStyle: {
                 fontSize: 8,
-                padding:[0,0,0,0],
+                padding: [0, 0, 0, 0],
             },
         },
         series: [
@@ -121,31 +121,31 @@ function initChart2(canvas, width, height, dpr) {
                 markLine: {
                     itemStyle: { //盒须图样式。
                         normal: {
-                            label:{
+                            label: {
                                 formatter: '今天'
                             }
                         }
                     },
                     //name: '预警时间',
                     //yAxisIndex: 0,
-                    symbol:'none',//去掉箭头
+                    symbol: 'none',//去掉箭头
                     data: [[
-                        {coord: [typename, 0] },
-                        {coord: [typename, 100] }
+                        { coord: [typename, 0] },
+                        { coord: [typename, 100] }
                     ]]
                 }
             },
             {
                 name: '艾宾浩斯遗忘曲线',
                 type: 'line',
-                symbol :'circle',
+                symbol: 'circle',
                 smooth: true,
-                data: [100,26,25,24, 23, 21,15]
+                data: [100, 26, 25, 24, 23, 21, 15]
             },
             {
                 name: '你的学习遗忘曲线',
                 type: 'line',
-                symbol :'circle',
+                symbol: 'circle',
                 smooth: true,
                 data: myDate
             },
@@ -161,44 +161,44 @@ Page({
      * 页面的初始数据
      */
     data: {
-        prizeList:[
+        prizeList: [
             {
-                img:'cloud://project-4gak2jnr9bdf0df2.7072-project-4gak2jnr9bdf0df2-1307359075/grade/21.png',
-                text:'坚持不懈',
-                score:5,
+                img: 'cloud://project-4gak2jnr9bdf0df2.7072-project-4gak2jnr9bdf0df2-1307359075/grade/21.png',
+                text: '坚持不懈',
+                score: 5,
             },
             {
-                img:'cloud://project-4gak2jnr9bdf0df2.7072-project-4gak2jnr9bdf0df2-1307359075/grade/50.png',
-                text:'聚沙成塔',
-                score:50,
+                img: 'cloud://project-4gak2jnr9bdf0df2.7072-project-4gak2jnr9bdf0df2-1307359075/grade/50.png',
+                text: '聚沙成塔',
+                score: 50,
             },
             {
-                img:'cloud://project-4gak2jnr9bdf0df2.7072-project-4gak2jnr9bdf0df2-1307359075/grade/1000.png',
-                text:'天道酬勤',
-                score:1000,
+                img: 'cloud://project-4gak2jnr9bdf0df2.7072-project-4gak2jnr9bdf0df2-1307359075/grade/1000.png',
+                text: '天道酬勤',
+                score: 1000,
             },
             {
-                img:'cloud://project-4gak2jnr9bdf0df2.7072-project-4gak2jnr9bdf0df2-1307359075/grade/2000.png',
-                text:'学富五车',
-                score:2000,
+                img: 'cloud://project-4gak2jnr9bdf0df2.7072-project-4gak2jnr9bdf0df2-1307359075/grade/2000.png',
+                text: '学富五车',
+                score: 2000,
             },
         ],
-        pdprizeImg:'',
+        pdprizeImg: '',
         ec1: {
             onInit: initChart
         },
         ec2: {
             onInit: initChart2
         },
-        visible:false,
+        visible: false,
         //用户信息
         userInfo: {},
         //累计读经典
-        totalBook:0,
+        totalBook: 0,
         //累计学习分钟
-        totalmin:0,
+        totalmin: 0,
         //累计完成经典
-        totalbookdone:0
+        totalbookdone: 0
 
     },
 
@@ -209,7 +209,7 @@ Page({
         this.setData({
             userInfo: JSON.parse(wx.getStorageSync('userInfo'))
         })
-        let _this=this
+        let _this = this
         //获取用户计划
         db.collection('users').where({
             _openid: wx.getStorageSync('openid')
@@ -218,10 +218,10 @@ Page({
                 let { createtime, studyday, calendar } = res.data[0].studyplan
                 const one_day = 86400000; // 24 * 60 * 60 * 1000;
                 // const addVal = dayNum * one_day + createtime;
-                for(let i=0;i<studyday;i++){
+                for(let i=0;i<5;i++){
                     hengData.push(dateFormat(i * one_day + createtime))
                 }
-                // console.log(hengData)
+                console.log(hengData)
                 hengData.forEach((item,index)=>{
                     calendar.forEach(rizi=>{
                         if(item==rizi.day){
@@ -229,45 +229,46 @@ Page({
                         }
                     })
                 })
+                
                 // 计算遗忘曲线 myData calendar
-                let tody=dateFormat(new Date().getTime()).slice(8)
+                let tody = dateFormat(new Date().getTime()).slice(8)
                 // console.log(tody.slice(8))                
-                let dy=hengData.map(item=>{
+                let dy = hengData.map(item => {
                     return item.toString().slice(8)
                 })
-                let chaday=tody-dy
-                typename=chaday==1?'1天后':chaday==2?'2天后':chaday==3 || 4?'3天后':chaday>=5||chaday<30?'1周后':chaday>=30||chaday<90?'1月后':'3月后'
+                let chaday = tody - dy
+                typename = chaday == 1 ? '1天后' : chaday == 2 ? '2天后' : chaday == 3 || 4 ? '3天后' : chaday >= 5 || chaday < 30 ? '1周后' : chaday >= 30 || chaday < 90 ? '1月后' : '3月后'
 
-                
+
 
                 // console.log(shuData)
                 this.setData({
-                    visible:true
+                    visible: true
                 })
             }
-            if('lastRead' in res.data[0]){
+            if ('lastRead' in res.data[0]) {
                 this.setData({
-                    totalBook:res.data[0].lastRead.length
+                    totalBook: res.data[0].lastRead.length
                 })
             }
-            let pdprize=res.data[0]?.pdprize || ''
-                let img= _this.data.prizeList.filter(item=>{
-                    return item.text==pdprize
-                })[0]?.img || ''
-                _this.setData({
-                    pdprizeImg: img,
-                })
+            let pdprize = res.data[0]?.pdprize || ''
+            let img = _this.data.prizeList.filter(item => {
+                return item.text == pdprize
+            })[0]?.img || ''
+            _this.setData({
+                pdprizeImg: img,
+            })
         })
         //获取累计学习分钟
         db.collection('bookstars').where({
             _openid: wx.getStorageSync('openid')
-        }).get().then(res=>{
+        }).get().then(res => {
             // console.log(res.data)
-            let sum=0
-            res.data.forEach(item=>{
-                sum+=item.studytime
+            let sum = 0
+            res.data.forEach(item => {
+                sum += item.studytime
                 this.setData({
-                    totalmin:sum
+                    totalmin: sum
                 })
             })
         })

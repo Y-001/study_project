@@ -3,7 +3,7 @@
     position: relative;
     width: 100%;
     background-color: #fff;
-    height: 100vh;
+    min-height: 100vh;
 }
 .bc{
     width: 100%;

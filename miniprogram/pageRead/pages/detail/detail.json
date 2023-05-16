@@ -1,7 +1,8 @@
 {
     "usingComponents": {
         "van-popup": "@vant/weapp/popup/index",
-        "van-divider": "@vant/weapp/divider/index"
+        "van-divider": "@vant/weapp/divider/index",
+        "van-empty": "@vant/weapp/empty/index"
     },
     "navigationBarTitleText":"书籍详情"
 }

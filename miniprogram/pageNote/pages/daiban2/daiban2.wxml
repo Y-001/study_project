@@ -1,9 +1,7 @@
 <!--pageNote/pages/daiban2/daiban2.wxml-->
 <view>
     <!-- 展示待办的部分 -->
-    <view wx:if="{{todoList.length==0}}">
-        暂时没有待办，快来添加吧!
-    </view>
+    <van-empty wx:if="{{todoList.length==0}}"  description="暂无待办，快来添加吧" />
     <view  class="item" wx:for="{{todoList}}" wx:key="index">
         <van-swipe-cell data-id="{{item._id}}" id="swipe-cell" right-width="{{ 50 }}" async-close bind:close="onCloseTodo">
             <van-cell value="{{item.date}}" label="{{item.info}}">

@@ -88,11 +88,27 @@ Page({
     },
     /* 展示弹出层 */
     showWrite(e) {
-        this.setData({
-            write: true,
-            applyShow: false,
-            commentShow: false
-        })
+        // this.setData({
+        //     write: true,
+        //     applyShow: false,
+        //     commentShow: false
+        // })
+        let sign=e.currentTarget.dataset?.sign
+        // console.log(sign)
+        if(sign==1){
+            this.setData({
+                write: true,
+                applyShow: false,
+                commentShow: false,
+                newComment: {}
+            })
+        }else{
+            this.setData({
+                write: true,
+                applyShow: false,
+                commentShow: false,
+            })
+        }
     },
     /* 关闭弹出层 */
     onCloseWrite() {

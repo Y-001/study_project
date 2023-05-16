@@ -26,6 +26,9 @@
         </view>
     </view>
     <view class="ec-container">
+        <ec-canvas wx:if="{{visible}}" canvas-id="echart-pie" ec="{{ec2}}"></ec-canvas>
+    </view>
+    <view class="ec-container">
         <ec-canvas wx:if="{{visible}}" canvas-id="echart-pie" ec="{{ec}}"></ec-canvas>
     </view>
 </view>

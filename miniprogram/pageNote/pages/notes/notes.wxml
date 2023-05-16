@@ -28,11 +28,12 @@
         </view>
     </view>
     <template name="item">
-        <view class="item" style="background-color: {{color}};">
+        <view data-id="{{_id}}" bindtap="toNotedetail" class="item" style="background-color: {{color}};">
             <image wx:if="{{imageUp.length>0}}" class="item-img" src="{{imageUp[0]}}" mode="widthFix"></image>
             <view wx:else class="item-content">{{content}}</view>
             <view class="item-title-box">
-                <view data-id="{{_id}}" bindtap="toNotedetail" class="item-title">{{title}}</view>
+                <!-- <view data-id="{{_id}}" bindtap="toNotedetail" class="item-title">{{title}}</view> -->
+                <view class="item-title">{{title}}</view>
             </view>
             <view class="name">
                 <view class="heart">

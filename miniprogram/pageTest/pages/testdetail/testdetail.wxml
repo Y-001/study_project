@@ -31,7 +31,7 @@
             </view>
         </view>
         <view data-type="1" class="use-item" bindtap="toBeitu">
-            <image class="use-img" src="../../images/test//test-shoucang.png"></image>
+            <image class="use-img" src="../../images/test/test-shoucang.png"></image>
             <view class="use-right">
                 <view class="top">收藏夹</view>
                 <view class="bottom">收藏的题目</view>
@@ -52,7 +52,7 @@
             </view>
         </view> -->
         <view class="use-item" bindtap="starClassify">
-            <image class="use-img" src="../../images/test//test-shoucang.png"></image>
+            <image class="use-img" src="../../images/test/test-shoucang.png"></image>
             <view class="use-right">
                 <view class="top">{{isStarClassify?'已收藏':'收藏'}} </view>
                 <view class="bottom">收藏此题库</view>

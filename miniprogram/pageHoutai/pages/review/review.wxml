@@ -62,7 +62,7 @@
         </view>
     </van-dialog>
     <!-- 审核意见 -->
-    <van-dialog close-on-click-overlay="true" use-slot title="题目详情" confirm-button-text="保存" cancel-button-text="不通过" confirm-button-color="#667c70" show="{{ showAdvice }}" bind:close="onClose"  bind:confirm="putAdvice">
+    <van-dialog close-on-click-overlay="true" use-slot title="审核意见" confirm-button-text="保存" cancel-button-text="不通过" confirm-button-color="#667c70" show="{{ showAdvice }}" bind:close="onClose"  bind:confirm="putAdvice">
         <view class="dialog">
             <view class="lei">
                 <view class="kongxie">审核意见</view>

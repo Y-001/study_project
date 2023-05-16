@@ -17,6 +17,9 @@ Page({
      * 页面的初始数据
      */
     data: {
+        // 滑动检测
+        touchS: [0, 0],
+        touchE: [0, 0],
         //判断是怎样进入阅读页面的
         way: '',//0 没收藏进来的 1 收藏进来的  3 学习进来的
         //书籍详情
@@ -51,10 +54,49 @@ Page({
         /* 打开目录 */
         show: false
     },
+    // 触摸开始事件
+  touchStart: function(e){
+    // console.log(e.touches[0].pageX)
+    let sx = e.touches[0].pageX
+    let sy = e.touches[0].pageY
+    this.data.touchS = [sx,sy]
+  },
+  // 触摸滑动事件
+  touchMove: function(e){
+    let sx = e.touches[0].pageX;
+    let sy = e.touches[0].pageY;
+    this.data.touchE = [sx, sy]
+  },
+  // 触摸结束事件
+  touchEnd: function(e){
+    let start = this.data.touchS
+    let end = this.data.touchE
+    // console.log(start)
+    // console.log(end)
+    if(end[0]==0){
+        this.openContral()
+    }else{
+        if(start[0] < end[0] - 50){
+            // console.log('向右滑，这里可以调用方法，及页面跳转事件')
+            this.getNext(-1)
+          }else if(start[0] > end[0] + 50){
+            // console.log('向左滑，这里可以调用方法，及页面跳转事件')
+            this.getNext(1)
+          }else{
+            // console.log('向上或向下滑动')
+          //   bindtap="openContral"
+          this.openContral()
+          }
+    }
+    this.setData({
+        touchS: [0, 0],
+        touchE: [0, 0],
+    })
+  },
     /* 关闭目录 */
     onCloseBookshelf(e) {
         this.setData({
-            show: false
+            show: false,
         })
     },
     /* 打开目录 */
@@ -70,14 +112,18 @@ Page({
         this.setData({
             content: chapter.content,
             no: chapter.no,
-            show: false
+            show: false,
         })
     },
     // 上一章下一章
     goNextChapter(e) {
         let { num } = e.currentTarget.dataset
+        this.getNext(num)
+    },
+    getNext(num) {
         num = Number(num)
         let { no, maxno } = this.data
+        // console.log(no)
         if (num == 1) {
             if (no == maxno) {
                 wx.showToast({
@@ -106,6 +152,10 @@ Page({
         this.setData({
             no,
             content
+        })
+        wx.pageScrollTo({
+            scrollTop: 0,
+            duration: 1000,
         })
     },
     /* 加入书架 收藏 */
@@ -309,7 +359,7 @@ Page({
                 }).get().then(res => {
                     res.data.forEach(item => {
                         let content = item.content
-                        item.content = content.replace(/。/g, '。\n&nbsp;&nbsp;').replace(/<*strong>/g, '')
+                        item.content = content.replace(/。/g, '。\n  ').replace(/<*strong>/g, '')
                     })
                     // console.log(res)
                     this.setData({
@@ -382,7 +432,7 @@ Page({
                 isToday = true
             }
         })
-        
+
         setTimeout(function () {
             startTime = +new Date();
             // console.log(startTime)
@@ -416,7 +466,7 @@ Page({
                 }
             }
             console.log(stayTime)
-            // console.log(calendar)
+            console.log(calendar)
             //这里获取到页面停留时间stayTime，然后了可以上报了
             if (stayTime > 2) {
                 //把停留时间放在收藏中
@@ -449,7 +499,7 @@ Page({
                         _openid: wx.getStorageSync('openid')
                     }).get().then(res => {
                         let { studyplan } = res.data[0]
-                        let calendar1=studyplan.calendar
+                        let calendar1 = studyplan.calendar
                         if (isToday) {
                             calendar1.forEach(item => {
                                 if (item.day == calendar.day) {
@@ -465,7 +515,7 @@ Page({
                                     }
                                 }
                             })
-                        }else{
+                        } else {
                             calendar1.push(calendar)
                         }
                         db.collection('users').where({
@@ -474,8 +524,8 @@ Page({
                             data: {
                                 studyplan: {
                                     calendar: calendar1,
-                                    syday:syday,
-                                    isOut:isOut
+                                    syday: syday,
+                                    isOut: isOut
                                 }
                             }
                         }).then(res => {
@@ -546,7 +596,7 @@ Page({
                         _openid: wx.getStorageSync('openid')
                     }).get().then(res => {
                         let { studyplan } = res.data[0]
-                        let calendar1=studyplan.calendar
+                        let calendar1 = studyplan.calendar
                         if (isToday) {
                             calendar1.forEach(item => {
                                 if (item.day == calendar.day) {
@@ -562,7 +612,7 @@ Page({
                                     }
                                 }
                             })
-                        }else{
+                        } else {
                             calendar1.push(calendar)
                         }
                         db.collection('users').where({
@@ -571,59 +621,59 @@ Page({
                             data: {
                                 studyplan: {
                                     calendar: calendar1,
-                                    syday:syday,
-                                    isOut:isOut
+                                    syday: syday,
+                                    isOut: isOut
                                 }
                             }
                         }).then(res => {
                             console.log('插入记录成功')
                         })
-                    // let isSomeDay=-1
-                    // db.collection('users').where({
-                    //     _openid: wx.getStorageSync('openid')
-                    // }).get().then(res => {
-                    //     let {studyplan} = res.data[0]
-                    //     // if('calendar' in studyplan){
-                    //     if(Reflect.has(studyplan,"calendar")){
-                    //         if(studyplan.calendar.length>0){
-                    //             studyplan.calendar.forEach((item,index)=>{
-                    //                 if(item.day==calendar.day){
-                    //                     isSomeDay=index
-                    //                     calendar.stayTime+=item.stayTime
-                    //                     if(calendar.stayTime==studyplan.studytime){
-                    //                         calendar.progress=true
-                    //                     }
-                    //                 }
-                    //             })
-                    //         }
-                    //         if(isSomeDay>=0) studyplan.calendar.splice(isSomeDay,1)
-                    //         studyplan.calendar.push(calendar)
-                    //         db.collection('users').where({
-                    //             _openid:wx.getStorageSync('openid')
-                    //         }).update({
-                    //             data:{
-                    //                 studyplan:{
-                    //                     calendar:studyplan.calendar
-                    //                 }
-                    //             }
-                    //         }).then(res=>{
-                    //             console.log('更新记录成功')
-                    //         })
-                    //     }else{
-                    //         db.collection('users').where({
-                    //             _openid:wx.getStorageSync('openid')
-                    //         }).update({
-                    //             data:{
-                    //                 studyplan:{
-                    //                     calendar:[calendar]
-                    //                 }
-                    //             }
-                    //         }).then(res=>{
-                    //             console.log('插入记录成功')
-                    //         })
-                    //     }
-                    // })
-                })
+                        // let isSomeDay=-1
+                        // db.collection('users').where({
+                        //     _openid: wx.getStorageSync('openid')
+                        // }).get().then(res => {
+                        //     let {studyplan} = res.data[0]
+                        //     // if('calendar' in studyplan){
+                        //     if(Reflect.has(studyplan,"calendar")){
+                        //         if(studyplan.calendar.length>0){
+                        //             studyplan.calendar.forEach((item,index)=>{
+                        //                 if(item.day==calendar.day){
+                        //                     isSomeDay=index
+                        //                     calendar.stayTime+=item.stayTime
+                        //                     if(calendar.stayTime==studyplan.studytime){
+                        //                         calendar.progress=true
+                        //                     }
+                        //                 }
+                        //             })
+                        //         }
+                        //         if(isSomeDay>=0) studyplan.calendar.splice(isSomeDay,1)
+                        //         studyplan.calendar.push(calendar)
+                        //         db.collection('users').where({
+                        //             _openid:wx.getStorageSync('openid')
+                        //         }).update({
+                        //             data:{
+                        //                 studyplan:{
+                        //                     calendar:studyplan.calendar
+                        //                 }
+                        //             }
+                        //         }).then(res=>{
+                        //             console.log('更新记录成功')
+                        //         })
+                        //     }else{
+                        //         db.collection('users').where({
+                        //             _openid:wx.getStorageSync('openid')
+                        //         }).update({
+                        //             data:{
+                        //                 studyplan:{
+                        //                     calendar:[calendar]
+                        //                 }
+                        //             }
+                        //         }).then(res=>{
+                        //             console.log('插入记录成功')
+                        //         })
+                        //     }
+                        // })
+                    })
                 }
             }
         }, 100)
@@ -650,7 +700,6 @@ Page({
      * 页面上拉触底事件的处理函数
      */
     onReachBottom: function () {
-
     },
 
     /**

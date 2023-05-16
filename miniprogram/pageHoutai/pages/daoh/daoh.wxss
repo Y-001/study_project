@@ -18,7 +18,22 @@
     margin-bottom: 50rpx;
     padding: 20rpx;
 }
-
-
-
-
+.top{
+    width: 80%;
+    margin-bottom: 50rpx;
+    display: flex;
+    align-items: flex-end;
+}
+.img{
+    width: 100rpx;
+    height: 100rpx;
+    border-radius: 50%;
+}
+.name{
+    font-size: 1.2em;
+    margin: 0 10rpx;
+}
+.role{
+    font-size: 0.8em;
+    color: #666;
+}

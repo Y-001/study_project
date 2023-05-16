@@ -3,7 +3,7 @@
     <view class="card">
         <view class="rule">
         <view class="left">考试题目</view>
-        <view class="right">内经知要</view>
+        <view class="right">{{classify}}</view>
     </view>
     <view class="rule">
         <view class="left">考试数量</view>

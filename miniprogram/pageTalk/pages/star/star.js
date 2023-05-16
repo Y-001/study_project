@@ -10,7 +10,7 @@ Page({
         // 发布的文章内容
         list:[],
         openid:wx.getStorageSync('openid'),
-        active:'吐槽',
+        active:'热门',
         starList:[]
     },
     // 收藏
@@ -70,15 +70,17 @@ Page({
     },
     toTalk(e){
         let id=e.currentTarget.dataset.id
-        wx.navigateTo({
+        wx.redirectTo({
           url: '/pageTalk/pages/talk/talk'
         })
     },
     // 获取帖子列表
-    getList(classify="吐槽"){
+    getList(classify="热门"){
         wx.showLoading()
         let data={}
-        data.classify=classify
+        if(classify!='热门'){
+            data.classify=classify
+        }
         data._openid=wx.getStorageSync('openid')
         db.collection('circlestars').where({
             ...data

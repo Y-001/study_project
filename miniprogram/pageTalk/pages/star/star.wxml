@@ -14,8 +14,8 @@
     </view>
     <view class="tab">
         <van-tabs active="{{ active }}" bind:change="onChange" color="#667c70">
-            <van-tab title="吐槽" name="吐槽"/>
             <van-tab title="热门" name="热门"/>
+            <van-tab title="吐槽" name="吐槽"/>
             <van-tab title="读书" name="读书"/>
             <van-tab title="答题" name="答题"/>
             <van-tab title="求助" name="求助"/>

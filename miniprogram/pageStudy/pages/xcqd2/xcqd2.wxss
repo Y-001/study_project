@@ -31,7 +31,7 @@
 .info-box{
     width: 100%;
     box-sizing: border-box;
-    padding: 10rpx;
+    padding: 15rpx;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -39,7 +39,9 @@
     font-size: 0.85em;
 }
 .info-num{
-    font-size: 1.5em;
+    font-size: 1.6em;
+    padding: 5rpx;
+    font-weight: bold;
 }
 .btn{
     width: 70%;

@@ -16,8 +16,8 @@
                 </view>
             </view>
             <view wx:else class="answer-kong">
-                <textarea class="kong" bindinput="getKongVal" maxlength='50' value="{{kongVal}}" class="kong" type="text" placeholder="请输入您的答案"></textarea>
-                <view class="kong-btn">提交</view>
+                <textarea disabled class="kong" bindinput="getKongVal" maxlength='50' value="{{kongVal}}" class="kong" type="text" placeholder="无"></textarea>
+                <!-- <view class="kong-btn">提交</view> -->
             </view>
         </view>
     </view>

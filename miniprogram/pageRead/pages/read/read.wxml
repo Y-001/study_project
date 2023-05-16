@@ -1,5 +1,5 @@
-<view class="container">
-    <view style="background-color: {{background[item]}};" class="content" bindtap="openContral">
+<view class="container" >
+    <view style="background-color: {{background[item]}};" class="content" bindtouchstart='touchStart' bindtouchmove='touchMove' bindtouchend="touchEnd">
         <text space="emsp" decode="{{true}}" user-select="true" style="color: {{item===3 ? '#f6f6f6':'#2c2c2c'}}; font-size: {{fontsize}}; line-height: {{lineheight}};">
         <text style="font-weight: bold; display: block;">{{bookchapter[no-1].title}}</text>  {{content}}
         </text>
@@ -31,13 +31,13 @@
                 <text class="c-text">间距</text>
                 <view class="booklethree" bindtap="changeFontLine">
                     <view class="font-line" data-item="0">
-                        <image class="icon-line" src="../../images/read-lineheight1.png"></image>
+                        <image data-item="0" class="icon-line" src="../../images/read-lineheight1.png"></image>
                     </view>
                     <view class="font-line" data-item="1">
-                        <image class="icon-line" src="../../images/read-lineheight2.png"></image>
+                        <image data-item="1" class="icon-line" src="../../images/read-lineheight2.png"></image>
                     </view>
                     <view class="font-line" data-item="2">
-                        <image class="icon-line" src="../../images/read-lineheight3.png"></image>
+                        <image data-item="2" class="icon-line" src="../../images/read-lineheight3.png"></image>
                     </view>
                 </view>
             </view>

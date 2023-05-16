@@ -29,40 +29,18 @@ Page({
                         return acc
                     },{})
                 ).map(({_openid,userInfo,score})=>({_openid,userInfo,score}))
-                // res.data.forEach(item=>{
-                //     if(userSorce.length==0){
-                //         userSorce.push({
-                //             _openid:item._openid,
-                //             userInfo:item.userInfo,
-                //             score:item.score
-                //         })
-                //     }else{
-                //         for(let i=0;i<userSorce.length;i++){
-                //             if(userSorce[i]._openid==item._openid){
-                //                 userSorce[i].score+=item.score
-                //                 break
-                //             }
-                //             if(i==userSorce.length-1){
-                //                 userSorce.push({
-                //                     _openid:item._openid,
-                //                     userInfo:item.userInfo,
-                //                     score:item.score
-                //                 })
-                //                 return
-                //             }
-                //         }
-                //     }
-                // })
             })
         }
-        // userSorce.score.sort((a,b)=>{
-        //     return a-b
-        // })
+        userSorce.sort((a,b)=>{
+            return b.score-a.score
+        })
         // this.sortArr(userSorce,'score',false)
 
         this.setData({
             userSorce
         })
+        // console.log(userSorce)
+
     },
     //冒泡法排序
  sortArr(arr, attr ='id',flag=true) {
